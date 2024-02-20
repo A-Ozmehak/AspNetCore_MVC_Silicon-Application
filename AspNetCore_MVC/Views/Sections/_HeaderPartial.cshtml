@@ -1,6 +1,6 @@
 ﻿<header>
     <div class="container">
-        <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/images/solid.svg" alt="Silicon"></a>
+        <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/images/solid.svg" alt="Silicon"></a>
 
         <div id="menu" class="hide">
             <nav>
@@ -13,8 +13,8 @@
         <div class="btn-switch">
             <label>Light</label>
             <label class="switch" for="switch-mode">
-                <input type="checkbox" id="switch-mode">
-                <span class="slider-round"></span>
+                <input type="checkbox" id="switch-mode" runat="server">
+                <span class="slider round"></span>
             </label>
             <label>Dark</label>
         </div>
