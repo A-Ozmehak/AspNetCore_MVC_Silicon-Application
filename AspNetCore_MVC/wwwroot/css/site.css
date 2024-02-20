@@ -710,3 +710,59 @@ footer .container .social-media a {
   width: 100%;
   height: auto;
 }
+
+#manage-section {
+  margin-top: 40px;
+  margin-bottom: 70px;
+}
+#manage-section .container {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  #manage-section .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+#manage-section .container .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 1200px) {
+  #manage-section .container .content {
+    align-items: start;
+    justify-content: center;
+  }
+}
+#manage-section .container .content h3 {
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 30px;
+}
+@media (min-width: 1200px) {
+  #manage-section .container .content h3 {
+    margin: 0 0 30px 30px;
+  }
+}
+#manage-section .container .content ul {
+  list-style: none;
+  margin-bottom: 40px;
+}
+#manage-section .container .content ul li {
+  margin-bottom: 10px;
+}
+#manage-section .container .content ul li i {
+  margin-right: 10px;
+  color: #6366F1;
+}
+#manage-section .container .content a {
+  width: 159px;
+}
+@media (min-width: 1200px) {
+  #manage-section .container .content a {
+    margin-left: 30px;
+  }
+}
