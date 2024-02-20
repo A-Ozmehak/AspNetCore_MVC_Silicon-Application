@@ -491,7 +491,7 @@ footer .container .social-media a {
   position: relative;
   margin-bottom: 80px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .showcase {
     display: flex;
     justify-content: flex-end;
@@ -503,7 +503,7 @@ footer .container .social-media a {
   z-index: -1;
   width: 100%;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .showcase img {
     width: 45%;
   }
@@ -511,7 +511,7 @@ footer .container .social-media a {
 .showcase .container {
   height: 100%;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .showcase .container {
     position: absolute;
     left: 0;
@@ -523,7 +523,7 @@ footer .container .social-media a {
   width: 100%;
   text-align: center;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
   .showcase .container .content {
     margin-top: 100px;
     width: 40%;
@@ -577,7 +577,7 @@ footer .container .social-media a {
   font-weight: 900;
   color: #000000;
 }
-@media (min-width: 992px) {
+@media (min-width: 1400px) {
   .showcase .container .content h6 {
     display: flex;
     margin: 100px 0 30px 0;
@@ -587,7 +587,7 @@ footer .container .social-media a {
   display: none;
   gap: 30px;
 }
-@media (min-width: 992px) {
+@media (min-width: 1400px) {
   .showcase .container .content .brands {
     display: flex;
   }
