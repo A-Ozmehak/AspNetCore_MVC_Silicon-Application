@@ -1,0 +1,83 @@
+#download-section {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background-color: $gray-100;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include xl {
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        img {
+            width: 526px;
+            height: 580px;
+        }
+
+        .content {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h3 {
+                color: $black;
+                @include h3;
+                margin: 20px 0;
+            }
+
+            .download-option {
+                @include md {
+                    display: flex;
+                    margin-bottom: 30px;
+                }
+
+                .text {
+                    p {
+                        color: $gray-600;
+                        margin-bottom: 0;
+                    }
+
+                    .star {
+                        position: relative;
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        background-color: $warning;
+                        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                    }
+
+                    .rating {
+                        margin-top: 10px;
+
+                        h5 {
+                            @include h5;
+                            margin-bottom: 0;
+                        }
+
+                        p {
+                            color: $gray-700;
+                        }
+                    }
+                }
+
+                img {
+                    width: 180px;
+                    height: 52px;
+                    margin-bottom: 30px;
+
+                    @include md {
+                        margin-bottom: 0;
+                        align-self: flex-end;
+                        margin-left: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

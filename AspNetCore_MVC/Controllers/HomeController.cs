@@ -1,6 +1,8 @@
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace AspNetCore_MVC.Controllers;
@@ -62,7 +64,17 @@ public class HomeController : Controller
                     new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Easiest way to track time spent on tasks" },
                 ],
                 Link = new() { Text = "Learn more", ActionName = "", ControllerName = "", Icon = "fa-solid fa-arrow-right" },
-               
+            },
+            DownloadApp = new DownloadAppViewModel
+            {
+                MobileImage = new() { ImageUrl = "/images/download-app.svg", AltText = "The app design on a mobile" },
+                Title = "Download Our App for Any Devices:",
+                App =
+                [
+                    new() { StoreName = "App Store", AwardTitle = "Editor's Choice", AwardRating = "rating 4.7, 187K+ reviews", StoreImage = new() { ImageUrl = "/images/appstore.svg", AltText = "App Store" } },
+                    new() { StoreName = "Google Play", AwardTitle = "App of the Day", AwardRating = "rating 4.8, 30K+ reviews", StoreImage = new() { ImageUrl = "/images/googleplay.svg", AltText = "Google Play" } }
+
+                ]
             }
         };
 
