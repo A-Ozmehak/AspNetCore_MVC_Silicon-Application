@@ -48,6 +48,21 @@ public class HomeController : Controller
                 Title = "Switch Between",
                 Description = "Light & Dark Mode",
                 Image = new() { ImageUrl = "/images/mockup.svg", AltText = ""}
+            },
+            ManageWork = new ManageWorkViewModel
+            {
+                Image = new() { ImageUrl = "/images/manage-work.svg", AltText = ""},
+                Title = "Manage Your Work",
+                IconAndText =
+                [
+                    new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Powerful project management" },
+                    new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Transparent work management" },
+                    new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Manage work & focus on the most important tasks" },
+                    new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Track your process with interactive charts" },
+                    new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Easiest way to track time spent on tasks" },
+                ],
+                Link = new() { Text = "Learn more", ActionName = "", ControllerName = "", Icon = "fa-solid fa-arrow-right" },
+               
             }
         };
 

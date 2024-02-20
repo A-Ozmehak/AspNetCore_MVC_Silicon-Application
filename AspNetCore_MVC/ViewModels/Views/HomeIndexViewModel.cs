@@ -8,4 +8,5 @@ public class HomeIndexViewModel
     public ShowcaseViewModel Showcase { get; set; } = null!;
     public FeaturesViewModel Features { get; set; } = null!;
     public SliderViewModel Slider { get; set; } = null!;
+    public ManageWorkViewModel ManageWork { get; set; } = null!;
 }
