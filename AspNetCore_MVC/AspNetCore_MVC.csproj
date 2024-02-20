@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="wwwroot\css\scss\sections\" />
+    <Folder Include="Models\Views\" />
+    <Folder Include="wwwroot\images\brands\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,90 @@
+.showcase {
+    position: relative;
+    margin-bottom: 80px;
+
+    @include xl {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0;
+    }
+
+    img {
+        position: relative;
+        z-index: -1;
+        width: 100%;
+
+        @include xl {
+            width: 45%;
+        }
+    }
+
+    .container {
+        height: 100%;
+
+        @include xl {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        .content {
+            margin-top: 0px;
+            width: 100%;
+            text-align: center;
+
+
+            @include xl {
+                margin-top: 100px;
+                width: 40%;
+                text-align: left;
+            }
+
+            h1 {
+                @include h3;
+
+                @include lg {
+                    @include h1;
+                }
+            }
+
+            p {
+                margin: 20px 0 40px 0;
+                @include text-m;
+
+                @include lg {
+                    margin: 40px 0 50px 0;
+                    @include text-lg;
+                }
+            }
+
+            .btn-theme-s {
+                display: inline-block;
+            }
+
+            h6 {
+                margin: 150px 0 30px 0;
+                display: none;
+                font-weight: 900;
+                color: $black;
+
+                @include xxl {
+                    display: flex;
+                    margin: 100px 0 30px 0;
+                }
+            }
+
+            .brands {
+                display: none;
+                gap: 30px;
+
+                @include xxl {
+                    display: flex;
+                }
+
+                img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}

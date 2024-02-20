@@ -1,0 +1,26 @@
+﻿<section id="download-section">
+    <div class="container">
+        <img src="@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
+        <div class="content">
+            <h3>@Model.Title</h3>
+                @foreach (var app in Model.App)
+                {
+                    <div class="download-option">
+                        <div class="text">
+                            <p>@app.StoreName</p>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="rating">
+                                <h5>@app.AwardTitle</h5>
+                                <p>@app.AwardRating</p>
+                            </div>
+                        </div>
+                        <img src="@app.StoreImage.ImageUrl" alt="@app.StoreImage.AltText" />
+                    </div>
+                }
+        </div>
+    </div>
+</section>

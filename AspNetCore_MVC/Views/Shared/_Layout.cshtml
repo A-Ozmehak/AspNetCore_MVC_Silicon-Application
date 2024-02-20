@@ -17,10 +17,13 @@
 </head>
 <body>
 
-    <div>
+    <div class="wrapper">
+        @await Html.PartialAsync("~/Views/Sections/_HeaderPartial.cshtml")
         <main>
             @RenderBody()
         </main>
+
+        @await Html.PartialAsync("~/Views/Sections/_FooterPartial.cshtml")
     </div>
 
 
