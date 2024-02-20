@@ -42,6 +42,12 @@ public class HomeController : Controller
                   new() { BoxImage = new() { ImageUrl = "/images/icons/sections-icon.svg", AltText = "" }, Title = "Sections & Subtasks", Description = "Mi feugiat hac id in. Sit elit placerat lacus nibh lorem ridiculus lectus." },
                   new() { BoxImage = new() { ImageUrl = "/images/icons/data-security-icon.svg", AltText = "" }, Title = "Data Security", Description = "Aliquam malesuada neque eget elit nulla vestibulum nunc cras." },
                 ]
+            },
+            Slider = new SliderViewModel
+            {
+                Title = "Switch Between",
+                Description = "Light & Dark Mode",
+                Image = new() { ImageUrl = "/images/mockup.svg", AltText = ""}
             }
         };
 
