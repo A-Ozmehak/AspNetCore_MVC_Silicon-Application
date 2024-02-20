@@ -1,0 +1,78 @@
+header {
+    padding: 1rem 0 1rem 1rem;
+
+    @include md {
+        padding: 1rem;
+    }
+
+    .container {
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas: "logo switch mobile" "menu menu menu" "buttons buttons buttons";
+
+        @include xl {
+            grid-template-columns: auto 1fr auto auto;
+            gap: 20px;
+            grid-template-areas: "logo menu switch buttons"
+        }
+
+        .logo {
+            grid-area: logo;
+        }
+
+        #menu {
+            grid-area: menu;
+            display: block;
+            margin-bottom: 15px;
+
+            @include lg {
+                display: block;
+                margin-bottom: 0;
+            }
+
+            nav {
+                display: grid;
+                justify-content: center;
+                gap: 1rem;
+
+                @include xl {
+                    display: flex;
+                    justify-content: flex-start;
+                }
+            }
+        }
+
+        .btn-switch {
+            grid-area: switch;
+            display: flex;
+            justify-content: center;
+
+            @include xxl {
+                display: flex;
+            }
+        }
+
+        #account-buttons {
+            grid-area: buttons;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+
+            @include xl {
+                display: flex;
+            }
+        }
+
+        .btn-mobilemenu {
+            grid-area: mobile;
+            display: block;
+            margin-left: 20px;
+
+            @include xl {
+                display: none;
+            }
+        }
+    }
+}

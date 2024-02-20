@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Models\" />
-    <Folder Include="wwwroot\css\scss\sections\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
