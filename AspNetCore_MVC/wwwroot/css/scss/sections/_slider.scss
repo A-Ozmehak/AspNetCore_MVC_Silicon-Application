@@ -1,0 +1,56 @@
+#slider {
+    position: relative;
+    height: 1000px;
+    z-index: 1;
+
+    .background-container {
+        display: flex;
+        height: 100%;
+
+        .half {
+            width: 50%;
+            height: 100%;
+        }
+
+        .dark-mode {
+            background-color: $gray-900;
+        }
+
+        .light-mode {
+            background-color: $white;
+        }
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        // padding-top: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .title {
+            display: flex;
+            margin-bottom: 40px;
+
+            h3 {
+                color: $white;
+                font-weight: 700;
+            }
+
+            .dark-text {
+                color: $black;
+                margin-left: 30px;
+            }
+        }
+
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
