@@ -2,7 +2,7 @@
     position: relative;
     margin-bottom: 80px;
 
-    @include lg {
+    @include xl {
         display: flex;
         justify-content: flex-end;
         margin-bottom: 0;
@@ -13,7 +13,7 @@
         z-index: -1;
         width: 100%;
 
-        @include lg {
+        @include xl {
             width: 45%;
         }
     }
@@ -21,7 +21,7 @@
     .container {
         height: 100%;
 
-        @include lg {
+        @include xl {
             position: absolute;
             left: 0;
             right: 0;
@@ -32,7 +32,8 @@
             width: 100%;
             text-align: center;
 
-            @include lg {
+
+            @include xl {
                 margin-top: 100px;
                 width: 40%;
                 text-align: left;
@@ -66,7 +67,7 @@
                 font-weight: 900;
                 color: $black;
 
-                @include lg {
+                @include xxl {
                     display: flex;
                     margin: 100px 0 30px 0;
                 }
@@ -76,7 +77,7 @@
                 display: none;
                 gap: 30px;
 
-                @include lg {
+                @include xxl {
                     display: flex;
                 }
 
