@@ -10,4 +10,5 @@ public class HomeIndexViewModel
     public SliderViewModel Slider { get; set; } = null!;
     public ManageWorkViewModel ManageWork { get; set; } = null!;
     public DownloadAppViewModel DownloadApp { get; set; } = null!;
+    public TopToolsViewModel TopTools { get; set; } = null!;
 }
