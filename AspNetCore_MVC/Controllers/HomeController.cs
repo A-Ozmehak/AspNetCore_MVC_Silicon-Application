@@ -95,6 +95,13 @@ public class HomeController : Controller
                     new() { Image = new() { ImageUrl = "/images/icons/dropbox-icon.svg", AltText = "Dropbox logo" }, Text = "Lut in turpis consequat odio diam lextus elementum. Est faucibus blandit platea." },
                     new() { Image = new() { ImageUrl = "/images/icons/evernote-icon.svg", AltText = "Evernote logo" }, Text = "Faucibus cursus maecenas lorem cusus nibh. Sociis sit risus id. Sit facilisis dolor arcu." }
                 ]
+            },
+            Newsletter = new NewsletterViewModel
+            {
+                Title = "Dont't Want to Miss Anything?",
+                Arrow = new() { ImageUrl = "/images/arrows.svg", AltText = "Arrow"},
+                SignUpText = "Sign up for Newsletters",
+                Link = new() { Text = "Subscribe*", ActionName = "Subscribe", ControllerName = "Home" },
             }
         };      
 

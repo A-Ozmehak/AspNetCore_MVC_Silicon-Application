@@ -1,0 +1,90 @@
+#newsletter-section {
+    background-color: $gray-100;
+    padding: 70px 0;
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .title {
+            display: flex;
+            margin-bottom: 20px;
+            width: 100%;
+            justify-content: center;
+
+            @include lg {
+                width: 65%;
+            }
+
+            h3 {
+                @include h3;
+                margin-right: 10px;
+
+                @include lg {
+                    margin-right: 20px;
+                }
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+
+            .checkboxes {
+                display: flex;
+                flex-direction: column;
+
+                @include lg {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    width: 856px;
+                    margin-bottom: 30px;
+                }
+
+                p {
+                    font-weight: 700;
+                    color: $black;
+                }
+
+                .checkbox-container {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .checkbox {
+                    }
+                }
+            }
+
+            .email-form {
+                display: flex;
+                margin-top: 20px;
+
+                @include lg {
+                    max-width: 856px;
+                }
+
+                input {
+                    width: 100%;
+                    border-radius: 10px;
+                }
+
+                a {
+                    border-radius: 10px;
+                    margin-left: 15px;
+                }
+            }
+
+            p {
+                color: $gray-600;
+
+                span {
+                    color: $theme;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

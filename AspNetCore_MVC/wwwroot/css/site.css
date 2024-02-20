@@ -905,3 +905,89 @@ footer .container .social-media a {
   color: #565973;
   text-align: start;
 }
+
+#newsletter-section {
+  background-color: #F3F6FF;
+  padding: 70px 0;
+}
+#newsletter-section .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#newsletter-section .container .title {
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+}
+@media (min-width: 992px) {
+  #newsletter-section .container .title {
+    width: 65%;
+  }
+}
+#newsletter-section .container .title h3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+  margin-right: 10px;
+}
+@media (min-width: 992px) {
+  #newsletter-section .container .title h3 {
+    margin-right: 20px;
+  }
+}
+#newsletter-section .container form {
+  display: flex;
+  flex-direction: column;
+}
+#newsletter-section .container form .checkboxes {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  #newsletter-section .container form .checkboxes {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 856px;
+    margin-bottom: 30px;
+  }
+}
+#newsletter-section .container form .checkboxes p {
+  font-weight: 700;
+  color: #000000;
+}
+#newsletter-section .container form .checkboxes .checkbox-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#newsletter-section .container form .email-form {
+  display: flex;
+  margin-top: 20px;
+}
+@media (min-width: 992px) {
+  #newsletter-section .container form .email-form {
+    max-width: 856px;
+  }
+}
+#newsletter-section .container form .email-form input {
+  width: 100%;
+  border-radius: 10px;
+}
+#newsletter-section .container form .email-form a {
+  border-radius: 10px;
+  margin-left: 15px;
+}
+#newsletter-section .container form p {
+  color: #9397AD;
+}
+#newsletter-section .container form p span {
+  color: #6366F1;
+  text-decoration: underline;
+}
