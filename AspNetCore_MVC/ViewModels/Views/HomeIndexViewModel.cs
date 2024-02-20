@@ -11,4 +11,5 @@ public class HomeIndexViewModel
     public ManageWorkViewModel ManageWork { get; set; } = null!;
     public DownloadAppViewModel DownloadApp { get; set; } = null!;
     public TopToolsViewModel TopTools { get; set; } = null!;
+    public NewsletterViewModel Newsletter { get; set; } = null!;
 }

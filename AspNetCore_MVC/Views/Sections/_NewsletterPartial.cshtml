@@ -1,0 +1,52 @@
+﻿@model NewsletterViewModel
+
+<section id="newsletter-section">
+    <div class="container">
+        <div class="title">
+            <h3>@Model.Title</h3>
+            <img src="@Model.Arrow.ImageUrl" alt="@Model.Arrow.AltText" />
+        </div>
+        <form>
+            <div class="checkboxes">
+                <p>@Model.SignUpText</p>
+                <div class="checkbox-container">
+                    <div class="checkbox">
+                        <input asp-for="Form.DailyNewsletter" />
+                        <label asp-for="Form.DailyNewsletter"></label>
+                    </div>
+                    <div class="checkbox">
+                        <input asp-for="Form.AdvertisingUpdates" />
+                        <label asp-for="Form.AdvertisingUpdates"></label>
+                    </div>
+                </div>
+                <div class="checkbox-container">
+                    <div class="checkbox">
+                        <input asp-for="Form.WeekInReview" />
+                        <label asp-for="Form.WeekInReview"></label>
+                    </div>
+                    <div class="checkbox">
+                        <input asp-for="Form.EventUpdates" />
+                        <label asp-for="Form.EventUpdates"></label>
+                    </div>
+                </div>
+                <div class="checkbox-container">
+                    <div class="checkbox">
+                        <input asp-for="Form.StartupsWeekly" />
+                        <label asp-for="Form.StartupsWeekly"></label>
+                    </div>
+                    <div class="checkbox">
+                        <input asp-for="Form.Podcasts" />
+                        <label asp-for="Form.Podcasts"></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="email-form">
+                <input type="email" placeholder="Your email" asp-for="Form.Email">
+                <span asp-validation-for="Form.Email"></span>
+                <a class="btn-theme-s" asp-action="@Model.Link.ActionName" asp-controller="@Model.Link.ControllerName">@Model.Link.Text</a>
+            </div>
+            <p>*Yes, I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> and  <a asp-controller="About" asp-action="PrivacyPolicy">Privacy Policy</a></p>
+        </form>
+    </div>
+</section>
