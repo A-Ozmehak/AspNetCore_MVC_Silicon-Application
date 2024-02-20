@@ -766,3 +766,88 @@ footer .container .social-media a {
     margin-left: 30px;
   }
 }
+
+#download-section {
+  display: flex;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-color: #F3F6FF;
+}
+#download-section .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 1200px) {
+  #download-section .container {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+#download-section .container img {
+  width: 526px;
+  height: 580px;
+}
+#download-section .container .content {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#download-section .container .content h3 {
+  color: #000000;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+  margin: 20px 0;
+}
+@media (min-width: 768px) {
+  #download-section .container .content .download-option {
+    display: flex;
+    margin-bottom: 30px;
+  }
+}
+#download-section .container .content .download-option .text p {
+  color: #9397AD;
+  margin-bottom: 0;
+}
+#download-section .container .content .download-option .text .star {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #FFBA08;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+#download-section .container .content .download-option .text .rating {
+  margin-top: 10px;
+}
+#download-section .container .content .download-option .text .rating h5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 20px !important;
+  margin-bottom: 0;
+}
+#download-section .container .content .download-option .text .rating p {
+  color: #565973;
+}
+#download-section .container .content .download-option img {
+  width: 180px;
+  height: 52px;
+  margin-bottom: 30px;
+}
+@media (min-width: 768px) {
+  #download-section .container .content .download-option img {
+    margin-bottom: 0;
+    align-self: flex-end;
+    margin-left: 40px;
+  }
+}

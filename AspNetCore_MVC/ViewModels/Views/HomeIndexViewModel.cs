@@ -9,4 +9,5 @@ public class HomeIndexViewModel
     public FeaturesViewModel Features { get; set; } = null!;
     public SliderViewModel Slider { get; set; } = null!;
     public ManageWorkViewModel ManageWork { get; set; } = null!;
+    public DownloadAppViewModel DownloadApp { get; set; } = null!;
 }
