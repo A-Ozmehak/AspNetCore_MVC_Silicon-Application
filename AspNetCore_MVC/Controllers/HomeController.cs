@@ -1,8 +1,6 @@
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 
 
 namespace AspNetCore_MVC.Controllers;

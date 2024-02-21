@@ -1189,3 +1189,167 @@ footer .container .social-media a {
 #signup .container form .content #form-submit {
   grid-area: button;
 }
+
+#courses {
+  margin-top: 40px;
+}
+#courses .container {
+  display: flex;
+  flex-direction: column;
+}
+#courses .container .titleAndFilter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+@media (min-width: 992px) {
+  #courses .container .titleAndFilter {
+    justify-content: space-between;
+    flex-direction: row;
+    height: 52px;
+  }
+}
+#courses .container .titleAndFilter .filterAndSearch {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 992px) {
+  #courses .container .titleAndFilter .filterAndSearch {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+#courses .container .titleAndFilter .filterAndSearch select {
+  padding: 10px;
+  border: 2px solid #D4D7E5;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 240px;
+  height: 44px;
+  background-color: transparent;
+  margin-bottom: 10px;
+}
+@media (min-width: 992px) {
+  #courses .container .titleAndFilter .filterAndSearch select {
+    margin-bottom: 0;
+  }
+}
+#courses .container .titleAndFilter .filterAndSearch .input-container {
+  position: relative;
+  width: 240px;
+}
+#courses .container .titleAndFilter .filterAndSearch .input-container input {
+  padding: 10px;
+  border: 2px solid #D4D7E5;
+  border-radius: 5px;
+  margin-right: 10px;
+  height: 44px;
+}
+#courses .container .titleAndFilter .filterAndSearch .input-container .icon {
+  position: absolute;
+  left: 200px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#courses .container .courses {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+@media (min-width: 992px) {
+  #courses .container .courses {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+#courses .container .courses .course {
+  border: 1px solid #EFF2FC;
+  border-radius: 10px;
+}
+#courses .container .courses .course img {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+}
+#courses .container .courses .course .course-info {
+  padding: 20px;
+}
+#courses .container .courses .course .course-info h2 {
+  margin-bottom: 10px;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 20px !important;
+  font-weight: 700;
+  color: #000000;
+}
+#courses .container .courses .course .course-info p {
+  margin-bottom: 10px;
+}
+#courses .container .courses .course .course-info .price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 3px solid #EFF2FC;
+  color: #4C82F7;
+  font-weight: 600;
+  padding-bottom: 10px;
+}
+#courses .container .courses .course .course-info .card-bottom {
+  display: flex;
+  padding-top: 10px;
+}
+#courses .container .courses .course .course-info .card-bottom p {
+  display: inline;
+  color: #9397AD;
+}
+#courses .container .courses .course .course-info .card-bottom .duration {
+  margin-right: 30px;
+}
+#courses .container nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+#courses .container nav .pagination .page-item a {
+  color: #000000;
+}
+#courses .container nav .pagination .page-item a:active {
+  background-color: #4C82F7;
+}
+#courses .container .get-started {
+  background-color: #F3F6FF;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 100px;
+}
+#courses .container .get-started .text-box h5 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+  font-weight: 700;
+  margin-bottom: 10px;
+  width: 350px;
+}
+#courses .container .get-started .text-box h5 span {
+  color: #4C82F7;
+}
+#courses .container .get-started .text-box a {
+  width: 162px;
+  margin-top: 30px;
+  text-align: center;
+}
+#courses .container .get-started .image-box {
+  display: none;
+}
+@media (min-width: 992px) {
+  #courses .container .get-started .image-box {
+    display: block;
+  }
+}
