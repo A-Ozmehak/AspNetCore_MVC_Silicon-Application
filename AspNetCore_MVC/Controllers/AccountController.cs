@@ -13,6 +13,7 @@ public class AccountController : Controller
     //}
 
     [Route("/account")]
+    [HttpGet]
     public IActionResult Details()
     {
         var viewModel = new AccountDetailsViewModel();
@@ -22,6 +23,7 @@ public class AccountController : Controller
         return View(viewModel);
     }
 
+    [Route("/account")]
     [HttpPost]
     public IActionResult BasicInfo(AccountDetailsViewModel viewModel)
     {
@@ -29,10 +31,33 @@ public class AccountController : Controller
         return RedirectToAction(nameof(Details), viewModel);
     }
 
+    [Route("/account")]
     [HttpPost]
     public IActionResult AddressInfo(AccountDetailsViewModel viewModel)
     {
         //_accountService.SaveAddressInfo(viewModel.AddressInfo);
         return RedirectToAction(nameof(Details), viewModel);
+    }
+
+    [Route("/account/security")]
+    [HttpGet]
+    public IActionResult Security()
+    {
+        var viewModel = new AccountSecurityViewModel();
+        //viewModel.BasicInfo = _accountService.GetBasicInfo();
+        //viewModel.AddressInfo = _accountService.GetAddressInfo();
+
+        return View(viewModel);
+    }
+
+    [Route("/account/security")]
+    [HttpPost]
+    public IActionResult Password(AccountSecurityViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+            return View(viewModel);
+
+        viewModel.ErrorMessage = "Incorrect password";
+        return RedirectToAction("Security", "Account");
     }
 }
