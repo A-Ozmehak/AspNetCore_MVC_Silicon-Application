@@ -323,6 +323,44 @@ html, body {
   font-size: 25px;
 }
 
+.btn-red {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #EF4444;
+  color: white;
+  border: none;
+}
+.btn-red:hover {
+  background: #565973;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+.btn-red-border {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: #EF4444;
+  border: 1px solid #EF4444;
+}
+.btn-red-border:hover {
+  background: #565973;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 a {
   line-height: 160%;
   font-weight: 400;
@@ -1188,4 +1226,278 @@ footer .container .social-media a {
 }
 #signup .container form .content #form-submit {
   grid-area: button;
+}
+
+#account-details {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-details {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
+}
+#account-details aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+#account-details aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+#account-details aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#account-details aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#account-details aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+#account-details aside nav a {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-details aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-details .details {
+  margin-top: 50px;
+  width: 100%;
+}
+#account-details .details .basic-info form {
+  padding: 1rem;
+}
+#account-details .details .basic-info form h5 {
+  color: #6366F1;
+}
+#account-details .details .basic-info form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
+}
+#account-details .details .basic-info form .content #form-firstname {
+  grid-area: firstname;
+}
+#account-details .details .basic-info form .content #form-lastname {
+  grid-area: lastname;
+}
+#account-details .details .basic-info form .content #form-email {
+  grid-area: email;
+}
+#account-details .details .basic-info form .content #form-phone {
+  grid-area: phone;
+}
+#account-details .details .basic-info form .content #form-bio {
+  grid-area: bio;
+}
+#account-details .details .basic-info form .content #form-bio span {
+  color: #B4B7C9;
+  font-weight: 400;
+}
+#account-details .details .basic-info form .content .form-buttons {
+  grid-area: buttons;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+#account-details .details .address-info {
+  margin-top: 30px;
+}
+#account-details .details .address-info form {
+  padding: 1rem;
+}
+#account-details .details .address-info form h5 {
+  color: #6366F1;
+}
+#account-details .details .address-info form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
+}
+#account-details .details .address-info form .content #form-addressline-1 {
+  grid-area: addressline_1;
+}
+#account-details .details .address-info form .content #form-addressline-2 {
+  grid-area: addressline_2;
+}
+#account-details .details .address-info form .content #form-addressline-2 span {
+  color: #B4B7C9;
+  font-weight: 400;
+}
+#account-details .details .address-info form .content #form-postalcode {
+  grid-area: postalcode;
+}
+#account-details .details .address-info form .content #form-city {
+  grid-area: city;
+}
+#account-details .details .address-info form .content .form-buttons {
+  grid-area: buttons;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+
+#account-security {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-security {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
+}
+#account-security aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+#account-security aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+#account-security aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#account-security aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#account-security aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+#account-security aside nav a {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-security aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-security .details {
+  margin-top: 50px;
+  width: 100%;
+}
+#account-security .details .password-info form {
+  padding: 1rem;
+}
+#account-security .details .password-info form h5 {
+  color: #6366F1;
+}
+#account-security .details .password-info form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "current none" "new confirm" "buttons buttons";
+}
+#account-security .details .password-info form .content #form-current-password {
+  grid-area: current;
+}
+#account-security .details .password-info form .content #form-new-password {
+  grid-area: new;
+}
+#account-security .details .password-info form .content #form-confirm-password {
+  grid-area: confirm;
+}
+#account-security .details .password-info form .content .form-buttons {
+  grid-area: buttons;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+#account-security .details .delete-account {
+  margin-top: 30px;
+}
+#account-security .details .delete-account form {
+  padding: 1rem;
+}
+#account-security .details .delete-account form h5 {
+  color: #6366F1;
+}
+#account-security .details .delete-account form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "delete" "button";
+}
+#account-security .details .delete-account form .content #form-delete {
+  grid-area: delete;
+}
+#account-security .details .delete-account form .content .form-button {
+  grid-area: button;
+  margin: 20px 0;
+}
+
+#account-saved-courses {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-saved-courses {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
+}
+#account-saved-courses aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+#account-saved-courses aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+#account-saved-courses aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#account-saved-courses aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#account-saved-courses aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+#account-saved-courses aside nav a {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-saved-courses aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-saved-courses .details {
+  margin-top: 50px;
+  width: 100%;
+}
+#account-saved-courses .details .saved-items .title {
+  display: flex;
+  justify-content: space-between;
+}
+#account-saved-courses .details .saved-items .title .btn-red-border i {
+  color: #EF4444;
 }

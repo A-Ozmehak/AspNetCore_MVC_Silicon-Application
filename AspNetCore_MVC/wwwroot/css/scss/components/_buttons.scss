@@ -128,3 +128,29 @@
     border: none;
     font-size: 25px;
 }
+
+.btn-red {
+    @include button;
+    background: $danger;
+    color: white;
+    border: none;
+
+    &:hover {
+        background: $gray-700;
+        text-decoration: none;
+        color: $white;
+    }
+}
+
+.btn-red-border {
+    @include button;
+    background: $transparent;
+    color: $danger;
+    border: 1px solid $danger;
+
+    &:hover {
+        background: $gray-700;
+        text-decoration: none;
+        color: $white;
+    }
+}
