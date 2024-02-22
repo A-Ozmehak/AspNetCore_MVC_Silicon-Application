@@ -1,0 +1,110 @@
+#account-security {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+
+    aside {
+        border-right: 1px solid $gray-300;
+        padding-right: 20px;
+
+        .profile-info {
+            margin: 20px;
+            text-align: center;
+
+            h5 {
+                margin-top: 15px;
+                margin-bottom: 0;
+            }
+
+            p {
+                @include text-m;
+            }
+        }
+
+        nav {
+            margin-top: 50px;
+            text-align: left;
+
+            a {
+                margin: 10px 0;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .btn-theme-s {
+                text-align: left;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    .details {
+        margin-top: 50px;
+        width: 100%;
+
+        .password-info {
+            form {
+                padding: 1rem;
+
+                h5 {
+                    color: $theme;
+                }
+
+                .content {
+                    display: grid;
+                    gap: 1rem 2rem;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "current none" "new confirm" "buttons buttons";
+
+                    #form-current-password {
+                        grid-area: current;
+                    }
+
+                    #form-new-password {
+                        grid-area: new;
+                    }
+
+                    #form-confirm-password {
+                        grid-area: confirm;
+                    }
+
+                    .form-buttons {
+                        grid-area: buttons;
+                        margin: 20px 0;
+                        display: flex;
+                        gap: 20px;
+                    }
+                }
+            }
+        }
+
+        .delete-account {
+            margin-top: 30px;
+
+            form {
+                padding: 1rem;
+
+                h5 {
+                    color: $theme;
+                }
+
+                .content {
+                    display: grid;
+                    gap: 1rem 2rem;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "delete" "button";
+
+                    #form-delete {
+                        grid-area: delete;
+                    }
+
+                    .form-button {
+                        grid-area: button;
+                        margin: 20px 0;
+                    }
+                }
+            }
+        }
+    }
+}

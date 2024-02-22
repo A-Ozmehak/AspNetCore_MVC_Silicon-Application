@@ -128,3 +128,16 @@
     border: none;
     font-size: 25px;
 }
+
+.btn-red {
+    @include button;
+    background: $danger;
+    color: white;
+    border: none;
+
+    &:hover {
+        background: $gray-700;
+        text-decoration: none;
+        color: $white;
+    }
+}
