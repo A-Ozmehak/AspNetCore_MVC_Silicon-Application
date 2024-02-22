@@ -1,8 +1,12 @@
 #account-details {
     display: grid;
-    grid-template-columns: 2fr 5fr;
-    gap: 150px;
-    margin-bottom: 70px;
+    grid-template-columns: 1fr;
+
+    @include lg {
+        grid-template-columns: 2fr 5fr;
+        gap: 150px;
+        margin-bottom: 70px;
+    }
 
     aside {
         border-right: 1px solid $gray-300;

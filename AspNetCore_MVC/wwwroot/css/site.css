@@ -1230,9 +1230,14 @@ footer .container .social-media a {
 
 #account-details {
   display: grid;
-  grid-template-columns: 2fr 5fr;
-  gap: 150px;
-  margin-bottom: 70px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-details {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
 }
 #account-details aside {
   border-right: 1px solid #E2E5F1;
