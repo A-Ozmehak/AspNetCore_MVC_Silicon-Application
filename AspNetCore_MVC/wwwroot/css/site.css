@@ -1352,9 +1352,14 @@ footer .container .social-media a {
 
 #account-security {
   display: grid;
-  grid-template-columns: 2fr 5fr;
-  gap: 150px;
-  margin-bottom: 70px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-security {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
 }
 #account-security aside {
   border-right: 1px solid #E2E5F1;
