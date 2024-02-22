@@ -342,6 +342,25 @@ html, body {
   color: #FFFFFF;
 }
 
+.btn-red-border {
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  padding: 8px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: transparent;
+  color: #EF4444;
+  border: 1px solid #EF4444;
+}
+.btn-red-border:hover {
+  background: #565973;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 a {
   line-height: 160%;
   font-weight: 400;
@@ -1416,4 +1435,59 @@ footer .container .social-media a {
 #account-security .details .delete-account form .content .form-button {
   grid-area: button;
   margin: 20px 0;
+}
+
+#account-saved-courses {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 992px) {
+  #account-saved-courses {
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+  }
+}
+#account-saved-courses aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+#account-saved-courses aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+#account-saved-courses aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#account-saved-courses aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#account-saved-courses aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+#account-saved-courses aside nav a {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-saved-courses aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+}
+#account-saved-courses .details {
+  margin-top: 50px;
+  width: 100%;
+}
+#account-saved-courses .details .saved-items .title {
+  display: flex;
+  justify-content: space-between;
+}
+#account-saved-courses .details .saved-items .title .btn-red-border i {
+  color: #EF4444;
 }

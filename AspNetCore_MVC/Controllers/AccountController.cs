@@ -45,7 +45,6 @@ public class AccountController : Controller
     {
         var viewModel = new AccountSecurityViewModel();
         //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        //viewModel.AddressInfo = _accountService.GetAddressInfo();
 
         return View(viewModel);
     }
@@ -59,5 +58,15 @@ public class AccountController : Controller
 
         viewModel.ErrorMessage = "Incorrect password";
         return RedirectToAction("Security", "Account");
+    }
+
+    [Route("/account/savedCourses")]
+    [HttpGet]
+    public IActionResult SavedCourses()
+    {
+        var viewModel = new AccountSavedCoursesViewModel();
+        //viewModel.BasicInfo = _accountService.GetBasicInfo();
+
+        return View(viewModel);
     }
 }
