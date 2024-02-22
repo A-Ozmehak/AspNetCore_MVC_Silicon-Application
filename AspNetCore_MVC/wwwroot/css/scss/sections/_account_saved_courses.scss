@@ -1,0 +1,75 @@
+#account-saved-courses {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include lg {
+        grid-template-columns: 2fr 5fr;
+        gap: 150px;
+        margin-bottom: 70px;
+    }
+
+
+    aside {
+        border-right: 1px solid $gray-300;
+        padding-right: 20px;
+
+        .profile-info {
+            margin: 20px;
+            text-align: center;
+
+            h5 {
+                margin-top: 15px;
+                margin-bottom: 0;
+            }
+
+            p {
+                @include text-m;
+            }
+        }
+
+        nav {
+            margin-top: 50px;
+            text-align: left;
+
+            a {
+                margin: 10px 0;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .btn-theme-s {
+                text-align: left;
+                justify-content: flex-start;
+            }
+        }
+    }
+
+    .details {
+        margin-top: 50px;
+        width: 100%;
+
+        .saved-items {
+
+            .title {
+                display: flex;
+                justify-content: space-between;
+
+                h2 {
+                }
+
+                .btn-red-border {
+
+                    i {
+                        color: $danger;
+                    }
+                }
+            }
+
+
+
+
+            .content {
+            }
+        }
+    }
+}
