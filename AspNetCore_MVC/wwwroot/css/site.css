@@ -1045,7 +1045,18 @@ footer .container .social-media a {
 }
 @media (min-width: 992px) {
   #newsletter-section .container .title {
-    width: 65%;
+    width: 93%;
+    justify-content: flex-start;
+  }
+}
+@media (min-width: 1200px) {
+  #newsletter-section .container .title {
+    width: 77%;
+  }
+}
+@media (min-width: 1400px) {
+  #newsletter-section .container .title {
+    width: 67%;
   }
 }
 #newsletter-section .container .title h3 {
@@ -1066,6 +1077,7 @@ footer .container .social-media a {
 #newsletter-section .container form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 #newsletter-section .container form .checkboxes {
   display: flex;
@@ -1091,10 +1103,11 @@ footer .container .social-media a {
 #newsletter-section .container form .email-form {
   display: flex;
   margin-top: 20px;
+  width: 100%;
 }
 @media (min-width: 992px) {
   #newsletter-section .container form .email-form {
-    max-width: 856px;
+    width: 856px;
   }
 }
 #newsletter-section .container form .email-form input {
@@ -1107,10 +1120,14 @@ footer .container .social-media a {
 }
 #newsletter-section .container form p {
   color: #9397AD;
+  margin-top: 10px;
 }
-#newsletter-section .container form p span {
+#newsletter-section .container form p a {
   color: #6366F1;
   text-decoration: underline;
+}
+#newsletter-section .container form p a:hover {
+  text-decoration: none;
 }
 
 #signin {

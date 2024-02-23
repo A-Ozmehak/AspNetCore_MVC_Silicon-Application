@@ -98,7 +98,7 @@ public class HomeController : Controller
             },
             Newsletter = new NewsletterViewModel
             {
-                Title = "Dont't Want to Miss Anything?",
+                Title = "Don't Want to Miss Anything?",
                 Arrow = new() { ImageUrl = "/images/arrows.svg", AltText = "Arrow"},
                 SignUpText = "Sign up for Newsletters",
                 Link = new() { Text = "Subscribe*", ActionName = "Subscribe", ControllerName = "Home" },

@@ -15,7 +15,16 @@
             justify-content: center;
 
             @include lg {
-                width: 65%;
+                width: 93%;
+                justify-content: flex-start;
+            }
+
+            @include xl {
+                width: 77%;
+            }
+
+            @include xxl {
+                width: 67%;
             }
 
             h3 {
@@ -31,6 +40,7 @@
         form {
             display: flex;
             flex-direction: column;
+            align-items: center;
 
             .checkboxes {
                 display: flex;
@@ -61,9 +71,10 @@
             .email-form {
                 display: flex;
                 margin-top: 20px;
+                width: 100%;
 
                 @include lg {
-                    max-width: 856px;
+                    width: 856px;
                 }
 
                 input {
@@ -79,10 +90,15 @@
 
             p {
                 color: $gray-600;
+                margin-top: 10px;
 
-                span {
+                a {
                     color: $theme;
                     text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
                 }
             }
         }
