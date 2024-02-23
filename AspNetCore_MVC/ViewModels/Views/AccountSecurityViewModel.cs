@@ -15,6 +15,6 @@ public class AccountSecurityViewModel
     };
     public AccountSecurityPasswordModel Password { get; set; } = new AccountSecurityPasswordModel();
 
-    public string? ErrorMessage { get; set; }
+    //public string? ErrorMessage { get; set; }
     public AccountSecurityDeleteAccountModel DeleteAccount { get; set; } = new AccountSecurityDeleteAccountModel();
 }

@@ -1,14 +1,14 @@
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
 
 
 namespace AspNetCore_MVC.Controllers;
 
 public class HomeController : Controller
 {
+    [Route("/")]
+    [HttpGet]
     public IActionResult Index()
     {
         var viewModel = new HomeIndexViewModel
@@ -108,5 +108,14 @@ public class HomeController : Controller
         ViewData["Title"] = viewModel.Title;
         return View(viewModel);
     }
+
+    public IActionResult Index(HomeIndexViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
+        return RedirectToAction("Index", "Home");
+    }
+
 
 }
