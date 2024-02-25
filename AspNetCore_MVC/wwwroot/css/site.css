@@ -1518,3 +1518,35 @@ footer .container .social-media a {
 #account-saved-courses .details .saved-items .title .btn-red-border i {
   color: #EF4444;
 }
+#error {
+  height: 100%;
+}
+#error .container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#error .container img {
+  width: 500px;
+}
+#error .container .text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#error .container .text-container h2 {
+  font-weight: 800;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+  margin-bottom: 10px;
+}
+#error .container .text-container p {
+  margin-bottom: 40px;
+}
