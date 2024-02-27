@@ -1,0 +1,26 @@
+﻿@model ContactViewModel
+
+<form method="post" asp-controller="Contact" asp-action="Index">
+    <h2>Get In Contact With Us</h2>
+    <div id="form-contactFullName" class="input-group">
+        <label asp-for="Form.FullName"></label>
+        <span asp-validation-for="Form.FullName"></span>
+        <input asp-for="Form.FullName" />
+    </div>
+    <div id="form-contactEmail" class="input-group">
+        <label asp-for="Form.Email"></label>
+        <span asp-validation-for="Form.Email"></span>
+        <input asp-for="Form.Email" />
+    </div>
+    <div id="form-contactService" class="input-group">
+        <label asp-for="Form.Service">Service <span>(optional)</span></label>
+        <input asp-for="Form.Service" />
+    </div>
+    <div id="form-contactMessage" class="input-group">
+        <label asp-for="Form.Message"></label>
+        <textarea asp-for="Form.Message"></textarea>
+    </div>
+    <div class="form-button">
+        <button id="form-contactSubmit" class="btn-theme-s" type="submit">Send Contact Request</button>
+    </div>
+</form>
