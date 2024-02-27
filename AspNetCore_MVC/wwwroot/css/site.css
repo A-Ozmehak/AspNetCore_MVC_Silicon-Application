@@ -1,4 +1,5 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+﻿@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 html, body {
   line-height: 160%;
   font-weight: 400;
@@ -475,6 +476,10 @@ form input.input-validation-error {
 form input.input-validation-error::placeholder {
   color: #EF4444;
 }
+form input:focus {
+  outline: none;
+  border: 0.063rem solid #9397AD;
+}
 form textarea {
   padding: 1rem;
   border-radius: 0.5rem !important;
@@ -501,6 +506,15 @@ form span.field-validation-error {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   color: #EF4444;
+}
+form span.field-validation-error::after {
+  position: absolute;
+  top: 46px;
+  right: 10px;
+  z-index: 10;
+  font-size: 2rem;
+  display: block;
+  content: "⮿";
 }
 
 header {
@@ -1549,4 +1563,186 @@ footer .container .social-media a {
 }
 #error .container .text-container p {
   margin-bottom: 40px;
+}
+#contact {
+  background: #F3F6FF;
+  position: relative;
+  z-index: 1;
+}
+#contact .container {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+#contact .container .breadcrumbs {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+#contact .container .breadcrumbs i {
+  margin-right: 5px;
+}
+#contact .container .breadcrumbs p {
+  margin-bottom: 0;
+  margin: 0 10px;
+}
+#contact .container .content {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+@media (min-width: 992px) {
+  #contact .container .content {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}
+#contact .container .content .left-container .title-box h1 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 40px !important;
+  margin-bottom: 20px;
+}
+@media (min-width: 992px) {
+  #contact .container .content .left-container .title-box h1 {
+    margin-bottom: 50px;
+  }
+}
+#contact .container .content .left-container .contact-options {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+@media (min-width: 992px) {
+  #contact .container .content .left-container .contact-options {
+    margin-bottom: 0;
+  }
+}
+#contact .container .content .left-container .contact-options .option {
+  display: flex;
+  max-width: 390px;
+}
+#contact .container .content .left-container .contact-options .option i {
+  border: 1px solid #FFFFFF;
+  background: #FFFFFF;
+  border-radius: 30px;
+  padding: 15px;
+  color: #6366F1;
+  margin-right: 20px;
+}
+#contact .container .content .left-container .contact-options .option h4 {
+  font-weight: 600;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 24px !important;
+}
+#contact .container .content .left-container .contact-options .option a {
+  color: #6366F1;
+}
+#contact .container .content .left-container .contact-options .option a i {
+  border: none;
+  background: transparent;
+}
+#contact .container .content .form-container {
+  background: #FFFFFF;
+  padding: 55px;
+  border-radius: 10px;
+  width: 100%;
+  height: 848px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 1;
+}
+@media (min-width: 992px) {
+  #contact .container .content .form-container {
+    width: 636px;
+  }
+}
+#contact .container .content .form-container form h2 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 32px !important;
+}
+#contact .container .content .form-container form .input-group {
+  margin-bottom: 20px;
+}
+#contact .container .content .form-container form #form-contactFullName {
+  margin-top: 20px;
+}
+#contact .container .content .form-container form #form-contactMessage textarea {
+  height: 199px;
+}
+#contact .container .content .form-container form .form-button {
+  margin-top: 25px;
+}
+#contact .map {
+  width: 100%;
+  height: 200px;
+}
+@media (min-width: 576px) {
+  #contact .map {
+    height: 300px;
+  }
+}
+@media (min-width: 768px) {
+  #contact .map {
+    height: 380px;
+  }
+}
+@media (min-width: 992px) {
+  #contact .map {
+    height: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  #contact .map {
+    height: 500px;
+  }
+}
+@media (min-width: 1400px) {
+  #contact .map {
+    height: 860px;
+  }
+}
+#contact .map img {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  top: 85%;
+}
+@media (min-width: 576px) {
+  #contact .map img {
+    top: 80%;
+  }
+}
+@media (min-width: 768px) {
+  #contact .map img {
+    top: 75%;
+  }
+}
+@media (min-width: 992px) {
+  #contact .map img {
+    top: 63%;
+  }
+}
+@media (min-width: 1200px) {
+  #contact .map img {
+    top: 58%;
+  }
+}
+@media (min-width: 1400px) {
+  #contact .map img {
+    top: 38%;
+  }
 }
