@@ -35,8 +35,8 @@
                     <span asp-validation-for="Form.ConfirmPassword"></span>
                     <input asp-for="Form.ConfirmPassword" />
                 </div>
-                <div id="form-terms" class="checkbox">
-                    <div class="checkbox-group">
+                <div id="form-terms" class="checkbox-group">
+                    <div class="input-group">
                         <input asp-for="Form.TermsAndConditions" />
                         <label asp-for="Form.TermsAndConditions">I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> & <a asp-controller="About" asp-action="Conditions">Conditions</a></label>
                     </div>
@@ -47,3 +47,5 @@
         </form>
     </div>
 </section>
+
+@await Html.PartialAsync("~/Views/Shared/_ValidationScriptPartial.cshtml")

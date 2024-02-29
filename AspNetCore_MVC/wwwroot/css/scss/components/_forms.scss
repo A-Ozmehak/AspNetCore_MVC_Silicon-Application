@@ -6,37 +6,86 @@ form {
         display: grid;
     }
 
-    .checkbox {
-        span {
-            display: block;
+    //.checkbox {
+        .checkbox-group {
+            position: relative;
+            height: 50px;
 
-            &.field-validation-error {
-                position: static;
-                top: 0;
-                right: 0;
-                @include text-s;
-                color: $danger;
+            .input-group {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 0.5rem;
+
+                input[type="checkbox"] {
+                    height: 1.2rem;
+                    width: 1.2rem;
+
+                    &.input-validation-error {
+                        position: relative;
+                        box-shadow: 0 0 0 0.063rem $danger;
+                        color: $danger;
+
+                        &::placeholder {
+                            color: $danger;
+                        }
+                    }
+                }
+
+                label {
+                    margin: 0;
+                    font-weight: 400;
+                }
             }
-        }
-    }
 
-    .checkbox-group {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 0.5rem;
+            span {
+                position: relative;
 
-        input[type="checkbox"] {
-            height: 1.2rem;
-            width: 1.2rem;
-            border: 0.063rem solid red;
-        }
+                &.field-validation-error {
+                    @include text-s;
+                    color: $danger;
 
-        label {
-            margin: 0;
-            font-weight: 400;
+                    &::after {
+                        position: absolute;
+                        right: 10px;
+                        top: 0px;
+                        z-index: 10;
+                        font-size: 2em;
+                        display: block;
+                        content: '\2BBF';
+                    }
+                }
+            }
+
+            //span {
+            //    display: block;
+
+            //    &.field-validation-error {
+            //        position: static;
+            //        top: 0;
+            //        right: 0;
+            //        @include text-s;
+            //        color: $danger;
+            //    }
+            //}
         }
-    }
+    //.checkbox-group {
+    //    display: flex;
+    //    justify-content: flex-start;
+    //    align-items: center;
+    //    gap: 0.5rem;
+    //    input[type="checkbox"] {
+    //        height: 1.2rem;
+    //        width: 1.2rem;
+    //        border: 0.063rem solid red;
+    //    }
+    //    label {
+    //        margin: 0;
+    //        font-weight: 400;
+    //    }
+    //}
+
+
 
     label {
         margin-bottom: 0.188rem;
@@ -53,6 +102,7 @@ form {
         }
 
         &.input-validation-error {
+            position: relative;
             border: 0.063rem solid $danger !important;
             color: $danger;
 
