@@ -1,14 +1,34 @@
-﻿<div class="courses">
+﻿@*  @{
+     var salesPrice = Model.Course;
+ } *@
+
+<div class="courses">
     @foreach (var course in Model.Course)
     {
         <div class="course">
             <div class="course-image">
                 <img src="@course.Image.ImageUrl" alt="@course.Image.AltText">
             </div>
+            <div class="save-icon">
+                <i class="@course.SaveIcon"></i>
+            </div>
+            <div class="tag">
+                <p>@course.Tag</p>
+            </div>
             <div class="course-info">
                 <h2>@course.Title</h2>
                 <p class="author">@course.Author</p>
-                <p class="price">$"{@course.Price}"</p>
+                @if (course.SalesPrice != null)
+                {
+                    <div class="price-with-sale">
+                        <p class="sales-price">$@course.SalesPrice</p>
+                        <p class="regular-price">$@course.Price</p>
+                    </div>
+                }
+                else
+                {
+                    <p class="price">$@course.Price</p>
+                }
                 <div class="card-bottom">
                     <p class="duration"><i class="fa-regular fa-clock"></i> @course.Duration</p>
                     <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @course.Rating</p>
@@ -16,33 +36,4 @@
             </div>
         </div>
     }
-    
-     @* <div class="course">
-         <div class="course-image">
-             <img src="images/course1.svg" alt="Course 1">
-         </div>
-         <div class="course-info">
-             <h2>Fullstack Web Developer Course from Scratch</h2>
-             <p class="author">by Robert Fox</p>
-             <p class="price">$12.50</p>
-             <div class="card-bottom">
-                 <p class="duration"><i class="fa-regular fa-clock"></i> 220 hours</p>
-                 <p class="rating"><i class="fa-regular fa-thumbs-up"></i> 94% (4.2K)</p>
-             </div>
-         </div>
-     </div>
-     <div class="course">
-         <div class="course-image">
-             <img src="images/course1.svg" alt="Course 1">
-         </div>
-         <div class="course-info">
-             <h2>Fullstack Web Developer Course from Scratch</h2>
-             <p class="author">by Robert Fox</p>
-             <p class="price">$12.50</p>
-             <div class="card-bottom">
-                 <p class="duration"><i class="fa-regular fa-clock"></i> 220 hours</p>
-                 <p class="rating"><i class="fa-regular fa-thumbs-up"></i> 94% (4.2K)</p>
-             </div>
-         </div>
-     </div> *@
 </div>

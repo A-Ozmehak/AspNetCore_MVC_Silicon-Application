@@ -16,9 +16,9 @@ public class CoursesController : Controller
             {
                 Course = 
                 [
-                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, Duration = "220 hours", Rating = "94% (4.2K)" },
-                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, Duration = "220 hours", Rating = "94% (4.2K)" },
-                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, Duration = "220 hours", Rating = "94% (4.2K)" },
+                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Tag = "Best Seller", SaveIcon = "fa-solid fa-tag",  Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, SalesPrice = 10.99, Duration = "220 hours", Rating = "94% (4.2K)" },
+                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Tag = "Best Seller", SaveIcon = "fa-solid fa-tag", Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, Duration = "220 hours", Rating = "94% (4.2K)" },
+                    new() { Image = new() { ImageUrl = "/images/course1.svg", AltText = "course1" }, Tag = "Best Seller", SaveIcon = "fa-solid fa-tag", Title = "Fullstack Web Developer Course from Scratch", Author = "by Robert Fox", Price = 12.50, Duration = "220 hours", Rating = "94% (4.2K)" },
                 ]
             },
             
