@@ -22,7 +22,7 @@ public class NewsletterModel
     [Display(Name = "Podcasts", Order = 5)]
     public bool Podcasts { get; set; } = false;
 
-    [Display(Name = "Email", Prompt = "Your email", Order = 6)]
+    [Display(Name = "Email address", Prompt = "Your email", Order = 6)]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email is required")]
     [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Your email address is invalid")]

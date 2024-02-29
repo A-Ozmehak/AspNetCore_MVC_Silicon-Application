@@ -60,6 +60,11 @@ form {
                 color: $danger;
             }
         }
+
+        &:focus {
+            outline: none;
+            border: 0.063rem solid $gray-600;
+        }
     }
 
     textarea {
@@ -89,6 +94,16 @@ form {
             right: 0;
             @include text-s;
             color: $danger;
+
+            &::after {
+                position: absolute;
+                top: 46px;
+                right: 10px;
+                z-index: 10;
+                font-size: 2rem;
+                display: block;
+                content: '\2BBF';
+            }
         }
     }
 }

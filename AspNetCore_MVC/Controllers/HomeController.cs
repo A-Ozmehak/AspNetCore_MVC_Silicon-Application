@@ -7,6 +7,8 @@ namespace AspNetCore_MVC.Controllers;
 
 public class HomeController : Controller
 {
+    [Route("/")]
+    [HttpGet]
     public IActionResult Index()
     {
         var viewModel = new HomeIndexViewModel
@@ -96,7 +98,7 @@ public class HomeController : Controller
             },
             Newsletter = new NewsletterViewModel
             {
-                Title = "Dont't Want to Miss Anything?",
+                Title = "Don't Want to Miss Anything?",
                 Arrow = new() { ImageUrl = "/images/arrows.svg", AltText = "Arrow"},
                 SignUpText = "Sign up for Newsletters",
                 Link = new() { Text = "Subscribe*", ActionName = "Subscribe", ControllerName = "Home" },
@@ -106,5 +108,14 @@ public class HomeController : Controller
         ViewData["Title"] = viewModel.Title;
         return View(viewModel);
     }
+
+    public IActionResult Index(HomeIndexViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
+        return RedirectToAction("Index", "Home");
+    }
+
 
 }
