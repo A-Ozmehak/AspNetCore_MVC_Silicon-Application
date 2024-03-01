@@ -1166,6 +1166,12 @@ footer .container .social-media a {
 #signin .container form {
   padding: 1rem;
 }
+#signin .container form p a {
+  text-decoration: underline;
+}
+#signin .container form p a:hover {
+  text-decoration: none;
+}
 #signin .container form .content {
   display: grid;
   gap: 1rem 2rem;
@@ -1198,8 +1204,12 @@ footer .container .social-media a {
   display: flex;
   gap: 1rem;
 }
-#signin .container form .content #external-signin a {
+#signin .container form .content a {
   flex: 1;
+  text-decoration: underline;
+}
+#signin .container form .content a:hover {
+  text-decoration: none;
 }
 
 #signup {
@@ -1223,6 +1233,12 @@ footer .container .social-media a {
 }
 #signup .container form {
   padding: 1rem;
+}
+#signup .container form p a {
+  text-decoration: underline;
+}
+#signup .container form p a:hover {
+  text-decoration: none;
 }
 #signup .container form .content {
   display: grid;
@@ -1257,6 +1273,12 @@ footer .container .social-media a {
 }
 #signup .container form .content #form-submit {
   grid-area: button;
+}
+#signup .container form .content a {
+  text-decoration: underline;
+}
+#signup .container form .content a:hover {
+  text-decoration: none;
 }
 
 #courses {
@@ -2247,7 +2269,7 @@ footer .container .social-media a {
   text-decoration: line-through;
   margin-left: 10px;
 }
-#singleCourse .container .course-content .includes a {
+#singleCourse .container .course-content .includes button {
   width: 70%;
 }
 #singleCourse .container .program-details h3 {
@@ -2402,6 +2424,6 @@ footer .container .social-media a {
   display: flex;
   margin-top: 50px;
 }
-#singleCourse .container #author .author-container .text .buttons a {
+#singleCourse .container #author .author-container .text .buttons button {
   margin-right: 20px;
 }

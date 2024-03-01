@@ -18,6 +18,16 @@
         form {
             padding: 1rem;
 
+            p {
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            } 
+
             .content {
                 display: grid;
                 gap: 1rem 2rem;
@@ -56,6 +66,14 @@
 
                 #form-submit {
                     grid-area: button;
+                }
+
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
                 }
             }
         }

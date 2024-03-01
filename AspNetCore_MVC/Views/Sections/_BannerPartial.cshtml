@@ -2,7 +2,7 @@
     <div class="text-box">
         <p>@Model.Question</p>
         <h5>@Model.FirstPartTitle<span>@Model.ColoredTitle</span> @Model.SecondPartTitle</h5>
-        <a class="btn-theme" asp-action="@Model.Link.ActionName" asp-controller="@Model.Link.ControllerName">@Model.Link.Text</a>
+        <button class="btn-theme" asp-action="@Model.Link.ActionName" asp-controller="@Model.Link.ControllerName">@Model.Link.Text</button>
     </div>
     <div class="image-box">
         <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText">
