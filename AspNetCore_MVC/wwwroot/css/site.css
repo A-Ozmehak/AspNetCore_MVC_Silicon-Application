@@ -2160,24 +2160,24 @@ footer .container .social-media a {
 #singleCourse .container .showcase-container .title .author-info .created-by p {
   margin: 0 0 0.5rem 1rem;
 }
-#singleCourse .course-content {
+#singleCourse .container .course-content {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 @media (min-width: 1200px) {
-  #singleCourse .course-content {
+  #singleCourse .container .course-content {
     flex-direction: row;
     justify-content: space-between;
     margin-top: 50px;
   }
 }
 @media (min-width: 1200px) {
-  #singleCourse .course-content .details {
+  #singleCourse .container .course-content .details {
     width: 50%;
   }
 }
-#singleCourse .course-content .details h3 {
+#singleCourse .container .course-content .details h3 {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -2186,7 +2186,7 @@ footer .container .social-media a {
   color: #0B0F19;
   font-size: 28px !important;
 }
-#singleCourse .course-content .details h5 {
+#singleCourse .container .course-content .details h5 {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -2195,15 +2195,15 @@ footer .container .social-media a {
   color: #0B0F19;
   font-size: 20px !important;
 }
-#singleCourse .course-content .details ul {
+#singleCourse .container .course-content .details ul {
   list-style: none;
   padding: 0;
 }
-#singleCourse .course-content .details ul li i {
+#singleCourse .container .course-content .details ul li i {
   color: #6366F1;
   margin-right: 5px;
 }
-#singleCourse .course-content .includes {
+#singleCourse .container .course-content .includes {
   border-radius: 10px;
   padding: 30px;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1);
@@ -2214,43 +2214,43 @@ footer .container .social-media a {
   flex-direction: column;
 }
 @media (min-width: 1200px) {
-  #singleCourse .course-content .includes {
+  #singleCourse .container .course-content .includes {
     margin-top: 0;
   }
 }
-#singleCourse .course-content .includes h5 {
+#singleCourse .container .course-content .includes h5 {
   @includes h5;
   color: #000000;
   font-weight: 700;
   margin-bottom: 15px;
 }
-#singleCourse .course-content .includes ul {
+#singleCourse .container .course-content .includes ul {
   list-style: none;
   padding: 0;
 }
-#singleCourse .course-content .includes ul li {
+#singleCourse .container .course-content .includes ul li {
   margin-bottom: 10px;
   font-size: 0.8rem;
 }
-#singleCourse .course-content .includes ul li i {
+#singleCourse .container .course-content .includes ul li i {
   color: #9397AD;
 }
-#singleCourse .course-content .includes .price {
+#singleCourse .container .course-content .includes .price {
   display: flex;
 }
-#singleCourse .course-content .includes .price .discount-price {
+#singleCourse .container .course-content .includes .price .discount-price {
   font-size: 1.5rem;
   color: #000000;
   font-weight: 700;
 }
-#singleCourse .course-content .includes .price .regular-price {
+#singleCourse .container .course-content .includes .price .regular-price {
   text-decoration: line-through;
   margin-left: 10px;
 }
-#singleCourse .course-content .includes a {
+#singleCourse .container .course-content .includes a {
   width: 70%;
 }
-#singleCourse .program-details h3 {
+#singleCourse .container .program-details h3 {
   line-height: 160%;
   font-weight: 400;
   color: #565973;
@@ -2261,11 +2261,11 @@ footer .container .social-media a {
   margin: 40px 0 30px 0;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details h3 {
+  #singleCourse .container .program-details h3 {
     margin-top: 70px;
   }
 }
-#singleCourse .program-details .program-steps .step {
+#singleCourse .container .program-details .program-steps .step {
   max-width: 746px;
   display: flex;
   gap: 20px;
@@ -2273,12 +2273,12 @@ footer .container .social-media a {
   position: relative;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step {
+  #singleCourse .container .program-details .program-steps .step {
     gap: 40px;
     margin-bottom: 10px;
   }
 }
-#singleCourse .program-details .program-steps .step::after {
+#singleCourse .container .program-details .program-steps .step::after {
   content: "";
   position: absolute;
   top: calc(100% - 50px);
@@ -2289,15 +2289,15 @@ footer .container .social-media a {
   transform: translateX(-50%);
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step::after {
+  #singleCourse .container .program-details .program-steps .step::after {
     height: 100px;
     top: calc(100% - 60px);
   }
 }
-#singleCourse .program-details .program-steps .step:last-of-type::after {
+#singleCourse .container .program-details .program-steps .step:last-of-type::after {
   display: none;
 }
-#singleCourse .program-details .program-steps .step .outer-circle {
+#singleCourse .container .program-details .program-steps .step .outer-circle {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -2309,13 +2309,13 @@ footer .container .social-media a {
   margin: 0 0 30px 0;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step .outer-circle {
+  #singleCourse .container .program-details .program-steps .step .outer-circle {
     margin: 0 0 50px 0;
     width: 80px;
     height: 80px;
   }
 }
-#singleCourse .program-details .program-steps .step .outer-circle .inner-circle {
+#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -2325,31 +2325,83 @@ footer .container .social-media a {
   justify-content: center;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step .outer-circle .inner-circle {
+  #singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle {
     width: 60px;
     height: 60px;
   }
 }
-#singleCourse .program-details .program-steps .step .outer-circle .inner-circle span {
+#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle span {
   font-size: 20px;
   color: #000;
   font-weight: 900;
 }
-#singleCourse .program-details .program-steps .step .step-info h4 {
+#singleCourse .container .program-details .program-steps .step .step-info h4 {
   font-size: 1rem;
   color: #000000;
   font-weight: bold;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step .step-info h4 {
+  #singleCourse .container .program-details .program-steps .step .step-info h4 {
     font-size: 1.25rem;
   }
 }
-#singleCourse .program-details .program-steps .step .step-info p {
+#singleCourse .container .program-details .program-steps .step .step-info p {
   font-size: 0.8rem;
 }
 @media (min-width: 992px) {
-  #singleCourse .program-details .program-steps .step .step-info p {
+  #singleCourse .container .program-details .program-steps .step .step-info p {
     font-size: 1rem;
   }
+}
+#singleCourse .container #author {
+  margin-top: 30px;
+}
+#singleCourse .container #author .author-container {
+  display: flex;
+}
+#singleCourse .container #author .author-container .author-image {
+  display: none;
+}
+@media (min-width: 1200px) {
+  #singleCourse .container #author .author-container .author-image {
+    z-index: 1;
+    display: block;
+  }
+}
+#singleCourse .container #author .author-container .text {
+  padding: 80px;
+  background: #0B0F19;
+  position: relative;
+}
+#singleCourse .container #author .author-container .text .pattern-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#singleCourse .container #author .author-container .text .pattern-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#singleCourse .container #author .author-container .text p {
+  color: #B4B7C9;
+}
+#singleCourse .container #author .author-container .text h3 {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-weight: 800;
+  color: #0B0F19;
+  font-size: 28px !important;
+  color: #FFFFFF;
+}
+#singleCourse .container #author .author-container .text .buttons {
+  display: flex;
+  margin-top: 50px;
+}
+#singleCourse .container #author .author-container .text .buttons a {
+  margin-right: 20px;
 }
