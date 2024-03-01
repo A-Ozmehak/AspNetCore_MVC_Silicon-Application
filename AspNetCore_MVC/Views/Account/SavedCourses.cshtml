@@ -1,0 +1,22 @@
+﻿@model AccountSavedCoursesViewModel
+
+<div class="container">
+    <section id="account-saved-courses">
+        @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
+
+        <div class="details">
+            <section class="saved-items">
+                <div class="title">
+                    <h2>Saved Items</h2>
+                    <button class="btn-red-border" type="submit"><i class="fa-solid fa-trash-can"></i>Delete all</button>
+                </div>
+                    
+
+                    <div class="content">
+                        @* @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml") *@
+                    </div>
+            </section>
+ 
+        </div>
+    </section>
+</div>

@@ -1,0 +1,16 @@
+﻿<section id="@Model.Id" class="features">
+    <div class="container">
+        <h1>@Model.Title</h1>
+        <p>@Model.Text</p>
+        <div class="tool-features">
+             @foreach (var feature in Model.Box)
+                {
+                    <div class="box">
+                        <img src="@feature.BoxImage.ImageUrl" alt="@feature.BoxImage.AltText">
+                        <h5>@feature.Title</h5>
+                        <p>@feature.Description</p>
+                     </div>
+                }
+        </div>
+    </div>
+</section>

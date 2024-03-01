@@ -1,0 +1,56 @@
+#integrate-tools-section {
+    margin-top: 40px;
+
+    .container {
+        .content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            h3 {
+                @include h3;
+            }
+
+            p {
+                color: $gray-600;
+                max-width: 856px;
+                text-align: center;
+            }
+
+            .integrate-tools {
+                .tools {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    margin-bottom: 40px;
+
+                    @include lg {
+                        flex-direction: row;
+                        gap: 70px;
+                    }
+
+                    .tool {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        @include lg {
+                           align-items: start;
+                        }
+
+                        img {
+                            height: 50px;
+                            width: 50px;
+                            margin-bottom: 20px;
+                        }
+
+                        p {
+                            color: $gray-700;
+                            text-align: start;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

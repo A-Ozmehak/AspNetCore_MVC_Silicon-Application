@@ -1,0 +1,393 @@
+#singleCourse {
+    .course-image {
+        display: flex;
+        position: relative;
+
+        @include lg {
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .container {
+        .showcase-container {
+            position: absolute;
+            top: 60px;
+
+            @include lg {
+                top: 90px;
+            }
+
+            .breadcrumbs {
+                display: flex;
+                align-items: center;
+                margin-top: 20px;
+
+                i {
+                    margin-right: 5px;
+                    color: $gray-600;
+                    font-size: 10px;
+
+                    @include xl {
+                        font-size: 16px;
+                    }
+                }
+
+                p {
+                    margin-bottom: 0;
+                    margin: 0 10px;
+                    color: $gray-600;
+                    font-size: 10px;
+
+                    @include xl {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            .tags {
+                display: flex;
+                margin: 10px 0 20px 0;
+
+                @include xl {
+                    margin-top: 60px;
+                }
+
+                #review {
+                    background: $success;
+                    color: $white;
+                    border: 1px solid $success;
+                    margin-right: 7px;
+
+                    p {
+                        font-size: 10px;
+
+                        @include xl {
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                #category {
+                    background: $white;
+                    color: $black;
+                    border: 1px solid $white;
+
+                    p {
+                        font-size: 10px;
+
+                        @include xl {
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .tag {
+                    border-radius: 10px;
+                    padding: 0 7px;
+
+                    p {
+                        margin-bottom: 0;
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+
+            .title {
+                h1 {
+                    color: $white;
+                    margin-bottom: 10px;
+                    font-size: 1.5rem;
+
+                    @include xl {
+                        font-size: 2.125rem;
+                    }
+                }
+
+                p {
+                    color: $white;
+                    margin-bottom: 50px;
+                    font-size: 0.75rem;
+
+                    @include xl {
+                        font-size: 1rem;
+                    }
+                }
+
+                .stars {
+                    display: none;
+
+                    @include lg {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .star {
+                        position: relative;
+                        display: inline-block;
+                        width: 12px;
+                        height: 12px;
+                        background-color: $warning;
+                        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                    }
+
+                    .review-count {
+                        margin-left: 5px;
+                        color: $gray-600;
+                    }
+                }
+
+                .course-info {
+                    display: none;
+
+                    @include lg {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    p {
+                        color: $gray-600;
+                        margin-bottom: 0;
+                    }
+
+                    .likes {
+                        border-right: 1px solid $gray-600;
+                        border-left: 1px solid $gray-600;
+                        margin: 0 10px;
+                        padding: 0 10px;
+                    }
+                }
+
+                .author-info {
+                    display: none;
+
+                    @include lg {
+                        display: flex;
+                        margin-top: 30px;
+                    }
+
+                    @include xl {
+                        margin-top: 40px;
+                    }
+
+                    @include xxl {
+                        margin-top: 100px;
+                    }
+
+                    img {
+                    }
+
+                    .created-by {
+                        p {
+                            margin: 0 0 0.5rem 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .course-content {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+
+
+        @include xl {
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .details {
+            @include xl {
+                width: 50%;
+            }
+
+            h3 {
+                @include h3;
+            }
+
+            h5 {
+                @include h5;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    i {
+                        color: $theme;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .includes {
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            @include xl {
+                margin-top: 0;
+            }
+
+            h5 {
+                @includes h5;
+                color: $black;
+                font-weight: 700;
+                margin-bottom: 15px;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 10px;
+                    font-size: 0.8rem;
+
+                    i {
+                        color: $gray-600;
+                    }
+                }
+            }
+
+            .price {
+                display: flex;
+
+                .discount-price {
+                    font-size: 1.5rem;
+                    color: $black;
+                    font-weight: 700;
+                }
+
+                .regular-price {
+                    text-decoration: line-through;
+                    margin-left: 10px;
+                }
+            }
+
+            a {
+                width: 70%;
+            }
+        }
+    }
+
+    .program-details {
+        h3 {
+            @include h3;
+            margin: 40px 0 30px 0;
+
+            @include lg {
+                margin-top: 70px;
+            }
+        }
+
+        .program-steps {
+            .step {
+                max-width: 746px;
+                display: flex;
+                gap: 20px;
+                margin-bottom: 0;
+                position: relative;
+
+                @include lg {
+                    gap: 40px;
+                    margin-bottom: 10px;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    top: calc(100% - 50px);
+                    left: 5.5%;
+                    width: 2px;
+                    height: 50px;
+                    background: $gray-200;
+                    transform: translateX(-50%);
+
+                    @include lg {
+                        height: 100px;
+                        top: calc(100% - 60px);
+                    }
+                }
+
+                &:last-of-type::after {
+                    display: none;
+                }
+
+                .outer-circle {
+                    width: 55px;
+                    height: 55px;
+                    border-radius: 50%;
+                    background: $gray-200;
+                    padding: 10px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 0 30px 0;
+
+                    @include lg {
+                        margin: 0 0 50px 0;
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    .inner-circle {
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
+                        background: #fff;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+                        @include lg {
+                            width: 60px;
+                            height: 60px;
+                        }
+
+                        span {
+                            font-size: 20px;
+                            color: #000;
+                            font-weight: 900;
+                        }
+                    }
+                }
+
+                .step-info {
+                    h4 {
+                        font-size: 1rem;
+                        color: $black;
+                        font-weight: bold;
+
+                        @include lg {
+                            font-size: 1.25rem;
+                        }
+                    }
+
+                    p {
+                        font-size: 0.80rem;
+
+                        @include lg {
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

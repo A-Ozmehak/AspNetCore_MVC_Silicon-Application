@@ -1,0 +1,28 @@
+﻿<section id="integrate-tools-section">
+    <div class="container">
+        <div class="content">
+            <h3>@Model.Title</h3>
+            <p>@Model.Description</p>
+            <div class="integrate-tools">
+                <div class="tools">
+                    @foreach (var tool in Model.ToolFirstRow)
+                    {
+                        <div class="tool">
+                            <img src="@tool.Image.ImageUrl" alt="@tool.Image.AltText" />
+                            <p>@tool.Text</p>
+                        </div>
+                    }
+                </div>
+                <div class="tools">
+                    @foreach (var tool in Model.ToolSecondRow)
+                    {
+                        <div class="tool">
+                            <img src="@tool.Image.ImageUrl" alt="@tool.Image.AltText" />
+                            <p>@tool.Text</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,32 @@
+﻿@model CoursesIndexViewModel
+
+<section id="courses">
+    <div class="container">
+        <div class="breadcrumbs">
+            <p><i class="fa-solid fa-house"></i> Home</p>
+            <i class="fa-solid fa-angles-right"></i>
+            <p class="current-page">Courses</p>
+        </div>
+        <div class="titleAndFilter">
+            <h1>Courses</h1>
+            <div class="filterAndSearch">
+                <select name="categories" id="categories">
+                    <option value="volvo">All Categories</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                </select>
+                <div class="input-container">
+                    <input type="text" placeholder="Search courses" />
+                    <i class="fa-light fa-magnifying-glass icon"></i>
+                </div>
+
+            </div>
+        </div>
+
+        @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml", Model.Course)
+        @await Html.PartialAsync("~/Views/Sections/_PaginationPartial.cshtml")
+        @await Html.PartialAsync("~/Views/Sections/_BannerPartial.cshtml", Model.Banner)
+    </div>
+
+</section>

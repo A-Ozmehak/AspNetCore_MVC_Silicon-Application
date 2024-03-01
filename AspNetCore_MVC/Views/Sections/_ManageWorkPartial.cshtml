@@ -1,0 +1,15 @@
+﻿<section id="manage-section">
+    <div class="container">
+        <img src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+        <div class="content">
+            <h3>@Model.Title</h3>
+            <ul>
+                @foreach (var iconAndText in Model.IconAndText)
+                {
+                    <li><i class="@iconAndText.Icon"></i>@iconAndText.Text</li>
+
+                }
+            </ul>
+            <a class="btn-theme-s" asp-action="@Model.Link.ActionName" asp-controller="@Model.Link.ControllerName">@Model.Link.Text<i class="@Model.Link.Icon"></i></a>
+        </div>
+</section>

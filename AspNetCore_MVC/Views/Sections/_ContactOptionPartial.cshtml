@@ -1,0 +1,18 @@
+﻿<div class="contact-options">
+    @if (Model.Option != null)
+    {
+        foreach (var option in Model.Option)
+        {
+            <div class="option">
+
+                <div><i class="@option.Icon"></i></div>
+                <div>
+                    <h4>@option.ContactReason</h4>
+                    <p>@option.Text</p>
+                    <a>@option.Link.Text <i class="@option.Link.Icon"></i></a>
+                </div>
+            </div>
+        }
+    }
+
+</div>
