@@ -1,0 +1,109 @@
+﻿<section id="singleCourse">
+    <div class="course-image">
+        <img src="@Model.CourseImage.ImageUrl" alt="@Model.CourseImage.AltText" />
+    </div>
+
+    <div class="container">
+        <div class="showcase-container">
+            <div class="breadcrumbs">
+                <p><i class="fa-solid fa-house"></i> Home</p>
+                <i class="fa-solid fa-angles-right"></i>
+                <p>Courses</p>
+                <i class="fa-solid fa-angles-right"></i>
+                <p class="current-page">@Model.Title</p>
+            </div>
+            <div class="tags">
+                @if (Model.Tag != null)
+                {
+                    <div id="review" class="tag">
+                        <p>@Model.Tag</p>
+                    </div>
+                }
+                <div id="category" class="tag">
+                    <p>@Model.Category</p>
+                </div>
+            </div>
+          
+            <div class="title">
+                <h1>@Model.Title</h1>
+                <p>@Model.Description</p>
+                <div class="course-info">
+                    <div class="stars">
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="star"></div>
+                        <div class="review-count">(1.2K reviews)</div>
+                    </div>
+                    <p class="likes"><i class="fa-regular fa-thumbs-up"></i> @Model.Likes</p>
+                    <p class="duration"><i class="fa-regular fa-clock"></i> @Model.Duration</p>
+                </div>
+                <div class="author-info">
+                    <img src="@Model.AuthorImage.ImageUrl" alt="@Model.AuthorImage.AltText" />
+                    <div class="created-by">
+                        <p>Created by</p>
+                        <p>@Model.AuthorName</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-content">
+            <div class="details">
+                <h3>Course Description</h3>
+                <p>@Model.CourseDescription</p>
+                <h5>What you`ll learn</h5>
+                <ul>
+                    @foreach (var goal in Model.CourseGoals)
+                    {
+                        <li><i class="@goal.Icon"></i> @goal.Text</li>
+                    }
+
+                </ul>
+            </div>
+            <div class="includes">
+                <h5>This course includes:</h5>
+                <ul>
+                    @foreach (var item in Model.CourseIncludes)
+                    {
+                        <li><i class="@item.Icon"></i> @item.Text</li>
+                    } 
+                </ul>
+
+                @if (Model.DiscountPrice != null)
+                {
+                    <div class="price">
+                        <p class="discount-price">$@Model.DiscountPrice</p>
+                        <p class="regular-price">$@Model.Price</p>
+                    </div>
+                }
+                else
+                {
+                    <p>$@Model.Price</p>
+                }
+
+                <a class="btn-theme-s">Join course</a>
+            </div>
+        </div>
+        <div class="program-details">
+            <h3>Program Details</h3>
+            <div class="program-steps">
+                @foreach (var steps in Model.CourseSteps)
+                {
+                    <div class="step">
+                        <div class="outer-circle">
+                            <div class="inner-circle">
+                                <span>@steps.StepNumber</span>
+                            </div>
+                        </div>
+                        <div class="step-info">
+                            <h4>@steps.Title</h4>
+                            <p>@steps.Description</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
