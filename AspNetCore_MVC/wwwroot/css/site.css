@@ -1551,14 +1551,15 @@ footer .container .social-media a {
   margin-top: 50px;
   text-align: left;
 }
-#account-details aside nav a {
+#account-details aside nav .btn-theme-s {
   margin: 10px 0;
   text-align: left;
   justify-content: flex-start;
+  background: #FFFFFF;
+  color: #000000;
 }
-#account-details aside nav .btn-theme-s {
-  text-align: left;
-  justify-content: flex-start;
+#account-details aside nav .btn-theme-s.active, #account-details aside nav .btn-theme-s:hover {
+  background: #6366F1;
 }
 #account-details .details {
   margin-top: 50px;
@@ -1673,14 +1674,15 @@ footer .container .social-media a {
   margin-top: 50px;
   text-align: left;
 }
-#account-security aside nav a {
+#account-security aside nav .btn-theme-s {
   margin: 10px 0;
   text-align: left;
   justify-content: flex-start;
+  background: #FFFFFF;
+  color: #000000;
 }
-#account-security aside nav .btn-theme-s {
-  text-align: left;
-  justify-content: flex-start;
+#account-security aside nav .btn-theme-s.active, #account-security aside nav .btn-theme-s:hover {
+  background: #6366F1;
 }
 #account-security .details {
   margin-top: 50px;
@@ -1770,14 +1772,15 @@ footer .container .social-media a {
   margin-top: 50px;
   text-align: left;
 }
-#account-saved-courses aside nav a {
+#account-saved-courses aside nav .btn-theme-s {
   margin: 10px 0;
   text-align: left;
   justify-content: flex-start;
+  background: #FFFFFF;
+  color: #000000;
 }
-#account-saved-courses aside nav .btn-theme-s {
-  text-align: left;
-  justify-content: flex-start;
+#account-saved-courses aside nav .btn-theme-s.active, #account-saved-courses aside nav .btn-theme-s:hover {
+  background: #6366F1;
 }
 #account-saved-courses .details {
   margin-top: 50px;

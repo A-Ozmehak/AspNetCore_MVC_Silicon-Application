@@ -12,14 +12,14 @@ public class AccountController : Controller
     //    _accountService = accountService;
     //}
 
-    [Route("/account")]
+    [Route("/account/details")]
     [HttpGet]
     public IActionResult Details()
     {
         var viewModel = new AccountDetailsViewModel();
         //viewModel.BasicInfo = _accountService.GetBasicInfo();
         //viewModel.AddressInfo = _accountService.GetAddressInfo();
-
+        ViewBag.ActiveAction = "details";
         return View(viewModel);
     }
 
@@ -43,7 +43,7 @@ public class AccountController : Controller
     {
         var viewModel = new AccountSecurityViewModel();
         //viewModel.BasicInfo = _accountService.GetBasicInfo();
-
+        ViewBag.ActiveAction = "security";
         return View(viewModel);
     }
 
@@ -79,7 +79,7 @@ public class AccountController : Controller
     {
         var viewModel = new AccountSavedCoursesViewModel();
         //viewModel.BasicInfo = _accountService.GetBasicInfo();
-
+        ViewBag.ActiveAction = "savedcourses";
         return View(viewModel);
     }
 }

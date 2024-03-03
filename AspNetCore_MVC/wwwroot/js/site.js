@@ -19,3 +19,18 @@ const checkScreenSize = () => {
 
 window.addEventListener('resize', checkScreenSize);
 checkScreenSize();
+
+
+var buttons = document.querySelectorAll('nav a'); // select all a elements in nav
+
+buttons.forEach(button => {
+    button.addEventListener('click', function () {
+        // remove active class from all buttons
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // add active class to the clicked button
+        this.classList.add('active');
+    });
+});
