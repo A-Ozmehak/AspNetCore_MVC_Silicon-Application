@@ -4,10 +4,18 @@
     padding-bottom: 50px;
     background-color: $gray-100;
 
+    &.dark-mode {
+        background-color: $gray-800 !important;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
         align-items: center;
+
+        &.dark-mode {
+            background-color: $gray-700 !important;
+        }
 
         @include xl {
             justify-content: space-between;

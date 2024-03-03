@@ -8,7 +8,7 @@
         align-items: center;
         justify-content: center;
 
-        img {
+        #error {
             width: 500px;
         }
 
@@ -17,17 +17,13 @@
             flex-direction: column;
             align-items: center;
 
-            h2 {
+            .h2 {
                 font-weight: 800;
-                @include h2;
                 margin-bottom: 10px;
             }
 
             p {
                 margin-bottom: 40px;
-            }
-
-            a {
             }
         }
     }

@@ -3,6 +3,15 @@ html, body {
     font-size: 16px;
 }
 
+body {
+    background-color: $white;
+
+    &.dark-mode {
+        background-color: $gray-900;
+        color: $white;
+    }
+}
+
 .text-xs { @include text-xs; }
 .text-s { @include text-s; }
 .text-m { @include text-m; }

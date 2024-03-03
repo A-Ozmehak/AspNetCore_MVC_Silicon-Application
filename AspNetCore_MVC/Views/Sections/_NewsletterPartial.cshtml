@@ -1,6 +1,6 @@
 ﻿@model NewsletterViewModel
 
-<section id="newsletter-section">
+<section id="newsletter-section" class="newsletter-section">
     <div class="container">
         <div class="title">
             <h3>@Model.Title</h3>
@@ -47,7 +47,7 @@
                 <span asp-validation-for="Form.Email"></span>
                 <button class="btn-theme-s" type="submit">@Model.Link.Text</button>
             </div>
-            <p>*Yes, I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> and  <a asp-controller="About" asp-action="PrivacyPolicy">Privacy Policy</a></p>
+            <p class="terms">*Yes, I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> and  <a asp-controller="About" asp-action="PrivacyPolicy">Privacy Policy</a></p>
         </form>
     </div>
 </section>
