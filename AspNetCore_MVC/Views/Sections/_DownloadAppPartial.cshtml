@@ -1,5 +1,5 @@
-﻿<section id="download-section">
-    <div class="container">
+﻿<section id="download-section" class="download-section">
+    <div class="container download-container">
         <img src="@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
         <div class="content">
             <h3>@Model.Title</h3>
@@ -18,7 +18,7 @@
                                 <p>@app.AwardRating</p>
                             </div>
                         </div>
-                        <img src="@app.StoreImage.ImageUrl" alt="@app.StoreImage.AltText" />
+                        <img class="store-image" src="@app.StoreImage.ImageUrl" alt="@app.StoreImage.AltText" />
                     </div>
                 }
         </div>

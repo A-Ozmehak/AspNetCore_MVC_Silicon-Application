@@ -53,6 +53,10 @@
 
                 h5 {
                     color: $theme;
+
+                    &.dark-mode {
+                        color: $theme !important;
+                    }
                 }
 
                 .content {
@@ -104,6 +108,10 @@
 
                 h5 {
                     color: $theme;
+
+                    &.dark-mode {
+                        color: $theme !important;
+                    }
                 }
 
                 .content {

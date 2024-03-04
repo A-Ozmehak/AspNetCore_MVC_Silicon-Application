@@ -21,6 +21,18 @@ a {
         color: $theme;
         text-decoration: none;
     }
+
+    &.dark-mode {
+        color: $white !important;
+
+        &:hover,
+        &:active,
+        &:focus,
+        .active {
+            color: $theme !important;
+            text-decoration: none;
+        }
+    }
 }
 
 .more-link {
