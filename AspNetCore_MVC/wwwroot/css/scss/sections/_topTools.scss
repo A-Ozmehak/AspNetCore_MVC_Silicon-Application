@@ -47,6 +47,10 @@
                         p {
                             color: $gray-700;
                             text-align: start;
+
+                            &.dark-mode {
+                                color: $gray-500 !important;
+                            }
                         }
                     }
                 }

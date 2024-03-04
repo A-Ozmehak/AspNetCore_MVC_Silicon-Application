@@ -48,6 +48,11 @@ form {
         border-radius: 0.5rem !important;
         border: 0.063rem solid $gray-400;
 
+        &.dark-mode {
+            background: $gray-800 !important;
+            border: 1px solid $gray-700 !important;
+        }
+
         &::placeholder {
             opacity: 0.4;
         }
@@ -72,6 +77,11 @@ form {
         border-radius: 0.5rem !important;
         border: 0.063px solid $gray-400;
         resize: none;
+
+        &.dark-mode {
+            background: $gray-800 !important;
+            border: 1px solid $gray-700 !important;
+        }
 
         &::placeholder {
             opacity: 0.4
@@ -104,6 +114,22 @@ form {
                 display: block;
                 content: '\2BBF';
             }
+        }
+    }
+
+    select {
+        padding: 10px;
+        border: 2px solid $gray-400;
+        border-radius: 5px;
+        margin-right: 10px;
+        width: 240px;
+        height: 44px;
+        background-color: $transparent;
+        margin-bottom: 10px;
+
+        &.dark-mode {
+            background-color: $gray-800 !important;
+            border: 1px solid $gray-700 !important;
         }
     }
 }

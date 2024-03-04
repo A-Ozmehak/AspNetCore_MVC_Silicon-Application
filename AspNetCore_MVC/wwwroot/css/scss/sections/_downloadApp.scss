@@ -1,13 +1,21 @@
 #download-section {
     display: flex;
-    padding-top: 30px;
-    padding-bottom: 50px;
     background-color: $gray-100;
+
+    &.dark-mode {
+        background-color: $gray-800 !important;
+    }
 
     .container {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 30px 70px 50px 70px;
+
+
+        &.dark-mode {
+            background-color: $gray-700 !important;
+        }
 
         @include xl {
             justify-content: space-between;
@@ -25,10 +33,19 @@
             flex-direction: column;
             align-items: center;
 
+            @include lg {
+                align-items: flex-start;
+            }
+
             h3 {
                 color: $black;
                 @include h3;
                 margin: 20px 0;
+                width: 100%;
+
+                @include lg {
+                    width: 60%;
+                }
             }
 
             .download-option {
