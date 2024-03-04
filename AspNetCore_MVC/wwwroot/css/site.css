@@ -1122,8 +1122,6 @@ footer .container p.dark-mode {
 
 #download-section {
   display: flex;
-  padding-top: 30px;
-  padding-bottom: 50px;
   background-color: #F3F6FF;
 }
 #download-section.dark-mode {
@@ -1133,6 +1131,7 @@ footer .container p.dark-mode {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 30px 70px 50px 70px;
 }
 #download-section .container.dark-mode {
   background-color: #565973 !important;
@@ -1153,6 +1152,11 @@ footer .container p.dark-mode {
   flex-direction: column;
   align-items: center;
 }
+@media (min-width: 992px) {
+  #download-section .container .content {
+    align-items: flex-start;
+  }
+}
 #download-section .container .content h3 {
   color: #000000;
   line-height: 160%;
@@ -1163,12 +1167,18 @@ footer .container p.dark-mode {
   color: #0B0F19;
   font-size: 28px !important;
   margin: 20px 0;
+  width: 100%;
 }
 #download-section .container .content h3.dark-mode {
   color: #B4B7C9 !important;
 }
 #download-section .container .content h3.dark-mode {
   color: #FFFFFF !important;
+}
+@media (min-width: 992px) {
+  #download-section .container .content h3 {
+    width: 60%;
+  }
 }
 @media (min-width: 768px) {
   #download-section .container .content .download-option {

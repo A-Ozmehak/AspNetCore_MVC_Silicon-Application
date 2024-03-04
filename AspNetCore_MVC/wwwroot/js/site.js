@@ -41,10 +41,38 @@ document.getElementById('switch-mode').addEventListener('change', function () {
         }
     });
 
-    let errorImage = document.getElementById('error');
+    let errorImage = document.getElementById('error-image');
+    let getStartedImage = document.getElementById('get-started-image');
+    let logo = document.getElementById('logo');
+
     if (this.checked) {
-        errorImage.src = "/images/404-white.svg";
+        console.log(logo);
+        if (errorImage) 
+            errorImage.src = "/images/404-white.svg";
+        if (getStartedImage)  
+            getStartedImage.src = "/images/illustration-dark.svg";
+        if (logo)  
+            logo.src = "/images/solid-dark.svg";
     } else {
-        errorImage.src = "/images/404.svg";
+        console.log(logo);
+
+        if (errorImage)    
+            errorImage.src = "/images/404.svg";
+        if (getStartedImage)
+            getStartedImage.src = "/images/illustration.svg";
+        if (logo)
+            logo.src = "/images/solid.svg";
     }
+
+    var storeImage = document.getElementsByClassName('store-image');
+    for (var i = 0; i < storeImage.length; i++) {
+        if (this.checked) { 
+            storeImage[0].src = "/images/appstore-dark.svg";
+            storeImage[1].src = "/images/googleplay-dark.svg"; 
+        } else {
+            storeImage1[0].src = "/images/appstore.svg";
+            storeImage[1].src = "/images/googleplay.svg";
+        }
+    }
+
 });
