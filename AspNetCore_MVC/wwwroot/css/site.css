@@ -746,7 +746,7 @@ header .container #account-buttons {
   }
 }
 header .container #account-buttons .btn-gray span.dark-mode {
-  color: #000000 !important;
+  color: #FFFFFF !important;
 }
 header .container .btn-mobilemenu {
   grid-area: mobile;
