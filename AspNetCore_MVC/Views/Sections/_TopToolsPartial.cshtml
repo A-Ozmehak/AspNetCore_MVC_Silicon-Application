@@ -1,28 +1,38 @@
-﻿<section id="integrate-tools-section">
-    <div class="container">
-        <div class="content">
-            <h3>@Model.Title</h3>
-            <p>@Model.Description</p>
-            <div class="integrate-tools">
-                <div class="tools">
-                    @foreach (var tool in Model.ToolFirstRow)
-                    {
-                        <div class="tool">
-                            <img src="@tool.Image.ImageUrl" alt="@tool.Image.AltText" />
-                            <p>@tool.Text</p>
-                        </div>
-                    }
-                </div>
-                <div class="tools">
-                    @foreach (var tool in Model.ToolSecondRow)
-                    {
-                        <div class="tool">
-                            <img src="@tool.Image.ImageUrl" alt="@tool.Image.AltText" />
-                            <p>@tool.Text</p>
-                        </div>
-                    }
+﻿@inject TopToolService _topToolsService
+@{
+    var result = await _topToolsService.GetAllTopToolsAsync();
+    List<TopToolEntity> content = (List<TopToolEntity>)result.ContentResult!;
+    var tools = content.First();
+}
+
+@if (content != null)
+{
+    <section id="integrate-tools-section">
+        <div class="container">
+            <div class="content">
+                <h3>@tools.Title</h3>
+                <p>@tools.Description</p>
+                <div class="integrate-tools">
+                    <div class="tools">
+                        @foreach (var tool in tools.Tools)
+                        {
+                            <div class="tool">
+                                <img src="@tool.Image" alt="@tool.AltText" />
+                                <p>@tool.Text</p>
+                            </div>
+                        }
+                    </div>
+                   @*   <div class="tools">
+                         @foreach (var tool in tools.ToolSecondRow)
+                         {
+                             <div class="tool">
+                                 <img src="@tool.Image" alt="@tool.AltText" />
+                                 <p>@tool.Text</p>
+                             </div>
+                         }
+                     </div> *@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}

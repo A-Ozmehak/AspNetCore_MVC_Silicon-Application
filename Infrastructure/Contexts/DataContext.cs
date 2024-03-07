@@ -15,4 +15,6 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<TextIconEntity> TextAndIcon { get; set; }
     public DbSet<DownloadAppEntity> DownloadApp { get; set; }
     public DbSet<AppEntity> App { get; set; }
+    public DbSet<TopToolEntity> TopTool { get; set; }
+    public DbSet<ToolEntity> Tool { get; set; }
 }

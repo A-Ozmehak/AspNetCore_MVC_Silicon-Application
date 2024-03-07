@@ -17,12 +17,15 @@ builder.Services.AddScoped<ManageWorkRepository>();
 builder.Services.AddScoped<TextIconRepository>();
 builder.Services.AddScoped<DownloadAppRepository>();
 builder.Services.AddScoped<AppRepository>();
+builder.Services.AddScoped<TopToolRepository>();
+builder.Services.AddScoped<ToolRepository>();
 
 
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<ManageWorkService>();
 builder.Services.AddScoped<DownloadAppService>();
+builder.Services.AddScoped<TopToolService>();
 
 
 var app = builder.Build();
