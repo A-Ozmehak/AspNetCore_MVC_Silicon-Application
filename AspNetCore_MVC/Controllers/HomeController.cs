@@ -20,18 +20,6 @@ public class HomeController : Controller
         //        Description = "Light & Dark Mode",
         //        Image = new() { ImageUrl = "/images/mockup.svg", AltText = ""}
         //    },
-        //    
-        //    DownloadApp = new DownloadAppViewModel
-        //    {
-        //        MobileImage = new() { ImageUrl = "/images/download-app.svg", AltText = "The app design on a mobile" },
-        //        Title = "Download Our App for Any Devices:",
-        //        App =
-        //        [
-        //            new() { StoreName = "App Store", AwardTitle = "Editor's Choice", AwardRating = "rating 4.7, 187K+ reviews", StoreImage = new() { ImageUrl = "/images/appstore.svg", AltText = "App Store" } },
-        //            new() { StoreName = "Google Play", AwardTitle = "App of the Day", AwardRating = "rating 4.8, 30K+ reviews", StoreImage = new() { ImageUrl = "/images/googleplay.svg", AltText = "Google Play" } }
-
-        //        ]
-        //    },
         //    TopTools = new TopToolsViewModel
         //    {
         //        Title = "Integrate Top Work Tools",
