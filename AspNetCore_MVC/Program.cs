@@ -19,6 +19,7 @@ builder.Services.AddScoped<DownloadAppRepository>();
 builder.Services.AddScoped<AppRepository>();
 builder.Services.AddScoped<TopToolRepository>();
 builder.Services.AddScoped<ToolRepository>();
+builder.Services.AddScoped<SliderRepository>();
 
 
 builder.Services.AddScoped<FeatureService>();
@@ -26,6 +27,7 @@ builder.Services.AddScoped<ShowcaseService>();
 builder.Services.AddScoped<ManageWorkService>();
 builder.Services.AddScoped<DownloadAppService>();
 builder.Services.AddScoped<TopToolService>();
+builder.Services.AddScoped<SliderService>();
 
 
 var app = builder.Build();
