@@ -14,7 +14,7 @@
                 <p>@tools.Description</p>
                 <div class="integrate-tools">
                     <div class="tools">
-                        @foreach (var tool in tools.Tools)
+                        @foreach (var tool in tools.Tools.Take(tools.Tools.Count / 2))
                         {
                             <div class="tool">
                                 <img src="@tool.Image" alt="@tool.AltText" />
@@ -22,15 +22,16 @@
                             </div>
                         }
                     </div>
-                   @*   <div class="tools">
-                         @foreach (var tool in tools.ToolSecondRow)
-                         {
-                             <div class="tool">
-                                 <img src="@tool.Image" alt="@tool.AltText" />
-                                 <p>@tool.Text</p>
-                             </div>
-                         }
-                     </div> *@
+                    <div class="tools">
+                        @foreach (var tool in tools.Tools.Skip(tools.Tools.Count / 2))
+                        {
+                            <div class="tool">
+                                <img src="@tool.Image" alt="@tool.AltText" />
+                                <p>@tool.Text</p>
+                            </div>
+                        }
+                    </div>
+
                 </div>
             </div>
         </div>
