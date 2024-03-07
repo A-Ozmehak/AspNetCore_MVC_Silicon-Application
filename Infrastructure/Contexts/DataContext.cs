@@ -11,4 +11,8 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<FeatureItemEntity> FeatureItems { get; set; }
     public DbSet<ShowcaseEntity> Showcase { get; set; }
     public DbSet<BrandEntity> Brands { get; set; }
+    public DbSet<ManageWorkEntity> Manage { get; set; }
+    public DbSet<TextIconEntity> TextAndIcon { get; set; }
+    public DbSet<DownloadAppEntity> DownloadApp { get; set; }
+    public DbSet<AppEntity> App { get; set; }
 }

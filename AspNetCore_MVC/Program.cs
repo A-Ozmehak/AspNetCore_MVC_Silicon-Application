@@ -13,9 +13,17 @@ builder.Services.AddScoped<FeatureRepository>();
 builder.Services.AddScoped<FeatureItemRepository>();
 builder.Services.AddScoped<ShowcaseRepository>();
 builder.Services.AddScoped<BrandRepository>();
+builder.Services.AddScoped<ManageWorkRepository>();
+builder.Services.AddScoped<TextIconRepository>();
+builder.Services.AddScoped<DownloadAppRepository>();
+builder.Services.AddScoped<AppRepository>();
+
 
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<ShowcaseService>();
+builder.Services.AddScoped<ManageWorkService>();
+builder.Services.AddScoped<DownloadAppService>();
+
 
 var app = builder.Build();
 app.UseHsts();

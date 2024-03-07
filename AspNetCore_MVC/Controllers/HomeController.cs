@@ -20,31 +20,6 @@ public class HomeController : Controller
         //        Description = "Light & Dark Mode",
         //        Image = new() { ImageUrl = "/images/mockup.svg", AltText = ""}
         //    },
-        //    ManageWork = new ManageWorkViewModel
-        //    {
-        //        Image = new() { ImageUrl = "/images/manage-work.svg", AltText = ""},
-        //        Title = "Manage Your Work",
-        //        IconAndText =
-        //        [
-        //            new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Powerful project management" },
-        //            new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Transparent work management" },
-        //            new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Manage work & focus on the most important tasks" },
-        //            new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Track your process with interactive charts" },
-        //            new() { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Easiest way to track time spent on tasks" },
-        //        ],
-        //        Link = new() { Text = "Learn more", ActionName = "", ControllerName = "", Icon = "fa-solid fa-arrow-right" },
-        //    },
-        //    DownloadApp = new DownloadAppViewModel
-        //    {
-        //        MobileImage = new() { ImageUrl = "/images/download-app.svg", AltText = "The app design on a mobile" },
-        //        Title = "Download Our App for Any Devices:",
-        //        App =
-        //        [
-        //            new() { StoreName = "App Store", AwardTitle = "Editor's Choice", AwardRating = "rating 4.7, 187K+ reviews", StoreImage = new() { ImageUrl = "/images/appstore.svg", AltText = "App Store" } },
-        //            new() { StoreName = "Google Play", AwardTitle = "App of the Day", AwardRating = "rating 4.8, 30K+ reviews", StoreImage = new() { ImageUrl = "/images/googleplay.svg", AltText = "Google Play" } }
-
-        //        ]
-        //    },
         //    TopTools = new TopToolsViewModel
         //    {
         //        Title = "Integrate Top Work Tools",
