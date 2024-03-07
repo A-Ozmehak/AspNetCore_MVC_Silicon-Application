@@ -49,6 +49,11 @@
         background: $gray-700;
         color: $white;
     }
+
+    &.dark-mode {
+        background: $gray-800 !important;
+        color: $white !important;
+    }
 }
 
 .btn-switch {

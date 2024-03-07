@@ -2,6 +2,10 @@
     background-color: $gray-100;
     padding: 70px 0;
 
+    &.dark-mode {
+        background-color: $gray-800 !important;
+    }
+
     .container {
         display: flex;
         justify-content: center;
@@ -56,6 +60,10 @@
                 p {
                     font-weight: 700;
                     color: $black;
+
+                    &.dark-mode {
+                        opacity: 1 !important;
+                    }
                 }
 
                 .checkbox-container {
@@ -80,17 +88,47 @@
                 input {
                     width: 100%;
                     border-radius: 10px;
+
+                    &.dark-mode {
+                        background-color: $gray-800 !important;
+                        border: 1px solid $gray-700 !important;   
+                    }
                 }
 
-                a {
+                label {
+                    &.dark-mode {
+                        opacity: 70% !important;
+                    }
+                }
+
+                button {
                     border-radius: 10px;
                     margin-left: 15px;
                 }
             }
 
-            p {
+            .terms {
                 color: $gray-600;
                 margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+
+                @include lg {
+                    width: 93%;
+                    justify-content: flex-start;
+                }
+
+                @include xl {
+                    width: 77%;
+                }
+
+                @include xxl {
+                    width: 67%;
+                }
+
+                &.dark-mode {
+                    opacity: 70% !important;
+                }
 
                 a {
                     color: $theme;

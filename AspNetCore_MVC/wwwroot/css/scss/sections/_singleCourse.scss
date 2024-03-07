@@ -83,6 +83,10 @@
                         @include xl {
                             font-size: 16px;
                         }
+
+                        &.dark-mode {
+                            color: $black !important;
+                        }
                     }
                 }
 
@@ -239,6 +243,11 @@
                 align-items: center;
                 flex-direction: column;
 
+                &.dark-mode {
+                    background-color: $gray-800 !important;
+                    border: 1px solid $gray-700 !important;
+                }
+
                 @include xl {
                     margin-top: 0;
                 }
@@ -279,7 +288,7 @@
                     }
                 }
 
-                a {
+                button {
                     width: 70%;
                 }
             }
@@ -339,6 +348,10 @@
                         justify-content: center;
                         margin: 0 0 30px 0;
 
+                        &.dark-mode {
+                            background: $gray-800 !important;
+                        }
+
                         @include lg {
                             margin: 0 0 50px 0;
                             width: 80px;
@@ -349,10 +362,14 @@
                             width: 35px;
                             height: 35px;
                             border-radius: 50%;
-                            background: #fff;
+                            background: $white;
                             display: flex;
                             align-items: center;
                             justify-content: center;
+
+                            &.dark-mode {
+                                background: $gray-700 !important;
+                            }
 
                             @include lg {
                                 width: 60px;
@@ -361,8 +378,12 @@
 
                             span {
                                 font-size: 20px;
-                                color: #000;
+                                color: $black;
                                 font-weight: 900;
+
+                                &.dark-mode {
+                                   color: $white !important;
+                                }
                             }
                         }
                     }
@@ -437,7 +458,7 @@
                         display: flex;
                         margin-top: 50px;
 
-                        a {
+                        button {
                             margin-right: 20px;
                         }
                     }

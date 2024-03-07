@@ -63,6 +63,14 @@ header {
             @include xl {
                 display: flex;
             }
+
+            .btn-gray {
+                span {
+                    &.dark-mode {
+                        color: $white !important;
+                    }
+                }
+            }
         }
 
         .btn-mobilemenu {

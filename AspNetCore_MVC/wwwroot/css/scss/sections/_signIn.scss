@@ -18,6 +18,16 @@
         form {
             padding: 1rem;
 
+            p {
+                a {
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+
             .content {
                 display: grid;
                 gap: 1rem 2rem;
@@ -55,13 +65,17 @@
                     grid-area: external;
                     display: flex;
                     gap: 1rem;
+                }
 
-                    a {
-                        flex: 1;
+                a {
+                    flex: 1;
+                    text-decoration: underline;
+
+                    &:hover {
+                        text-decoration: none;
                     }
                 }
             }
         }
     }
 }
-

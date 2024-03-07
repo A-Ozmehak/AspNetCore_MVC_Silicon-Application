@@ -1,9 +1,18 @@
-﻿<section id="download-section">
-    <div class="container">
-        <img src="@Model.MobileImage.ImageUrl" alt="@Model.MobileImage.AltText" />
-        <div class="content">
-            <h3>@Model.Title</h3>
-                @foreach (var app in Model.App)
+﻿@inject DownloadAppService _downloadAppService
+@{
+    var result = await _downloadAppService.GetAllDownloadAppAsync();
+    List<DownloadAppEntity> content = (List<DownloadAppEntity>)result.ContentResult!;
+    var downloadApp = content.First();
+}
+
+@if (content != null)
+{
+    <section id="download-section" class="download-section">
+        <div class="container download-container">
+            <img src="@downloadApp.MobileImage" alt="@downloadApp.AltText" />
+            <div class="content">
+                <h3>@downloadApp.Title</h3>
+                @foreach (var app in downloadApp.App)
                 {
                     <div class="download-option">
                         <div class="text">
@@ -18,9 +27,10 @@
                                 <p>@app.AwardRating</p>
                             </div>
                         </div>
-                        <img src="@app.StoreImage.ImageUrl" alt="@app.StoreImage.AltText" />
+                        <img class="store-image" src="@app.StoreImage" alt="@app.AltText" />
                     </div>
                 }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}

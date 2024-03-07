@@ -3,6 +3,10 @@
     position: relative;
     z-index: 1;
 
+    &.dark-mode {
+        background: $gray-800 !important;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -97,6 +101,10 @@
                 height: 848px;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 z-index: 1;
+
+                &.dark-mode {
+                    background: $gray-900 !important;
+                }
 
                 @include lg {
                     width: 636px;

@@ -30,15 +30,17 @@
             margin-top: 50px;
             text-align: left;
 
-            a {
+            .btn-theme-s {
                 margin: 10px 0;
                 text-align: left;
                 justify-content: flex-start;
-            }
+                background: $white;
+                color: $black;
 
-            .btn-theme-s {
-                text-align: left;
-                justify-content: flex-start;
+                &.active,
+                &:hover {
+                    background: $theme;
+                }
             }
         }
     }
@@ -53,6 +55,10 @@
 
                 h5 {
                     color: $theme;
+
+                    &.dark-mode {
+                        color: $theme !important;
+                    }
                 }
 
                 .content {
@@ -104,6 +110,10 @@
 
                 h5 {
                     color: $theme;
+
+                    &.dark-mode {
+                        color: $theme !important;
+                    }
                 }
 
                 .content {
