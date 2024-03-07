@@ -1,16 +1,26 @@
-﻿<section id="@Model.Id" class="features">
-    <div class="container">
-        <h1>@Model.Title</h1>
-        <p>@Model.Text</p>
-        <div class="tool-features">
-             @foreach (var feature in Model.Box)
+﻿@inject FeatureService _featureService
+@{
+    var result = await _featureService.GetAllFeaturesAsync();
+    List<FeatureEntity> content = (List<FeatureEntity>)result.ContentResult!;
+    var feature = content.First();
+}
+
+@if (content != null)
+{
+    <section class="features">
+        <div class="container">
+            <h1>@feature.Title</h1>
+            <p>@feature.Ingress</p>
+            <div class="tool-features">
+                @foreach (var item in feature.FeatureItems)
                 {
                     <div class="box">
-                        <img src="@feature.BoxImage.ImageUrl" alt="@feature.BoxImage.AltText">
-                        <h5>@feature.Title</h5>
-                        <p>@feature.Description</p>
-                     </div>
+                        <img src="@item.ImageUrl" alt="">
+                        <h5>@item.Title</h5>
+                        <p>@item.Text</p>
+                    </div>
                 }
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+}
