@@ -11,8 +11,11 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configura
 
 builder.Services.AddScoped<FeatureRepository>();
 builder.Services.AddScoped<FeatureItemRepository>();
+builder.Services.AddScoped<ShowcaseRepository>();
+builder.Services.AddScoped<BrandRepository>();
 
 builder.Services.AddScoped<FeatureService>();
+builder.Services.AddScoped<ShowcaseService>();
 
 var app = builder.Build();
 app.UseHsts();
