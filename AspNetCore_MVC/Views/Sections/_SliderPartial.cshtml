@@ -1,15 +1,25 @@
-﻿<section id="slider">
-    <div class="background-container">
-        <div class="half dark-mode"></div>
-        <div class="half light-mode"></div>
-    </div>
+﻿@inject SliderService _sliderService
+@{
+    var result = await _sliderService.GetAllSliderAsync();
+    List<SliderEntity> content = (List<SliderEntity>)result.ContentResult!;
+    var slider = content.First();
+}
 
-    <div class="container">
-        <div class="title">
-            <h3>@Model.Title</h3>
-            <h3 class="dark-text">@Model.Description</h3>
+@if (content != null)
+{
+    <section id="slider">
+        <div class="background-container">
+            <div class="half dark-mode"></div>
+            <div class="half light-mode"></div>
         </div>
 
-        <img class="mockup" src="@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
-    </div>
-</section>
+        <div class="container">
+            <div class="title">
+                <h3>@slider.Title</h3>
+                <h3 class="dark-text">@slider.Description</h3>
+            </div>
+
+            <img class="mockup" src="@slider.Image" alt="@slider.AltText" />
+        </div>
+    </section>
+}

@@ -3,13 +3,13 @@
 <section id="newsletter-section" class="newsletter-section">
     <div class="container">
         <div class="title">
-            <h3>@Model.Title</h3>
-            <img src="@Model.Arrow.ImageUrl" alt="@Model.Arrow.AltText" />
+            <h3>Don't Want to Miss Anything?</h3>
+            <img src="/images/arrows.svg" alt="Arrow" />
         </div>
 
         <form method="post" asp-action="Index" asp-controller="Home">
             <div class="checkboxes">
-                <p>@Model.SignUpText</p>
+                <p>Sign up for Newsletters</p>
                 <div class="checkbox-container">
                     <div class="checkbox">
                         <input asp-for="Form.DailyNewsletter" />
@@ -45,7 +45,7 @@
             <div class="email-form">
                 <input placeholder="Your email" asp-for="Form.Email">
                 <span asp-validation-for="Form.Email"></span>
-                <button class="btn-theme-s" type="submit">@Model.Link.Text</button>
+                <button class="btn-theme-s" asp-action="Subscribe" asp-controller="Home" type="submit">Subscribe*</button>
             </div>
             <p class="terms">*Yes, I agree to the <a asp-controller="About" asp-action="Terms">Terms</a> and  <a asp-controller="About" asp-action="PrivacyPolicy">Privacy Policy</a></p>
         </form>
