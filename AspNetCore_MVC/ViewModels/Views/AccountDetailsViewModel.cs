@@ -1,16 +1,11 @@
 ﻿using AspNetCore_MVC.Models.Components;
+using Infrastructure.Entities;
 
 namespace AspNetCore_MVC.ViewModels.Views;
 
 public class AccountDetailsViewModel
 {
-    public string Title { get; set; } = "Account Details";
-    public AccountDetailsBasicInfoModel BasicInfo { get; set; } = new AccountDetailsBasicInfoModel()
-    {
-        ProfileImage = "images/avatar.svg",
-        FirstName = "Anna",
-        LastName = "Ozmehak",
-        Email = "anna.ozmehak@gmail.com"
-    };
-    public AccountDetailsAddressInfoModel AddressInfo { get; set; } = new AccountDetailsAddressInfoModel();
+    public ProfileInfoViewModel? ProfileInfo { get; set; }
+    public AccountDetailsBasicInfoViewModel? BasicInfo { get; set; }
+    public AccountDetailsAddressInfoViewModel? AddressInfo { get; set; }
 }

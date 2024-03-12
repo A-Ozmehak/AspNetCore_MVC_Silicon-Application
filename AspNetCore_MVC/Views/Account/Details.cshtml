@@ -5,12 +5,18 @@
 }
 
 <div class="container">
+    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+    {
+        <div class="alert">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
     <section id="account-details">
         @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
 
         <div class="details">
             <section class="basic-info">
-                <form method="post" asp-controller="Account" asp-action="BasicInfo">
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
                     <h2>Account Details</h2>
                     <h5>Basic Info</h5>
 
@@ -35,10 +41,10 @@
                             <span asp-validation-for="BasicInfo.Phone"></span>
                             <input asp-for="BasicInfo.Phone" />
                         </div>
-                        <div id="form-bio" class="input-group">
+                         <div id="form-bio" class="input-group">
                             <label asp-for="BasicInfo.Biography">Bio <span>(optional)</span></label>
                             <textarea asp-for="BasicInfo.Biography"></textarea>
-                        </div>
+                         </div>
                         <div class="form-buttons">
                             <button class="btn-gray" type="reset">Cancel</button>
                             <button class="btn-theme" type="submit">Save changes</button>
@@ -48,7 +54,7 @@
             </section>
             <hr />
             <section class="address-info">
-                <form method="post" asp-controller="Account" asp-action="AddressInfo">
+                <form method="post" asp-controller="Account" asp-action="Details" novalidate>
                     <h5>Address</h5>
 
                     <div class="content">

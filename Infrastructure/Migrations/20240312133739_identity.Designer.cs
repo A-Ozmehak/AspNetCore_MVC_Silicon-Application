@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240307162023_add downloadApp")]
-    partial class adddownloadApp
+    [Migration("20240312133739_identity")]
+    partial class identity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -252,6 +252,35 @@ namespace Infrastructure.Migrations
                     b.ToTable("Showcase");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.SliderEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AltText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Slider");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.TextIconEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -278,23 +307,76 @@ namespace Infrastructure.Migrations
                     b.ToTable("TextAndIcon");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.ToolEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AltText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TopToolId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TopToolId");
+
+                    b.ToTable("Tool");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.TopToolEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TopTool");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Biography")
+                    b.Property<string>("ConcurrencyStamp")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("Created")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -304,25 +386,41 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("Modified")
-                        .HasColumnType("datetime2");
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("Password")
-                        .IsRequired()
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("NormalizedUserName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SecurityKey")
-                        .IsRequired()
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AddressId");
 
-                    b.ToTable("Users");
+                    b.ToTable("UserEntity");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.AppEntity", b =>
@@ -369,6 +467,17 @@ namespace Infrastructure.Migrations
                     b.Navigation("ManageWork");
                 });
 
+            modelBuilder.Entity("Infrastructure.Entities.ToolEntity", b =>
+                {
+                    b.HasOne("Infrastructure.Entities.TopToolEntity", "TopTool")
+                        .WithMany("Tools")
+                        .HasForeignKey("TopToolId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TopTool");
+                });
+
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
                 {
                     b.HasOne("Infrastructure.Entities.AddressEntity", "Address")
@@ -401,6 +510,11 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Infrastructure.Entities.ShowcaseEntity", b =>
                 {
                     b.Navigation("Brands");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.TopToolEntity", b =>
+                {
+                    b.Navigation("Tools");
                 });
 #pragma warning restore 612, 618
         }
