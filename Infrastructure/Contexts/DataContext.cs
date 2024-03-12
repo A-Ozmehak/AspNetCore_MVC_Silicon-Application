@@ -18,4 +18,15 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<TopToolEntity> TopTool { get; set; }
     public DbSet<ToolEntity> Tool { get; set; }
     public DbSet<SliderEntity> Slider { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<UserEntity>()
+            .HasMany(u => u.Addresses)
+            .WithOne(a => a.User)
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
 }

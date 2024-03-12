@@ -6,7 +6,7 @@ public class AccountSecurityViewModel
 {
     public string Title { get; set; } = "Security";
 
-    public AccountDetailsBasicInfoViewModel BasicInfo { get; set; } = null!;
+    public ProfileInfoViewModel? ProfileInfo { get; set; }
 
     public AccountSecurityPasswordModel Password { get; set; } = new AccountSecurityPasswordModel();
 
