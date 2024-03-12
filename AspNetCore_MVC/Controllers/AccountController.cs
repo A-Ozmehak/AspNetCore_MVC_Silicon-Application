@@ -162,11 +162,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     #region [HttpGet] Security
     [Route("/account/security")]
     [HttpGet]
-    public IActionResult Security()
+    public async Task<IActionResult> Security()
     {
-        var viewModel = new AccountSecurityViewModel();
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        ViewBag.ActiveAction = "security";
+        var viewModel = new AccountSecurityViewModel
+        {
+            ProfileInfo = await PopulateProfileInfoAsync()
+        };
         return View(viewModel);
     }
     #endregion
@@ -199,11 +200,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     #region [HttpGet] SavedCourses
     [Route("/account/savedCourses")]
     [HttpGet]
-    public IActionResult SavedCourses()
+    public async Task<IActionResult> SavedCourses()
     {
-        var viewModel = new AccountSavedCoursesViewModel();
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        ViewBag.ActiveAction = "savedcourses";
+        var viewModel = new AccountSavedCoursesViewModel
+        {
+            ProfileInfo = await PopulateProfileInfoAsync()
+        };
         return View(viewModel);
     }
     #endregion

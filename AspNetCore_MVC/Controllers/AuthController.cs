@@ -61,10 +61,12 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region [HttpGet] SignIn
     [HttpGet]
     [Route("/signin")]
-    public IActionResult SignIn()
+    public IActionResult SignIn(string returnUrl)
     {
         if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
+
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
 
         return View();
     }
@@ -73,13 +75,16 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region [HttpPost] SignIn
     [HttpPost]
     [Route("/signin")]
-    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
             if (result.Succeeded)
             {
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+
                 return RedirectToAction("Details", "Account");
             }
         }
@@ -96,7 +101,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     public new async Task<IActionResult> SignOut()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("Home", "Details");
+        return RedirectToAction("Index", "Home");
     }
     #endregion
 

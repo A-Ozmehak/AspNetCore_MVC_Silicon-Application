@@ -1,3 +1,4 @@
+using AspNetCore_MVC.Helpers.Middlewares;
 using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
@@ -16,6 +17,18 @@ builder.Services.AddDefaultIdentity<UserEntity>(x =>
     x.SignIn.RequireConfirmedAccount = false;
     x.Password.RequiredLength = 8;
 }).AddEntityFrameworkStores<DataContext>();
+
+builder.Services.ConfigureApplicationCookie(x =>
+{
+    x.LoginPath = "/signin";
+    x.LogoutPath = "/signout";
+    x.AccessDeniedPath = "/denied";
+
+    x.Cookie.HttpOnly = true;
+    x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    x.SlidingExpiration = true;
+});
 
 builder.Services.AddScoped<FeatureRepository>();
 builder.Services.AddScoped<FeatureItemRepository>();
@@ -45,9 +58,12 @@ app.UseStatusCodePagesWithReExecute("error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseUserSessionValidation();
 app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 app.Run();
