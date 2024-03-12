@@ -748,6 +748,10 @@ header .container #account-buttons {
 header .container #account-buttons .btn-gray span.dark-mode {
   color: #FFFFFF !important;
 }
+header .container #account-buttons .avatar {
+  height: 44px;
+  width: 44px;
+}
 header .container .btn-mobilemenu {
   grid-area: mobile;
   display: block;
