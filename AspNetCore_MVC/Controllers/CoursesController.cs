@@ -1,10 +1,12 @@
 ﻿using AspNetCore_MVC.ViewModels.Components;
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCore_MVC.Controllers;
 
+[Authorize]
 public class CoursesController : Controller
 {
     [Route("/courses")]
