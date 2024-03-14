@@ -13,5 +13,8 @@ public class UserEntity : IdentityUser
     [ProtectedPersonalData]
     public string? Bio { get; set; }
 
+    [ProtectedPersonalData]
+    public string? ProfileImage { get; set; }
+
     public ICollection<AddressEntity> Addresses { get; set; } = [];
 }

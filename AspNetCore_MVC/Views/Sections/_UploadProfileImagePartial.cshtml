@@ -1,0 +1,5 @@
+﻿@model UploadProfileImageViewModel
+
+<form id="updateProfileImage" asp-controller="Account" asp-action="UploadProfileImage" method="post" enctype="multipart/form-data">
+    <input id="fileInput" type="file" name="ProfileImage" accept="image/*" style="display: none;" />
+</form>

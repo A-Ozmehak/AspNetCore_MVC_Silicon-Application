@@ -1,4 +1,4 @@
-﻿@model CoursesIndexViewModel
+﻿
 
 <section id="courses">
     <div class="container">
@@ -25,9 +25,9 @@
             </form>
         </div>
 
-        @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml", Model.Course)
+        @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml")
         @await Html.PartialAsync("~/Views/Sections/_PaginationPartial.cshtml")
-        @await Html.PartialAsync("~/Views/Sections/_BannerPartial.cshtml", Model.Banner)
+        @await Html.PartialAsync("~/Views/Sections/_BannerPartial.cshtml")
     </div>
 
 </section>

@@ -50,7 +50,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
             if (result.Succeeded)
             {
-                return RedirectToAction("SignIn", "Account");
+                return RedirectToAction("SignIn", "Auth");
             }
         }
 

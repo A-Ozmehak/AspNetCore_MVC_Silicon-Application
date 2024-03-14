@@ -751,6 +751,7 @@ header .container #account-buttons .btn-gray span.dark-mode {
 header .container #account-buttons .avatar {
   height: 44px;
   width: 44px;
+  border-radius: 50%;
 }
 header .container .btn-mobilemenu {
   grid-area: mobile;
@@ -1846,7 +1847,22 @@ footer .container p.dark-mode {
 }
 #account-details aside .profile-info {
   margin: 20px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#account-details aside .profile-info .image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 130px;
+}
+#account-details aside .profile-info .image-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
 }
 #account-details aside .profile-info h5 {
   margin-top: 15px;
@@ -2660,20 +2676,22 @@ footer .container p.dark-mode {
     margin-top: 70px;
   }
 }
-#singleCourse .container .program-details .program-steps .step {
+#singleCourse .container .program-details .program-steps {
   max-width: 746px;
   display: flex;
   gap: 20px;
   margin-bottom: 0;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step {
+  #singleCourse .container .program-details .program-steps {
     gap: 40px;
     margin-bottom: 10px;
   }
 }
-#singleCourse .container .program-details .program-steps .step::after {
+#singleCourse .container .program-details .program-steps::after {
   content: "";
   position: absolute;
   top: calc(100% - 50px);
@@ -2684,15 +2702,19 @@ footer .container p.dark-mode {
   transform: translateX(-50%);
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step::after {
+  #singleCourse .container .program-details .program-steps::after {
     height: 100px;
     top: calc(100% - 60px);
   }
 }
-#singleCourse .container .program-details .program-steps .step:last-of-type::after {
+#singleCourse .container .program-details .program-steps:last-of-type::after {
   display: none;
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle {
+#singleCourse .container .program-details .program-steps .step-content {
+  display: flex;
+  gap: 40px;
+}
+#singleCourse .container .program-details .program-steps .step-content .outer-circle {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -2703,17 +2725,17 @@ footer .container p.dark-mode {
   justify-content: center;
   margin: 0 0 30px 0;
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle.dark-mode {
+#singleCourse .container .program-details .program-steps .step-content .outer-circle.dark-mode {
   background: #33354D !important;
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step .outer-circle {
+  #singleCourse .container .program-details .program-steps .step-content .outer-circle {
     margin: 0 0 50px 0;
     width: 80px;
     height: 80px;
   }
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle {
+#singleCourse .container .program-details .program-steps .step-content .outer-circle .inner-circle {
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -2722,38 +2744,38 @@ footer .container p.dark-mode {
   align-items: center;
   justify-content: center;
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle.dark-mode {
+#singleCourse .container .program-details .program-steps .step-content .outer-circle .inner-circle.dark-mode {
   background: #565973 !important;
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle {
+  #singleCourse .container .program-details .program-steps .step-content .outer-circle .inner-circle {
     width: 60px;
     height: 60px;
   }
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle span {
+#singleCourse .container .program-details .program-steps .step-content .outer-circle .inner-circle span {
   font-size: 20px;
   color: #000000;
   font-weight: 900;
 }
-#singleCourse .container .program-details .program-steps .step .outer-circle .inner-circle span.dark-mode {
+#singleCourse .container .program-details .program-steps .step-content .outer-circle .inner-circle span.dark-mode {
   color: #FFFFFF !important;
 }
-#singleCourse .container .program-details .program-steps .step .step-info h4 {
+#singleCourse .container .program-details .program-steps .step-content .step-info h4 {
   font-size: 1rem;
   color: #000000;
   font-weight: bold;
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step .step-info h4 {
+  #singleCourse .container .program-details .program-steps .step-content .step-info h4 {
     font-size: 1.25rem;
   }
 }
-#singleCourse .container .program-details .program-steps .step .step-info p {
+#singleCourse .container .program-details .program-steps .step-content .step-info p {
   font-size: 0.8rem;
 }
 @media (min-width: 992px) {
-  #singleCourse .container .program-details .program-steps .step .step-info p {
+  #singleCourse .container .program-details .program-steps .step-content .step-info p {
     font-size: 1rem;
   }
 }

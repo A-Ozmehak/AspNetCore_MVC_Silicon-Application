@@ -1,6 +1,6 @@
 ﻿<section id="singleCourse">
     <div class="course-image">
-        <img src="@Model.CourseImage.ImageUrl" alt="@Model.CourseImage.AltText" />
+        <img src="/images/course1-bg.svg" alt="Course image" />
     </div>
 
     <div class="container">
@@ -10,23 +10,23 @@
                 <i class="fa-solid fa-angles-right"></i>
                 <p>Courses</p>
                 <i class="fa-solid fa-angles-right"></i>
-                <p class="current-page">@Model.Title</p>
+                <p class="current-page">Fullstack Web Developer Course from Scratch</p>
             </div>
             <div class="tags">
-                @if (Model.Tag != null)
-                {
+               @*  @if (Model.Tag != null)
+                { *@
                     <div id="review" class="tag">
-                        <p>@Model.Tag</p>
+                        <p>Best Seller</p>
                     </div>
-                }
+                @* } *@
                 <div id="category" class="tag">
-                    <p>@Model.Category</p>
+                    <p>Digital</p>
                 </div>
             </div>
           
             <div class="title">
-                <h1>@Model.Title</h1>
-                <p>@Model.Description</p>
+                <h1>Fullstack Web Developer Course from Scratch</h1>
+                <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
                 <div class="course-info">
                     <div class="stars">
                         <div class="star"></div>
@@ -36,14 +36,14 @@
                         <div class="star"></div>
                         <div class="review-count">(1.2K reviews)</div>
                     </div>
-                    <p class="likes"><i class="fa-regular fa-thumbs-up"></i> @Model.Likes</p>
-                    <p class="duration"><i class="fa-regular fa-clock"></i> @Model.Duration</p>
+                    <p class="likes"><i class="fa-regular fa-thumbs-up"></i> 5K likes</p>
+                    <p class="duration"><i class="fa-regular fa-clock"></i> 148 hours</p>
                 </div>
                 <div class="author-info">
-                    <img src="@Model.AuthorImage.ImageUrl" alt="@Model.AuthorImage.AltText" />
+                    <img src="/images/author-img.svg" alt="" />
                     <div class="created-by">
                         <p>Created by</p>
-                        <p>@Model.AuthorName</p>
+                        <p>Albert Flores</p>
                     </div>
                 </div>
             </div>
@@ -52,36 +52,37 @@
         <div class="course-content">
             <div class="details">
                 <h3>Course Description</h3>
-                <p>@Model.CourseDescription</p>
+                <p>Suspendisse natoque sagittis, consequat turpis. Sed tristique tellus morbi magna. At vel senectus accumsan, arcu mattis id tempor. Tellus sagittis, euismod porttitor sed tortor est id. Feugiat velit velit, tortor ut. Ut libero cursus nibh lorem urna amet tristique leo. Viverra lorem arcu nam nunc at ipsum quam. A proin id sagittis dignissim mauris condimentum ornare. Tempus mauris sed dictum ultrices.</p>
                 <h5>What you`ll learn</h5>
                 <ul>
-                    @foreach (var goal in Model.CourseGoals)
-                    {
-                        <li><i class="@goal.Icon"></i> @goal.Text</li>
-                    }
-
+                    <li><i class="fa-sharp fa-regular fa-circle-check"></i> Sed lectus donec amet eu turpis interdum.</li>
+                    <li><i class="fa-sharp fa-regular fa-circle-check"></i> Nulla at consectetur vitae dignissim porttitor.</li>
+                    <li><i class="fa-sharp fa-regular fa-circle-check"></i> Phasellus id vitae dui aliquet mi.</li>
+                    <li><i class="fa-sharp fa-regular fa-circle-check"></i> Integer cursus vitae, odio feugiat iaculis aliquet diam, et purus.</li>
+                    <li><i class="fa-sharp fa-regular fa-circle-check"></i> In aenean dolor diam tortor orci eu.</li>
                 </ul>
             </div>
             <div class="includes">
                 <h5>This course includes:</h5>
                 <ul>
-                    @foreach (var item in Model.CourseIncludes)
-                    {
-                        <li><i class="@item.Icon"></i> @item.Text</li>
-                    } 
+                    <li><i class="fa-solid fa-display"></i> 148 hours on-demand video</li>
+                    <li><i class="fa-regular fa-newspaper"></i> 18 articles</li>
+                    <li><i class="fa-solid fa-download"></i> 25 downloadable resources</li>
+                    <li><i class="fa-solid fa-infinity"></i> Full lifetime access</li>
+                    <li><i class="fa-solid fa-trophy"></i> Certificate of completion</li>
                 </ul>
 
-                @if (Model.DiscountPrice != null)
-                {
+                @* @if (Model.DiscountPrice != null)
+                { *@
                     <div class="price">
-                        <p class="discount-price">$@Model.DiscountPrice</p>
-                        <p class="regular-price">$@Model.Price</p>
+                        <p class="discount-price">$28.99</p>
+                        <p class="regular-price">$49.00</p>
                     </div>
-                }
+               @*  }
                 else
                 {
-                    <p>$@Model.Price</p>
-                }
+                    <p>$49.00</p>
+                } *@
 
                 <button class="btn-theme-s">Join course</button>
             </div>
@@ -89,20 +90,73 @@
         <div class="program-details">
             <h3>Program Details</h3>
             <div class="program-steps">
-                @foreach (var steps in Model.CourseSteps)
-                {
-                    <div class="step">
-                        <div class="outer-circle">
-                            <div class="inner-circle">
-                                <span>@steps.StepNumber</span>
+                       
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>1</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>Introduction. Getting started</h4>
+                                <p>Nulla faucibus mauris pellentesque blandit faucibus non. Sit ut et at suspendisse gravida hendrerit tempus placerat.</p>
                             </div>
                         </div>
-                        <div class="step-info">
-                            <h4>@steps.Title</h4>
-                            <p>@steps.Description</p>
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>2</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>The ultimate HTML developer: advanced HTML</h4>
+                                <p>Lobortis diam elit id nibh ultrices sed penatibus donec. Nibh iaculis eu sit cras ultricies. Nam eu eget etiam egestas donec scelerisque ut ac enim. Vitae ac nisl, enim nec accumsan vitae est.</p>
+                            </div>
                         </div>
-                    </div>
-                }
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>3</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>CSS & CSS3: basic</h4>
+                                <p>Duis euismod enim, facilisis risus tellus pharetra lectus diam neque. Nec ultrices mi faucibus est. Magna ullamcorper potenti elementum ultricies auctor nec volutpat augue.</p>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>4</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>JavaScript basics for beginners</h4>
+                                <p>Morbi porttitor risus imperdiet a, nisl mattis. Amet, faucibus eget in platea vitae, velit, erat eget velit. At lacus ut proin erat.</p>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>5</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>Understanding APIs</h4>
+                                <p>Risus morbi euismod in congue scelerisque fusce pellentesque diam consequat. Nisi mauris nibh sed est morbi amet arcu urna. Malesuada feugiat quisque consectetur elementum diam vitae. Dictumst facilisis odio eu quis maecenas risus odio fames bibendum.</p>
+                            </div>
+                        </div>
+                        <div class="step-content">
+                            <div class="outer-circle">
+                                <div class="inner-circle">
+                                    <span>6</span>
+                                </div>
+                            </div>
+                            <div class="step-info">
+                                <h4>C# and .NET from beginner to advanced</h4>
+                                <p>Quis risus quisque diam diam. Volutpat neque eget eu faucibus sed urna fermentum risus. Est, mauris morbi nibh massa.</p>
+                            </div>
+                        </div>
             </div>
         </div>
         @await Html.PartialAsync("~/Views/Sections/_CourseAuthorCardPartial.cshtml")

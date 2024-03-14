@@ -1,7 +1,4 @@
-﻿using AspNetCore_MVC.Models.Components;
-using Infrastructure.Entities;
-
-namespace AspNetCore_MVC.ViewModels.Views;
+﻿namespace AspNetCore_MVC.ViewModels.Views;
 
 public class AccountDetailsViewModel
 {
