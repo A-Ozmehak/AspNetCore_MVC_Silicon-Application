@@ -677,6 +677,64 @@ form select.dark-mode {
   border: 1px solid #565973 !important;
 }
 
+.alert {
+  border: 1px solid #EF4444;
+  background: #FF7F7F;
+  color: #FFFFFF;
+}
+
+aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+aside .profile-info {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+aside .profile-info .image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 130px;
+}
+aside .profile-info .image-container img {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+aside .profile-info p.dark-mode {
+  color: #B4B7C9 !important;
+}
+aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+aside nav .btn-theme-s {
+  margin: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+  background: #FFFFFF;
+  color: #000000;
+}
+aside nav .btn-theme-s.active, aside nav .btn-theme-s:hover {
+  background: #6366F1;
+}
+
 header {
   padding: 1rem 0 1rem 1rem;
 }
@@ -1450,6 +1508,7 @@ footer .container p.dark-mode {
 }
 #signin .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -1520,6 +1579,7 @@ footer .container p.dark-mode {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100%;
 }
 @media (min-width: 992px) {
@@ -1841,57 +1901,6 @@ footer .container p.dark-mode {
     margin-bottom: 70px;
   }
 }
-#account-details aside {
-  border-right: 1px solid #E2E5F1;
-  padding-right: 20px;
-}
-#account-details aside .profile-info {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#account-details aside .profile-info .image-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 130px;
-}
-#account-details aside .profile-info .image-container img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  cursor: pointer;
-}
-#account-details aside .profile-info h5 {
-  margin-top: 15px;
-  margin-bottom: 0;
-}
-#account-details aside .profile-info p {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px !important;
-}
-#account-details aside .profile-info p.dark-mode {
-  color: #B4B7C9 !important;
-}
-#account-details aside nav {
-  margin-top: 50px;
-  text-align: left;
-}
-#account-details aside nav .btn-theme-s {
-  margin: 10px 0;
-  text-align: left;
-  justify-content: flex-start;
-  background: #FFFFFF;
-  color: #000000;
-}
-#account-details aside nav .btn-theme-s.active, #account-details aside nav .btn-theme-s:hover {
-  background: #6366F1;
-}
 #account-details .details {
   margin-top: 50px;
   width: 100%;
@@ -1988,42 +1997,6 @@ footer .container p.dark-mode {
     margin-bottom: 70px;
   }
 }
-#account-security aside {
-  border-right: 1px solid #E2E5F1;
-  padding-right: 20px;
-}
-#account-security aside .profile-info {
-  margin: 20px;
-  text-align: center;
-}
-#account-security aside .profile-info h5 {
-  margin-top: 15px;
-  margin-bottom: 0;
-}
-#account-security aside .profile-info p {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px !important;
-}
-#account-security aside .profile-info p.dark-mode {
-  color: #B4B7C9 !important;
-}
-#account-security aside nav {
-  margin-top: 50px;
-  text-align: left;
-}
-#account-security aside nav .btn-theme-s {
-  margin: 10px 0;
-  text-align: left;
-  justify-content: flex-start;
-  background: #FFFFFF;
-  color: #000000;
-}
-#account-security aside nav .btn-theme-s.active, #account-security aside nav .btn-theme-s:hover {
-  background: #6366F1;
-}
 #account-security .details {
   margin-top: 50px;
   width: 100%;
@@ -2088,42 +2061,6 @@ footer .container p.dark-mode {
     gap: 150px;
     margin-bottom: 70px;
   }
-}
-#account-saved-courses aside {
-  border-right: 1px solid #E2E5F1;
-  padding-right: 20px;
-}
-#account-saved-courses aside .profile-info {
-  margin: 20px;
-  text-align: center;
-}
-#account-saved-courses aside .profile-info h5 {
-  margin-top: 15px;
-  margin-bottom: 0;
-}
-#account-saved-courses aside .profile-info p {
-  line-height: 160%;
-  font-weight: 400;
-  color: #565973;
-  font-family: "Manrope", sans-serif;
-  font-size: 16px !important;
-}
-#account-saved-courses aside .profile-info p.dark-mode {
-  color: #B4B7C9 !important;
-}
-#account-saved-courses aside nav {
-  margin-top: 50px;
-  text-align: left;
-}
-#account-saved-courses aside nav .btn-theme-s {
-  margin: 10px 0;
-  text-align: left;
-  justify-content: flex-start;
-  background: #FFFFFF;
-  color: #000000;
-}
-#account-saved-courses aside nav .btn-theme-s.active, #account-saved-courses aside nav .btn-theme-s:hover {
-  background: #6366F1;
 }
 #account-saved-courses .details {
   margin-top: 50px;

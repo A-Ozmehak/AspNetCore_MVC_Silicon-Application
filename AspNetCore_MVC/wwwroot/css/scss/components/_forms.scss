@@ -133,3 +133,9 @@ form {
         }
     }
 }
+
+.alert {
+    border: 1px solid $danger;
+    background: #FF7F7F;
+    color: $white;
+}

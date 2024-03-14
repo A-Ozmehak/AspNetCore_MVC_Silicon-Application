@@ -8,44 +8,6 @@
         margin-bottom: 70px;
     }
 
-
-    aside {
-        border-right: 1px solid $gray-300;
-        padding-right: 20px;
-
-        .profile-info {
-            margin: 20px;
-            text-align: center;
-
-            h5 {
-                margin-top: 15px;
-                margin-bottom: 0;
-            }
-
-            p {
-                @include text-m;
-            }
-        }
-
-        nav {
-            margin-top: 50px;
-            text-align: left;
-
-            .btn-theme-s {
-                margin: 10px 0;
-                text-align: left;
-                justify-content: flex-start;
-                background: $white;
-                color: $black;
-
-                &.active,
-                &:hover {
-                    background: $theme;
-                }
-            }
-        }
-    }
-
     .details {
         margin-top: 50px;
         width: 100%;
