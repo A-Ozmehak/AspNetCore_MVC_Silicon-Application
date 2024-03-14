@@ -1,4 +1,4 @@
-﻿@model ContactViewModel
+﻿@model AccountDetailsViewModel
 
 <section id="contact" class="contact">
     <div class="container">
@@ -10,9 +10,9 @@
         <div class="content">
             <div class="left-container">
                 <div class="title-box">  
-                    <h1>@Model.Title</h1>
+                    <h1>Contact us</h1>
                 </div>
-                @await Html.PartialAsync("~/Views/Sections/_ContactOptionPartial.cshtml", Model.Content)
+                @await Html.PartialAsync("~/Views/Sections/_ContactOptionPartial.cshtml")
             </div>
 
             <div class="form-container">

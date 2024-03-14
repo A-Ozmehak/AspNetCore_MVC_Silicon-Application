@@ -5,25 +5,24 @@
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addedshowcasealt : Migration
+    public partial class addedprofileimagetoUserEntity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "AltText",
-                table: "Showcase",
+                name: "ProfileImage",
+                table: "AspNetUsers",
                 type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
+                nullable: true);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "AltText",
-                table: "Showcase");
+                name: "ProfileImage",
+                table: "AspNetUsers");
         }
     }
 }

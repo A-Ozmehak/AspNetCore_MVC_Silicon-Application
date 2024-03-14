@@ -1,16 +1,18 @@
 ﻿<aside>
     <div class="profile-info">
-        <img src="@Model.BasicInfo.ProfileImage" alt="@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")" />
-        <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
-        <p>@Model.BasicInfo.Email</p>
+         <div class="image-container">
+            <img id="profileImage" src="@Model.ProfileInfo.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" class="rounded-image" />
+         </div>
+        @await Html.PartialAsync("~/Views/Sections/_UploadProfileImagePartial.cshtml", new UploadProfileImageViewModel())
+
+
+        <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
+        <p>@Model.ProfileInfo.Email</p>
     </div>
     <nav>
-        <a class="btn-theme-s" class="@(ViewBag.ActiveAction == "details" ? "active" : "")" href="@Url.Action("details", "Account")">Account Details</a>
+        <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
         <a class="btn-theme-s" asp-controller="Account" asp-action="Security">Security</a>
         <a class="btn-theme-s" asp-controller="Account" asp-action="SavedCourses">Saved Courses</a>
         <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">Sign out</a>
-    
-         @* <a class="@(ViewBag.ActiveAction == "account" ? "active" : "")" href="@Url.Action("account", "Account")">Some Action</a> *@
-
     </nav>
 </aside>

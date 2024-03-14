@@ -20,6 +20,7 @@ const checkScreenSize = () => {
 window.addEventListener('resize', checkScreenSize);
 checkScreenSize();
 
+
 // add dark-mode class to elements and classes when it's active
 document.getElementById('switch-mode').addEventListener('change', function () {
     document.body.classList.toggle('dark-mode', this.checked);
@@ -76,17 +77,30 @@ document.getElementById('switch-mode').addEventListener('change', function () {
     }
 });
 
-
-var buttons = document.querySelectorAll('nav a'); // select all a elements in nav
-
-buttons.forEach(button => {
-    button.addEventListener('click', function () {
-        // remove active class from all buttons
-        buttons.forEach(btn => {
-            btn.classList.remove('active');
-        });
-
-        // add active class to the clicked button
-        this.classList.add('active');
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#updateProfileImage').addEventListener('submit', event => {
+        event.preventDefault();
+        let formData = new FormData(event.target);
+        fetch(event.target.action, {
+            method: event.target.method,
+            body: formData
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector('#updateProfileImage').src = data.profileImage;
+            })
+            .catch(() => {
+                alert('An error occurred while uploading the image.');
+            });
     });
+});
+
+
+// hide file input field
+document.querySelector('#profileImage').addEventListener('click', function () {
+    document.querySelector('#fileInput').click();
+});
+
+document.querySelector('#fileInput').addEventListener('change', function () {
+    document.querySelector('#uploadForm').submit();
 });

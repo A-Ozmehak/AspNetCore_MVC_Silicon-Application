@@ -1,18 +1,18 @@
 ﻿<div class="contact-options">
-    @if (Model.Option != null)
-    {
-        foreach (var option in Model.Option)
-        {
             <div class="option">
-
-                <div><i class="@option.Icon"></i></div>
+                <div><i class="fa-regular fa-envelope"></i></div>
                 <div>
-                    <h4>@option.ContactReason</h4>
-                    <p>@option.Text</p>
-                    <a>@option.Link.Text <i class="@option.Link.Icon"></i></a>
+                    <h4>Email us</h4>
+                    <p>Please feel free to drop us a line. We will respond as soon as possible</p>
+                    <a>Leave a message <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
-        }
-    }
-
+            <div class="option">
+                <div><i class="fa-solid fa-user-plus"></i></div>
+                <div>
+                    <h4>Careers</h4>
+                    <p>Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum</p>
+                    <a>Send an application <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
 </div>

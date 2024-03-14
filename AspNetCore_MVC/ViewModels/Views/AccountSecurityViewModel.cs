@@ -1,4 +1,4 @@
-﻿using AspNetCore_MVC.Models.Components;
+﻿using AspNetCore_MVC.ViewModels.Sections;
 
 namespace AspNetCore_MVC.ViewModels.Views;
 
@@ -6,15 +6,9 @@ public class AccountSecurityViewModel
 {
     public string Title { get; set; } = "Security";
 
-    public AccountDetailsBasicInfoModel BasicInfo { get; set; } = new AccountDetailsBasicInfoModel()
-    {
-        ProfileImage = "images/avatar.svg",
-        FirstName = "Anna",
-        LastName = "Ozmehak",
-        Email = "anna.ozmehak@gmail.com"
-    };
-    public AccountSecurityPasswordModel Password { get; set; } = new AccountSecurityPasswordModel();
+    public ProfileInfoViewModel? ProfileInfo { get; set; }
 
-    //public string? ErrorMessage { get; set; }
-    public AccountSecurityDeleteAccountModel DeleteAccount { get; set; } = new AccountSecurityDeleteAccountModel();
+    public AccountSecurityPasswordViewModel Password { get; set; } = new AccountSecurityPasswordViewModel();
+
+    public AccountSecurityDeleteViewModel DeleteAccount { get; set; } = new AccountSecurityDeleteViewModel();
 }

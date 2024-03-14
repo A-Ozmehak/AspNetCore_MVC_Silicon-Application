@@ -1,11 +1,11 @@
 ﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Contexts;
 
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+public class DataContext(DbContextOptions<DataContext> options) : IdentityDbContext<UserEntity>(options)
 {
-    public DbSet<UserEntity> Users { get; set; }
     public DbSet<AddressEntity> Addresses { get; set; }
     public DbSet<FeatureEntity> Features { get; set; }
     public DbSet<FeatureItemEntity> FeatureItems { get; set; }
@@ -18,4 +18,15 @@ public class DataContext(DbContextOptions<DataContext> options) : DbContext(opti
     public DbSet<TopToolEntity> TopTool { get; set; }
     public DbSet<ToolEntity> Tool { get; set; }
     public DbSet<SliderEntity> Slider { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<UserEntity>()
+            .HasMany(u => u.Addresses)
+            .WithOne(a => a.User)
+            .HasForeignKey(a => a.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+    }
 }
