@@ -1,15 +1,30 @@
-﻿using AspNetCore_MVC.Models.Components;
-using AspNetCore_MVC.ViewModels.Components;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace AspNetCore_MVC.ViewModels.Sections;
 
 public class NewsletterViewModel
 {
-    public string Title { get; set; } = null!;
-    public ImageViewModel Arrow { get; set; } = null!;
+    [Display(Name = "Daily Newsletter", Order = 0)]
+    public bool DailyNewsletter { get; set; } = false;
 
-    public string SignUpText { get; set; } = null!;
+    [Display(Name = "Advertising Updates", Order = 1)]
+    public bool AdvertisingUpdates { get; set; } = false;
 
-    public NewsletterModel Form { get; set; } = new NewsletterModel();
-    public LinkViewModel Link { get; set; } = null!;
+    [Display(Name = "Week in Review", Order = 2)]
+    public bool WeekInReview { get; set; } = false;
+
+    [Display(Name = "Event Updates", Order = 3)]
+    public bool EventUpdates { get; set; } = false;
+
+    [Display(Name = "Startups Weekly", Order = 4)]
+    public bool StartupsWeekly { get; set; } = false;
+
+    [Display(Name = "Podcasts", Order = 5)]
+    public bool Podcasts { get; set; } = false;
+
+    [Display(Name = "Email address", Prompt = "Your email", Order = 6)]
+    [DataType(DataType.EmailAddress)]
+    [Required(ErrorMessage = "Email is required")]
+    [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Your email address is invalid")]
+    public string Email { get; set; } = null!;
 }

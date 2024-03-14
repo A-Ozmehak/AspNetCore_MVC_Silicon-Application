@@ -1,6 +1,4 @@
-﻿using AspNetCore_MVC.Models.Components;
-
-namespace AspNetCore_MVC.ViewModels.Views;
+﻿namespace AspNetCore_MVC.ViewModels.Views;
 
 public class AccountSavedCoursesViewModel
 {

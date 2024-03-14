@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspNetCore_MVC.Models.Components;
+namespace AspNetCore_MVC.ViewModels.Sections;
 
-public class AccountSecurityPasswordModel
+public class AccountSecurityPasswordViewModel
 {
     [Display(Name = "Current Password", Prompt = "Enter your current password", Order = 0)]
     [DataType(DataType.Password)]
@@ -14,7 +14,7 @@ public class AccountSecurityPasswordModel
     [DataType(DataType.Password)]
     [Required(ErrorMessage = "Your new password is required")]
     [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$", ErrorMessage = "Invalid password, must be a strong password")]
-    public string NewPassword { get; set; } = null!; 
+    public string NewPassword { get; set; } = null!;
 
     [Display(Name = "Confirm password", Prompt = "Confirm your password", Order = 2)]
     [DataType(DataType.Password)]

@@ -1,5 +1,4 @@
 ﻿using AspNetCore_MVC.Helpers;
-using AspNetCore_MVC.Models.Views;
 using System.ComponentModel.DataAnnotations;
 
 namespace AspNetCore_MVC.ViewModels.Views;
