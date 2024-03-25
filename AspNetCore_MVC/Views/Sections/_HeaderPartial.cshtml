@@ -1,5 +1,5 @@
 ﻿@inject SignInManager<UserEntity> _signInManager
-@* @model AccountDetailsViewModel *@
+@model AccountDetailsViewModel
 
 <header>
     <div class="container">
@@ -32,13 +32,13 @@
         <div id="account-buttons">
             @if (_signInManager.IsSignedIn(User))
             {
-                if (Model != null && Model.ProfileInfo != null)
+                if (Model == null || Model.ProfileInfo == null)
                 {
-                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="@Model.ProfileInfo.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" /></a>
+                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="~/images/default-avatar.png" alt="default avatar" /></a>
                 }
                 else
                 {
-                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="~/images/default-avatar.png" alt="default avatar" /></a>
+                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="@Model.ProfileInfo.ProfileImage" alt="" /></a>
                 }
                 <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-to-bracket"></i><span>Sign out</span></a>
                
