@@ -1,16 +1,16 @@
 ﻿@model AccountDetailsViewModel
 
 @{
-    ViewData["Title"] = $"{Model.BasicInfo!.FirstName} {Model.BasicInfo.LastName}'s profile";
+    // ViewData["Title"] = $"{Model.BasicInfo!.FirstName} {Model.BasicInfo.LastName}'s profile";
 }
 
 <div class="container">
-    @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
-    {
-        <div class="alert">
-            @ViewData["ErrorMessage"]
-        </div>
-    }
+ @*     @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+     {
+         <div class="alert">
+             @ViewData["ErrorMessage"]
+         </div>
+     } *@
     <section id="account-details">
         @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
 
@@ -23,18 +23,40 @@
                     <div class="content">
                         <div id="form-firstname" class="input-group">
                             <label asp-for="BasicInfo!.FirstName"></label>
-                            <span asp-validation-for="BasicInfo!.FirstName"></span>
-                            <input asp-for="BasicInfo!.FirstName" />
+
+                            @if(Model.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo!.FirstName" disabled />
+                            }
+                            else
+                            {
+                                <span asp-validation-for="BasicInfo!.FirstName"></span>
+                                <input asp-for="BasicInfo!.FirstName" />
+                            }   
                         </div>
                         <div id="form-lastname" class="input-group">
                             <label asp-for="BasicInfo!.LastName"></label>
-                            <span asp-validation-for="BasicInfo!.LastName"></span>
-                            <input asp-for="BasicInfo!.LastName" />
+                            @if (Model.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo!.LastName" disabled />
+                            }
+                            else
+                            {
+                                <span asp-validation-for="BasicInfo!.LastName"></span>
+                                <input asp-for="BasicInfo!.LastName" />
+                            }
                         </div>
                         <div id="form-email" class="input-group">
                             <label asp-for="BasicInfo!.Email"></label>
-                            <span asp-validation-for="BasicInfo!.Email"></span>
-                            <input asp-for="BasicInfo!.Email" />
+                            @if (Model.IsExternalAccount)
+                            {
+                                <input asp-for="BasicInfo!.Email" disabled />
+                            }
+                            else
+                            {
+                                <span asp-validation-for="BasicInfo!.Email"></span>
+                                <input asp-for="BasicInfo!.Email" />
+                            }
                         </div>
                         <div id="form-phone" class="input-group">
                             <label asp-for="BasicInfo!.Phone"></label>

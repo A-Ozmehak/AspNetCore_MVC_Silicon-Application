@@ -102,5 +102,5 @@ document.querySelector('#profileImage').addEventListener('click', function () {
 });
 
 document.querySelector('#fileInput').addEventListener('change', function () {
-    document.querySelector('#uploadForm').submit();
+    document.querySelector('#updateProfileImage').submit();
 });

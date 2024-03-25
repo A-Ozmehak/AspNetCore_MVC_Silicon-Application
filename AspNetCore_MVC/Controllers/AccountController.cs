@@ -20,14 +20,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
-        var viewModel = new AccountDetailsViewModel
-        {
-            ProfileInfo = await PopulateProfileInfoAsync()
-        };
-
-        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
-        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
-
+        var viewModel = await PopulateViewModelAsync();
         return View(viewModel);
     }
     #endregion
@@ -39,25 +32,30 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     {
         if (viewModel.BasicInfo != null)
         {
-            if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
             {
-                var user = await _userManager.GetUserAsync(User);
-                if (user != null)
+                if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
                 {
                     user.FirstName = viewModel.BasicInfo!.FirstName;
                     user.LastName = viewModel.BasicInfo.LastName;
                     user.Email = viewModel.BasicInfo.Email;
                     user.PhoneNumber = viewModel.BasicInfo.Phone;
                     user.Bio = viewModel.BasicInfo.Biography;
+                }
 
-                    var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
-                    {
-                        ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                        ViewData["ErrorMessage"] = "Something went wrong! Unable to update basic information.";
-                    }
+                var result = await _userManager.UpdateAsync(user);
+                if (!result.Succeeded)
+                {
+                    ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
+                    ViewData["StatusMessage"] = "Something went wrong! Unable to update basic information.";
+                }
+                else
+                {
+                    ViewData["StatusMessage"] = "success|Basic information was saved successfully";
                 }
             }
+            
         }
 
         if (viewModel.AddressInfo != null)
@@ -103,14 +101,48 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             }
         }
 
-        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
-        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
-        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+        viewModel = await PopulateViewModelAsync();
 
         return View(viewModel);
     }
     #endregion
 
+    private async Task<AccountDetailsViewModel> PopulateViewModelAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            var viewModel = new AccountDetailsViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                ProfileImageUrl = user.ProfileImage,
+                IsExternalAccount = user.IsExternalAccount,
+                BasicInfo = new AccountDetailsBasicInfoViewModel
+                {
+                    UserId = user.Id,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email!,
+                    Phone = user.PhoneNumber,
+                    Biography = user.Bio
+                },
+                ProfileInfo = new ProfileInfoViewModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email!,
+                    ProfileImage = user.ProfileImage!
+                },
+                AddressInfo = await PopulateAddressInfoAsync()
+            };
+            return viewModel;
+        }
+
+        return new AccountDetailsViewModel { BasicInfo = new AccountDetailsBasicInfoViewModel { }, ProfileInfo = new ProfileInfoViewModel { } };
+
+    }
 
     private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
     {
@@ -260,6 +292,4 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         return View(viewModel);
     }
     #endregion
-
-
 }

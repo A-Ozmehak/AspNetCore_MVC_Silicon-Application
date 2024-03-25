@@ -51,6 +51,14 @@ builder.Services.AddScoped<TopToolService>();
 builder.Services.AddScoped<SliderService>();
 builder.Services.AddScoped<AddressService>();
 
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "276620262150559";
+    x.AppSecret = "346ece7f7ebe0cef10284f6725d5e049";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+});
+
 
 var app = builder.Build();
 app.UseHsts();
