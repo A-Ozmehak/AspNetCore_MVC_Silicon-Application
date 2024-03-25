@@ -169,7 +169,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         await _userManager.UpdateAsync(user);
 
         // Return the new image URL
-        return Json(new { profileImage = user.ProfileImage });
+        return RedirectToAction("Details");
     }
     #endregion
 
