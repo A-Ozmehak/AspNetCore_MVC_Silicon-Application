@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => response.json())
             .then(data => {
-                document.querySelector('#updateProfileImage').src = data.profileImage;
+                document.querySelector('#profileImage').src = data.profileImage;
             })
             .catch(() => {
                 alert('An error occurred while uploading the image.');
@@ -102,5 +102,5 @@ document.querySelector('#profileImage').addEventListener('click', function () {
 });
 
 document.querySelector('#fileInput').addEventListener('change', function () {
-    document.querySelector('#uploadForm').submit();
+    document.querySelector('#updateProfileImage').submit();
 });
