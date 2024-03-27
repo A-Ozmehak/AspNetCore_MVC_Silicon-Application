@@ -4,27 +4,26 @@ namespace AspNetCore_MVC.ViewModels.Sections;
 
 public class NewsletterViewModel
 {
-    [Display(Name = "Daily Newsletter", Order = 0)]
+    [Display(Name = "Daily Newsletter")]
     public bool DailyNewsletter { get; set; } = false;
 
-    [Display(Name = "Advertising Updates", Order = 1)]
+    [Display(Name = "Advertising Updates")]
     public bool AdvertisingUpdates { get; set; } = false;
 
-    [Display(Name = "Week in Review", Order = 2)]
+    [Display(Name = "Week in Review")]
     public bool WeekInReview { get; set; } = false;
 
-    [Display(Name = "Event Updates", Order = 3)]
+    [Display(Name = "Event Updates")]
     public bool EventUpdates { get; set; } = false;
 
-    [Display(Name = "Startups Weekly", Order = 4)]
+    [Display(Name = "Startups Weekly")]
     public bool StartupsWeekly { get; set; } = false;
 
-    [Display(Name = "Podcasts", Order = 5)]
+    [Display(Name = "Podcasts")]
     public bool Podcasts { get; set; } = false;
 
-    [Display(Name = "Email address", Prompt = "Your email", Order = 6)]
+    [Display(Name = "Email address", Prompt = "Your email")]
     [DataType(DataType.EmailAddress)]
     [Required(ErrorMessage = "Email is required")]
-    [RegularExpression(@"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", ErrorMessage = "Your email address is invalid")]
     public string Email { get; set; } = null!;
 }

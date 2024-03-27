@@ -13,7 +13,6 @@ const formErrorHandler = (element, validationResult) => {
         spanElement.classList.remove('field-validation-valid')
         spanElement.innerHTML = element.dataset.valRequired
     }
-
 }
 
 const compareValidator = (element, compareValue) => {
@@ -47,7 +46,7 @@ const passwordValidator = (element) => {
             formErrorHandler(element, false)
     }
     else {
-        const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,})/;
+        const regEx = /^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*[0-9]).{8,}$/;
         formErrorHandler(element, regEx.test(element.value))
     }
 }
@@ -59,8 +58,24 @@ const checkboxValidator = (element) => {
         formErrorHandler(element, false)
 }
 
+const textareaValidator = (element, minLength = 5) => {
+    if (element.value.length >= minLength)
+        formErrorHandler(element, true)
+    else
+        formErrorHandler(element, false)
+}
+
 let forms = document.querySelectorAll('form')
 let inputs = forms[0].querySelectorAll('input')
+let textareas = forms[0].querySelectorAll('textarea')
+
+textareas.forEach(textarea => {
+    if (textarea.dataset.val === 'true') {
+        textarea.addEventListener('keyup', (e) => {
+            textareaValidator(e.target)
+        })
+    }
+})
 
 inputs.forEach(input => {
     if (input.dataset.val === 'true') {
