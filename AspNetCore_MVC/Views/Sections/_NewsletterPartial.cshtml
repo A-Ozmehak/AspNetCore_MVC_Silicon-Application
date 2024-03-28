@@ -7,7 +7,7 @@
             <img src="/images/arrows.svg" alt="Arrow" />
         </div>
 
-        <form method="post" asp-action="Index" asp-controller="Home">
+        <form method="post" asp-action="Subscribe" asp-controller="Home">
             <div class="checkboxes">
                 <p>Sign up for Newsletters</p>
                 <div class="checkbox-container">
@@ -43,7 +43,7 @@
             </div>
 
             <div class="email-form">
-                <input placeholder="Your email" asp-for="Email">
+                <input asp-for="Email">
                 <span asp-validation-for="Email"></span>
                 <button class="btn-theme-s" asp-action="Subscribe" asp-controller="Home" type="submit">Subscribe*</button>
             </div>
@@ -51,3 +51,5 @@
         </form>
     </div>
 </section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")

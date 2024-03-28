@@ -1,5 +1,4 @@
 using AspNetCore_MVC.ViewModels.Sections;
-using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -15,5 +14,18 @@ public class HomeController : Controller
         return View();
     }
 
+    [HttpPost]
+    public IActionResult Subscribe(NewsletterViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            return RedirectToAction("Index");
+
+        }
+
+        ModelState.AddModelError("IncorrectValues", "Provide a correct email address");
+        ViewData["ErrorMessage"] = "Provide a correct email address";
+        return RedirectToAction("Index");
+    }
 
 }

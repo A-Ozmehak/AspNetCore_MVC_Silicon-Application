@@ -1,4 +1,5 @@
-﻿@model AccountDetailsViewModel
+﻿@* @model AccountDetailsViewModel *@
+
 
 <section id="contact" class="contact">
     <div class="container">
@@ -24,3 +25,5 @@
         <img src="~/images/contact-map.svg" alt="Map of the company location" />
     </div>
 </section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")
