@@ -1,0 +1,36 @@
+﻿@model AccountDetailsViewModel
+
+<section class="address-info">
+    <form method="post" asp-controller="Account" asp-action="Details" novalidate>
+        <h5>Address</h5>
+
+        <div class="content">
+            <div id="form-addressline-1" class="input-group">
+                <label asp-for="AddressInfo!.AddressLine_1"></label>
+                <span asp-validation-for="AddressInfo!.AddressLine_1"></span>
+                <input asp-for="AddressInfo!.AddressLine_1" />
+            </div>
+            <div id="form-addressline-2" class="input-group">
+                <label asp-for="AddressInfo!.AddressLine_2"></label>
+                <span asp-validation-for="AddressInfo!.AddressLine_2"></span>
+                <input asp-for="AddressInfo!.AddressLine_2" />
+            </div>
+            <div id="form-postalcode" class="input-group">
+                <label asp-for="AddressInfo!.PostalCode"></label>
+                <span asp-validation-for="AddressInfo!.PostalCode"></span>
+                <input asp-for="AddressInfo!.PostalCode" />
+            </div>
+            <div id="form-city" class="input-group">
+                <label asp-for="AddressInfo!.City"></label>
+                <span asp-validation-for="AddressInfo!.City"></span>
+                <input asp-for="AddressInfo!.City" />
+            </div>
+
+            <div class="form-buttons">
+                <button class="btn-gray" type="reset">Cancel</button>
+                <button class="btn-theme" type="submit">Save changes</button>
+            </div>
+        </div>
+    </form>
+</section>
+

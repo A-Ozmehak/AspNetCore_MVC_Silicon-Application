@@ -6,6 +6,7 @@ public class ContactViewModel
 {
     [Display(Name = "Full name", Prompt = "Enter your full name")]
     [Required(ErrorMessage = "Full name is required")]
+    [DataType(DataType.Text)]
     public string FullName { get; set; } = null!;
 
     [Display(Name = "Email address", Prompt = "Enter your email address")]

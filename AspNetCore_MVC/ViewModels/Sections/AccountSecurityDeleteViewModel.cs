@@ -5,7 +5,7 @@ namespace AspNetCore_MVC.ViewModels.Sections;
 
 public class AccountSecurityDeleteViewModel
 {
-    [Display(Name = "Yes, I want to delete my account", Order = 0)]
+    [Display(Name = "Yes, I want to delete my account")]
     [CheckboxRequired(ErrorMessage = "Your must confirm that you want to delete your account.")]
     public bool Delete { get; set; } = false;
 }

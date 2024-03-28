@@ -66,7 +66,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         if (_signInManager.IsSignedIn(User))
             return RedirectToAction("Details", "Account");
 
-        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/account/details");
 
         return View();
     }
