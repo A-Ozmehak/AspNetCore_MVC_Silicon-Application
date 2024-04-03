@@ -7,7 +7,7 @@ namespace AspNetCore_MVC.Controllers
         [Route("404")]
         public IActionResult Error()
         {
-            return View();
+            return View("Error");
         }
     }
 }

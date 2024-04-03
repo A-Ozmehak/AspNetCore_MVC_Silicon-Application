@@ -77,6 +77,8 @@ document.getElementById('switch-mode').addEventListener('change', function () {
     }
 });
 
+
+// change avatar
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#updateProfileImage').addEventListener('submit', event => {
         event.preventDefault();
