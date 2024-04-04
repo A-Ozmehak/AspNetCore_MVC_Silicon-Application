@@ -1,9 +1,9 @@
 .features {
-    background: $gray-100;
+    background: var(--color-gray-100);
     padding: 80px 0;
 
-    &.dark-mode {
-        background: $gray-800 !important;
+    &.dark {
+        background: var(--color-gray-800);
     }
 
     .container {
@@ -57,13 +57,16 @@
                 &:hover {
                     transition: all 0.15s ease-in-out;
                     cursor: pointer;
-                    background: $white;
+                    background: var(--color-white);
                     @include shadow-m;
 
-                    &.dark-mode {
-                        background: $gray-700 !important;
+
+                    &.dark {
+                        background: var(--color-gray-700);
                     }
                 }
+
+
 
                 img {
                     padding: 10px;
@@ -72,12 +75,12 @@
                     border-radius: 8px;
                 }
 
-                h5 {
-                    @include h5;
-                }
-
                 p {
-                    @include text-m;
+                    color: var(--color-gray-700);
+
+                    &.dark {
+                        color: var(--color-gray-100);
+                    }
                 }
             }
         }

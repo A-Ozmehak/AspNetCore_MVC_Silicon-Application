@@ -1,9 +1,9 @@
 #download-section {
     display: flex;
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
 
-    &.dark-mode {
-        background-color: $gray-800 !important;
+    &.dark {
+        background-color: var(--color-gray-800);
     }
 
     .container {
@@ -13,8 +13,8 @@
         padding: 30px 70px 50px 70px;
 
 
-        &.dark-mode {
-            background-color: $gray-700 !important;
+        &.dark {
+            background-color: var(--color-gray-700);
         }
 
         @include xl {
@@ -38,8 +38,7 @@
             }
 
             h3 {
-                color: $black;
-                @include h3;
+                color: var(--color-gray-black);
                 margin: 20px 0;
                 width: 100%;
 
@@ -56,7 +55,7 @@
 
                 .text {
                     p {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                         margin-bottom: 0;
                     }
 
@@ -65,7 +64,7 @@
                         display: inline-block;
                         width: 12px;
                         height: 12px;
-                        background-color: $warning;
+                        background-color: var(--color-warning);
                         clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
                     }
 
@@ -73,12 +72,11 @@
                         margin-top: 10px;
 
                         h5 {
-                            @include h5;
                             margin-bottom: 0;
                         }
 
                         p {
-                            color: $gray-700;
+                            color: var(--color-gray-700);
                         }
                     }
                 }
