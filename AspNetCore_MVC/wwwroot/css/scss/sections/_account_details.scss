@@ -17,10 +17,10 @@
                 padding: 1rem;
 
                 h5 {
-                    color: $theme;
+                    color: var(--color-theme);
 
-                    &.dark-mode {
-                        color: $theme !important;
+                    &.dark {
+                        color: var(--color-theme);
                     }
                 }
 
@@ -50,7 +50,7 @@
                         grid-area: bio;
 
                         span {
-                            color: $gray-500;
+                            color: var(--color-gray-500);
                             font-weight: 400;
                         }
                     }
@@ -74,7 +74,7 @@
                 h5 {
                     color: $theme;
 
-                    &.dark-mode {
+                    &.dark {
                         color: $theme !important;
                     }
                 }

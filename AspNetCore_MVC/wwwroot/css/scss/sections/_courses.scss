@@ -94,7 +94,7 @@
                 border-radius: 10px;
                 position: relative;
 
-                &.dark-mode {
+                &.dark {
                     border: 1px solid $gray-800 !important;
                     background-color: $gray-800 !important;
                 }
@@ -227,7 +227,7 @@
             align-items: center;
             padding: 20px 100px;
 
-            &.dark-mode {
+            &.dark {
                 background-color: $gray-800 !important;
             }
 

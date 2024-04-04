@@ -25,7 +25,6 @@
 
             h3 {
                 font-weight: 700;
-                color: $black;
                 margin-bottom: 30px;
 
                 @include xl {
@@ -42,7 +41,7 @@
 
                     i {
                         margin-right: 10px;
-                        color: $theme;
+                        color: var(--color-theme);
                     }
                 }
             }

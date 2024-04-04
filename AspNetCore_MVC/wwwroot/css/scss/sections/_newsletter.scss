@@ -1,9 +1,9 @@
 #newsletter-section {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
     padding: 70px 0;
 
-    &.dark-mode {
-        background-color: $gray-800 !important;
+    &.dark {
+        background-color: var(--color-gray-800);
     }
 
     .container {
@@ -32,11 +32,15 @@
             }
 
             h3 {
-                @include h3;
+                color: var(--color-gray-900);
                 margin-right: 10px;
 
                 @include lg {
                     margin-right: 20px;
+                }
+
+                &.dark {
+                    color: var(--color-gray-100);
                 }
             }
         }
@@ -59,10 +63,11 @@
 
                 p {
                     font-weight: 700;
-                    color: $black;
+                    color: var(--color-gray-900);
 
-                    &.dark-mode {
+                    &.dark {
                         opacity: 1 !important;
+                        color: var(--color-gray-100);
                     }
                 }
 
@@ -72,6 +77,14 @@
                     justify-content: space-between;
 
                     .checkbox {
+                        label {
+                            color: var(--color-gray-600);
+
+                            &.dark {
+                                color: var(--color-gray-800);
+                                opacity: 70% !important;
+                            }
+                        }
                     }
                 }
             }
@@ -89,15 +102,9 @@
                     width: 100%;
                     border-radius: 10px;
 
-                    &.dark-mode {
-                        background-color: $gray-800 !important;
-                        border: 1px solid $gray-700 !important;   
-                    }
-                }
-
-                label {
-                    &.dark-mode {
-                        opacity: 70% !important;
+                    &.dark {
+                        background-color: var(--color-gray-800);
+                        border: 1px solid var(--color-gray-700);
                     }
                 }
 
@@ -108,7 +115,7 @@
             }
 
             .terms {
-                color: $gray-600;
+                color: var(--color-gray-600);
                 margin-top: 10px;
                 width: 100%;
                 justify-content: center;
@@ -126,12 +133,12 @@
                     width: 67%;
                 }
 
-                &.dark-mode {
+                &.dark {
                     opacity: 70% !important;
                 }
 
                 a {
-                    color: $theme;
+                    color: var(--color-theme);
                     text-decoration: underline;
 
                     &:hover {
