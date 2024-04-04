@@ -3,6 +3,9 @@
     var result = await _downloadAppService.GetAllDownloadAppAsync();
     List<DownloadAppEntity> content = (List<DownloadAppEntity>)result.ContentResult!;
     var downloadApp = content.First();
+
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
 }
 
 @if (content != null)
@@ -27,7 +30,7 @@
                                 <p>@app.AwardRating</p>
                             </div>
                         </div>
-                        <img class="store-image" src="@app.StoreImage" alt="@app.AltText" />
+                        <img class="store-image" src="@(isDark ? $"{app.StoreImageDark}" : $"{@app.StoreImage}" )" alt="@app.AltText" />
                     </div>
                 }
             </div>
