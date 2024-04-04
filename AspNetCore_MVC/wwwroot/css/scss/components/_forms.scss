@@ -132,10 +132,12 @@ form {
         height: 44px;
         background-color: $transparent;
         margin-bottom: 10px;
+        color: var(--color-gray-900);
 
         &.dark {
             background-color: var(--color-gray-800) !important;
             border: 1px solid var(--color-gray-700) !important;
+            color: var(--color-gray-000);
         }
     }
 }

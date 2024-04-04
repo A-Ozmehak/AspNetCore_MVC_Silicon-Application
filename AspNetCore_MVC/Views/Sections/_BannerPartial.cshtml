@@ -1,10 +1,16 @@
-﻿<div class="get-started">
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+
+<div class="get-started">
     <div class="text-box">
         <p>Ready to get started?</p>
         <h5>Take Your <span>Skills</span> to the Next Level</h5>
         <button class="btn-theme" asp-action="" asp-controller="">Work with us</button>
     </div>
     <div class="image-box">
-        <img src="/images/illustration.svg" alt="Illustration" id="get-started-image">
+        <img src="~/images/@(isDark ? "illustration-dark.svg" : "illustration.svg" )" alt="Illustration" id="get-started-image">
     </div>
 </div>

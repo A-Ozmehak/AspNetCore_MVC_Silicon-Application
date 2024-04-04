@@ -220,7 +220,7 @@
         }
 
         .get-started {
-            background-color: $gray-100;
+            background-color: var(--color-gray-100);
             border-radius: 5px;
             display: flex;
             justify-content: space-between;
@@ -228,15 +228,15 @@
             padding: 20px 100px;
 
             &.dark {
-                background-color: $gray-800 !important;
+                background-color: var(--color-gray-800);
             }
 
             .text-box {
                 h5 {
-                    @include h3;
                     font-weight: 700;
                     margin-bottom: 10px;
                     width: 350px;
+                    font-size: 30px;
 
                     span {
                         color: $info;

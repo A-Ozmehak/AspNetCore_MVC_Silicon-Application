@@ -11,5 +11,6 @@ public class AppEntity
     public string AwardTitle { get; set; } = null!;
     public string AwardRating { get; set; } = null!;
     public string StoreImage { get; set; } = null!;
+    public string? StoreImageDark { get; set; }
     public string AltText { get; set; } = null!;
 }
