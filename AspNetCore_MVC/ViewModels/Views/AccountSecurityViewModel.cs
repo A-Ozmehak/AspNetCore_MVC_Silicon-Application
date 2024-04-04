@@ -8,7 +8,7 @@ public class AccountSecurityViewModel
 
     public ProfileInfoViewModel? ProfileInfo { get; set; }
 
-    public AccountSecurityPasswordViewModel Password { get; set; } = new AccountSecurityPasswordViewModel();
+    public AccountSecurityPasswordViewModel? Password { get; set; }
 
-    public AccountSecurityDeleteViewModel DeleteAccount { get; set; } = new AccountSecurityDeleteViewModel();
+    public AccountSecurityDeleteViewModel? DeleteAccount { get; set; }
 }

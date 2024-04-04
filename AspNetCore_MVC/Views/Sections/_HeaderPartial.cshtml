@@ -1,9 +1,13 @@
 ﻿@inject SignInManager<UserEntity> _signInManager
-@* @model AccountDetailsViewModel *@
+
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
 
 <header>
     <div class="container">
-        <a class="logo" asp-controller="Home" asp-action="Index"><img src="/images/solid.svg" alt="Silicon" id="logo"></a>
+        <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/images/@(isDark ? "solid-dark.svg" : "solid.svg" )" alt="Silicon" id="logo"></a>
 
         <div id="menu" class="hide">
             <nav>
@@ -23,7 +27,7 @@
         <div class="btn-switch">
             <label>Light</label>
             <label class="switch" for="switch-mode">
-                <input type="checkbox" id="switch-mode" runat="server">
+                <input type="checkbox" id="switch-mode" runat="server" checked="@isDark">
                 <span class="slider round"></span>
             </label>
             <label>Dark</label>
@@ -32,13 +36,13 @@
         <div id="account-buttons">
             @if (_signInManager.IsSignedIn(User))
             {
-                if (Model != null && Model.ProfileInfo != null)
+                if (Model == null || Model.ProfileInfo == null)
                 {
-                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="@Model.ProfileInfo.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" /></a>
+                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="~/images/default-avatar.png" alt="default avatar" /></a>
                 }
                 else
                 {
-                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="~/images/default-avatar.png" alt="default avatar" /></a>
+                    <a asp-controller="Account" asp-action="Details"><img class="avatar" src="@Model.ProfileInfo.ProfileImage" alt="" /></a>
                 }
                 <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-to-bracket"></i><span>Sign out</span></a>
                

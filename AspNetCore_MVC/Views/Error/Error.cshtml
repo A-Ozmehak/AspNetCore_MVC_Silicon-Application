@@ -1,6 +1,11 @@
-﻿<section id="error">
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
+<section id="error">
     <div class="container">
-        <img src="/images/404.svg" alt="Error image" id="error-image" />
+        <img src="~/images/@(isDark ? "404-white.svg" : "404.svg" )" alt="Error image" id="error-image" />
         <div class="text-container">
             <h2>Ooops!</h2>
             <p>The page you are looking for is not available.</p>

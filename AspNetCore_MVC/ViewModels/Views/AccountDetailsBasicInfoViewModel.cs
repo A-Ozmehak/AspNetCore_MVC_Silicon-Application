@@ -20,7 +20,7 @@ public class AccountDetailsBasicInfoViewModel
 
     [Required(ErrorMessage = "A valid email address is required")]
     [DataType(DataType.EmailAddress)]
-    [Display(Name = "Email adress", Prompt = "Enter your email address")]
+    [Display(Name = "Email address", Prompt = "Enter your email address")]
     public string Email { get; set; } = null!;
 
 

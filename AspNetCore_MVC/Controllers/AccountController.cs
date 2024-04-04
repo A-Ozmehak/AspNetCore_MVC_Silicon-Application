@@ -37,6 +37,12 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     [Route("/account/details")]
     public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
+        if (!ModelState.IsValid)
+        {
+            ModelState.AddModelError("IncorrectValues", "Provide the required information");
+            ViewData["ErrorMessage"] = "Provide the required information";
+        }
+
         if (viewModel.BasicInfo != null)
         {
             if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
@@ -169,7 +175,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         await _userManager.UpdateAsync(user);
 
         // Return the new image URL
-        return Json(new { profileImage = user.ProfileImage });
+        return RedirectToAction("Details");
     }
     #endregion
 
@@ -236,17 +242,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         return RedirectToAction("Security", "Account");
     }
     #endregion
-
-    //[Route("/account/security")]
-    //[HttpPost]
-    //public IActionResult Password(AccountSecurityViewModel viewModel)
-    //{
-    //    if (ModelState.IsValid)
-    //        return View(viewModel);
-
-    //    //viewModel.ErrorMessage = "Incorrect password";
-    //    return RedirectToAction("Security", "Account");
-    //}
 
     #region [HttpGet] SavedCourses
     [Route("/account/savedCourses")]

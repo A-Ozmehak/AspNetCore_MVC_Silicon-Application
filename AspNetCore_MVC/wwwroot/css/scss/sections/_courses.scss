@@ -94,7 +94,7 @@
                 border-radius: 10px;
                 position: relative;
 
-                &.dark-mode {
+                &.dark {
                     border: 1px solid $gray-800 !important;
                     background-color: $gray-800 !important;
                 }
@@ -220,23 +220,23 @@
         }
 
         .get-started {
-            background-color: $gray-100;
+            background-color: var(--color-gray-100);
             border-radius: 5px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 100px;
 
-            &.dark-mode {
-                background-color: $gray-800 !important;
+            &.dark {
+                background-color: var(--color-gray-800);
             }
 
             .text-box {
                 h5 {
-                    @include h3;
                     font-weight: 700;
                     margin-bottom: 10px;
                     width: 350px;
+                    font-size: 30px;
 
                     span {
                         color: $info;

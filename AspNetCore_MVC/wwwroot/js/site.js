@@ -21,62 +21,27 @@ window.addEventListener('resize', checkScreenSize);
 checkScreenSize();
 
 
-// add dark-mode class to elements and classes when it's active
-document.getElementById('switch-mode').addEventListener('change', function () {
-    document.body.classList.toggle('dark-mode', this.checked);
+// change between dark and light theme
+document.addEventListener('DOMContentLoaded', function () {
+    let sw = document.querySelector('#switch-mode')
 
-    var classNames = ['menu-link', 'features', 'box', 'dark-text', 'download-section', 'download-container', 'newsletter-section', 'checkboxLabel', 'btn-social', 'fa-brands', 'course', 'get-started', 'includes', 'outer-circle', 'inner-circle', 'contact', 'form-container', 'btn-gray'];
-    let tagNames = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'label', 'p', 'input', 'select', 'span', 'textarea'];
+    sw.addEventListener('change', function () {
+        let theme = this.checked ? "dark" : "light";
+        document.body.className = theme;
 
-    tagNames.forEach(tag => {
-        let elements = document.getElementsByTagName(tag);
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].classList.toggle('dark-mode', this.checked);
-        }
-    });
+        fetch(`/sitesettings/changetheme?theme=${theme}`)
+            .then(res => {
+                if (res.ok)
+                    window.location.reload()
+                else
+                    console.log("something")
+            })
+    })
+})
 
-    classNames.forEach(className => {
-        let elements = document.getElementsByClassName(className);
-        for (let i = 0; i < elements.length; i++) {
-            elements[i].classList.toggle('dark-mode', this.checked);
-        }
-    });
 
-    let errorImage = document.getElementById('error-image');
-    let getStartedImage = document.getElementById('get-started-image');
-    let logo = document.getElementById('logo');
 
-    if (this.checked) {
-        console.log(logo);
-        if (errorImage) 
-            errorImage.src = "/images/404-white.svg";
-        if (getStartedImage)  
-            getStartedImage.src = "/images/illustration-dark.svg";
-        if (logo)  
-            logo.src = "/images/solid-dark.svg";
-    } else {
-        console.log(logo);
-
-        if (errorImage)    
-            errorImage.src = "/images/404.svg";
-        if (getStartedImage)
-            getStartedImage.src = "/images/illustration.svg";
-        if (logo)
-            logo.src = "/images/solid.svg";
-    }
-
-    var storeImage = document.getElementsByClassName('store-image');
-    for (var i = 0; i < storeImage.length; i++) {
-        if (this.checked) { 
-            storeImage[0].src = "/images/appstore-dark.svg";
-            storeImage[1].src = "/images/googleplay-dark.svg"; 
-        } else {
-            storeImage1[0].src = "/images/appstore.svg";
-            storeImage[1].src = "/images/googleplay.svg";
-        }
-    }
-});
-
+// change avatar
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('#updateProfileImage').addEventListener('submit', event => {
         event.preventDefault();
@@ -87,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(response => response.json())
             .then(data => {
-                document.querySelector('#updateProfileImage').src = data.profileImage;
+                document.querySelector('#profileImage').src = data.profileImage;
             })
             .catch(() => {
                 alert('An error occurred while uploading the image.');
@@ -102,5 +67,5 @@ document.querySelector('#profileImage').addEventListener('click', function () {
 });
 
 document.querySelector('#fileInput').addEventListener('change', function () {
-    document.querySelector('#uploadForm').submit();
+    document.querySelector('#updateProfileImage').submit();
 });

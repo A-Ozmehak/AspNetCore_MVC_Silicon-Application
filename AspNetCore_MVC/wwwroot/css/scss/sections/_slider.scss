@@ -14,10 +14,16 @@
 
         .dark-mode {
             background-color: $gray-900;
+            //&.dark {
+            //    background-color: var(--color-gray-900) !important;
+            //}
         }
 
         .light-mode {
-            background-color: $white;
+            background-color: $gray-100;
+            //&.dark {
+            //    background-color: var(--color-gray-100) !important;
+            //}
         }
     }
 
@@ -36,7 +42,7 @@
             margin-bottom: 40px;
 
             h3 {
-                color: $white;
+                color: $gray-100;
                 font-weight: 700;
             }
 
@@ -44,8 +50,8 @@
                 color: $black;
                 margin-left: 30px;
 
-                &.dark-mode {
-                    color: $black !important;
+                &.dark {
+                    color: $black;
                 }
             }
         }

@@ -4,7 +4,6 @@ using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -54,7 +53,7 @@ builder.Services.AddScoped<AddressService>();
 
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("error", "?statusCode={0}");
+app.UseStatusCodePagesWithReExecute("/Error", "?statusCode={0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

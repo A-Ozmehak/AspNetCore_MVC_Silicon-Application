@@ -66,9 +66,7 @@ header {
 
             .btn-gray {
                 span {
-                    &.dark-mode {
-                        color: $white !important;
-                    }
+                    color: var(--color-gray-900);
                 }
             }
 

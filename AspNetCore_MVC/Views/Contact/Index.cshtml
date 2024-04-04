@@ -1,4 +1,8 @@
-﻿@model AccountDetailsViewModel
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
 
 <section id="contact" class="contact">
     <div class="container">
@@ -24,3 +28,5 @@
         <img src="~/images/contact-map.svg" alt="Map of the company location" />
     </div>
 </section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")

@@ -10,26 +10,26 @@ a {
 }
 
 .menu-link {
-    @include text-nav;
     text-decoration: none;
     transition: color 0.25s ease-in-out;
+    color: var(--color-gray-900);
 
     &:hover,
     &:active,
     &:focus,
     .active {
-        color: $theme;
+        color: var(--color-theme);
         text-decoration: none;
     }
 
-    &.dark-mode {
-        color: $white !important;
+    &.dark {
+        color: var(--color-gray-300) !important;
 
         &:hover,
         &:active,
         &:focus,
         .active {
-            color: $theme !important;
+            color: var(--color-theme);
             text-decoration: none;
         }
     }
