@@ -24,8 +24,10 @@
                 </div>
             </form>
         </div>
+        <div class="courses-section">
+            @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml")
 
-        @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml")
+        </div>
         @await Html.PartialAsync("~/Views/Sections/_PaginationPartial.cshtml")
         @await Html.PartialAsync("~/Views/Sections/_BannerPartial.cshtml")
     </div>

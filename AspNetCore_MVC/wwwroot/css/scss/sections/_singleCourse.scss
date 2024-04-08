@@ -61,7 +61,10 @@
                     background: $success;
                     color: $white;
                     border: 1px solid $success;
+                    border-radius: 8px;
                     margin-right: 7px;
+                    height: 1.5rem;
+                    padding: 0 5px;
 
                     p {
                         font-size: 10px;
@@ -209,14 +212,6 @@
                     width: 50%;
                 }
 
-                h3 {
-                    @include h3;
-                }
-
-                h5 {
-                    @include h5;
-                }
-
                 ul {
                     list-style: none;
                     padding: 0;
@@ -236,8 +231,6 @@
                 box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.10);
                 margin-top: 10px;
                 display: flex;
-                justify-content: center;
-                align-items: center;
                 flex-direction: column;
 
                 &.dark {
@@ -250,8 +243,6 @@
                 }
 
                 h5 {
-                    @includes h5;
-                    color: $black;
                     font-weight: 700;
                     margin-bottom: 15px;
                 }
@@ -270,13 +261,38 @@
                     }
                 }
 
+                .price-with-sale {
+                    width: 100%;
+                    display: flex;
+                    gap: 10px;
+
+                    .discount-price {
+                        font-size: 1.5rem;
+                        color: var(--color-gray-900);
+                        font-weight: 700;
+
+                        &.dark {
+                            color: var(--color-gray-000);
+                        }
+                    }
+
+                    .regular-price {
+                        text-decoration: line-through;
+                        margin-left: 10px;
+                    }
+                }
+
                 .price {
                     display: flex;
 
                     .discount-price {
-                        font-size: 1.5rem;
-                        color: $black;
+                        font-size: 2.5rem;
+                        color: var(--color-gray-900);
                         font-weight: 700;
+
+                        &.dark {
+                            color: var(--color-gray-000);
+                        }
                     }
 
                     .regular-price {
@@ -293,7 +309,6 @@
 
         .program-details {
             h3 {
-                @include h3;
                 margin: 40px 0 30px 0;
 
                 @include lg {
@@ -343,7 +358,7 @@
                         width: 55px;
                         height: 55px;
                         border-radius: 50%;
-                        background: $gray-200;
+                        background: var(--color-gray-200);
                         padding: 10px;
                         display: flex;
                         align-items: center;
@@ -351,7 +366,7 @@
                         margin: 0 0 30px 0;
 
                         &.dark {
-                            background: $gray-800 !important;
+                            background: var(--color-gray-800);
                         }
 
                         @include lg {
@@ -364,13 +379,13 @@
                             width: 35px;
                             height: 35px;
                             border-radius: 50%;
-                            background: $white;
+                            background: var(--color-gray-000);
                             display: flex;
                             align-items: center;
                             justify-content: center;
 
                             &.dark {
-                                background: $gray-700 !important;
+                                background: var(--color-gray-500);
                             }
 
                             @include lg {
@@ -380,11 +395,11 @@
 
                             span {
                                 font-size: 20px;
-                                color: $black;
+                                color: var(--color-gray-900);
                                 font-weight: 900;
 
                                 &.dark {
-                                    color: $white !important;
+                                    color: var(--color-gray-000);
                                 }
                             }
                         }
@@ -393,7 +408,6 @@
                     .step-info {
                         h4 {
                             font-size: 1rem;
-                            color: $black;
                             font-weight: bold;
 
                             @include lg {
@@ -452,7 +466,6 @@
                     }
 
                     h3 {
-                        @include h3;
                         color: $white;
                     }
 
