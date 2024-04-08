@@ -1,11 +1,11 @@
 #contact {
-    background-color: var(--color-gray-100);
+    //background-color: var(--color-gray-100);
     position: relative;
     z-index: 1;
 
-    &.dark {
-        background-color: var(--color-gray-800);
-    }
+    //&.dark {
+    //    background-color: var(--color-gray-900);
+    //}
 
     .container {
         display: flex;
