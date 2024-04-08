@@ -2,13 +2,14 @@
 
 public class CourseViewModel
 {
-    public ImageViewModel Image { get; set; } = null!;
-    public string? Tag { get; set; }
-    public string SaveIcon { get; set; } = null!;
+    public int Id { get; set; }
+    public ImageViewModel? Image { get; set; }
     public string Title { get; set; } = null!;
-    public string Author { get; set; } = null!;
-    public double Price { get; set; }
-    public double? SalesPrice { get; set; }
-    public string Duration { get; set; } = null!;
-    public string Rating { get; set; } = null!;
+    public string? Price { get; set; }
+    public string? DiscountPrice { get; set; }
+    public string? Hours { get; set; }
+    public bool IsBestSeller { get; set; }
+    public string? LikesInNumbers { get; set; }
+    public string? LikesInProcent { get; set; }
+    public string? Author { get; set; }
 }

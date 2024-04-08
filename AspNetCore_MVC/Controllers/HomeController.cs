@@ -1,31 +1,55 @@
 using AspNetCore_MVC.ViewModels.Sections;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
+
 
 
 namespace AspNetCore_MVC.Controllers;
 
-public class HomeController : Controller
+public class HomeController(HttpClient http) : Controller
 {
-    [Route("/")]
-    [HttpGet]
+    private readonly HttpClient _http = http;
+
     public IActionResult Index()
     {
-        ViewData["Title"] = "Task Management Assistant";
-        return View();
+        var viewModel = new NewsletterViewModel();
+        return View(viewModel);
     }
 
     [HttpPost]
-    public IActionResult Subscribe(NewsletterViewModel viewModel)
+    public async Task<IActionResult> Index(NewsletterViewModel viewModel)
     {
         if (ModelState.IsValid)
         {
-            return RedirectToAction("Index");
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await http.PostAsync("https://localhost:7106/api/subscribers?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
 
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewData["Status"] = "Success";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    ViewData["Status"] = "AlreadyExists";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ViewData["Status"] = "Unauthorized";
+                }
+            }
+            catch
+            {
+                ViewData["Status"] = "ConnectionFailed";
+            }
         }
-
-        ModelState.AddModelError("IncorrectValues", "Provide a correct email address");
-        ViewData["ErrorMessage"] = "Provide a correct email address";
-        return RedirectToAction("Index");
+        else
+        {
+            ViewData["Status"] = "Invalid";
+        }
+        return View(viewModel);
     }
 
 }
