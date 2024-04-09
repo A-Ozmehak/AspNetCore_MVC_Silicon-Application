@@ -5,6 +5,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace AspNetCore_MVC.Controllers;
 
@@ -20,102 +21,115 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     [Route("/account/details")]
     public async Task<IActionResult> Details()
     {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        var user = await _userManager.GetUserAsync(User);
+        var address = await _addressService.GetAddressAsync(userId!);
+
         var viewModel = new AccountDetailsViewModel
         {
-            ProfileInfo = await PopulateProfileInfoAsync()
+            BasicInfo = user != null ? new AccountDetailsBasicInfoViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email!,
+                Phone = user.PhoneNumber,
+                Biography = user.Bio
+            } : null,
+            AddressInfo = address != null ? new AccountDetailsAddressInfoViewModel
+            {
+                AddressLine_1 = address.AddressLine_1,
+                AddressLine_2 = address.AddressLine_2,
+                PostalCode = address.PostalCode,
+                City = address.City,
+            } : null
         };
-
-        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
-        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
 
         return View(viewModel);
     }
     #endregion
 
     #region HttpPost Details
+
     [HttpPost]
     [Route("/account/details")]
     public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
-        if (!ModelState.IsValid)
-        {
-            ModelState.AddModelError("IncorrectValues", "Provide the required information");
-            ViewData["ErrorMessage"] = "Provide the required information";
-        }
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var user = await _userManager.GetUserAsync(User);
+        var address = await _addressService.GetAddressAsync(userId!);
 
-        if (viewModel.BasicInfo != null)
+        if (ModelState.IsValid)
         {
-            if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+            if (viewModel.BasicInfo != null)
             {
-                var user = await _userManager.GetUserAsync(User);
-                if (user != null)
-                {
-                    user.FirstName = viewModel.BasicInfo!.FirstName;
-                    user.LastName = viewModel.BasicInfo.LastName;
-                    user.Email = viewModel.BasicInfo.Email;
-                    user.PhoneNumber = viewModel.BasicInfo.Phone;
-                    user.Bio = viewModel.BasicInfo.Biography;
-
-                    var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
-                    {
-                        ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                        ViewData["ErrorMessage"] = "Something went wrong! Unable to update basic information.";
-                    }
-                }
+                await UpdateBasicInfo(viewModel.BasicInfo);
             }
-        }
-
-        if (viewModel.AddressInfo != null)
-        {
-            if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
+            else if (user != null)
             {
-                var user = await _userManager.GetUserAsync(User);
-                if (user != null)
+                viewModel.BasicInfo = new AccountDetailsBasicInfoViewModel
                 {
-                    var address = await _addressService.GetAddressAsync(user.Id);
-                    if (address != null)
-                    {
-                        address.AddressLine_1 = viewModel.AddressInfo!.AddressLine_1;
-                        address.AddressLine_2 = viewModel.AddressInfo.AddressLine_2;
-                        address.PostalCode = viewModel.AddressInfo.PostalCode;
-                        address.City = viewModel.AddressInfo.City;
-
-                        var result = await _addressService.UpdateAddressAsync(address);
-                        if (!result)
-                        {
-                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                            ViewData["ErrorMessage"] = "Something went wrong! Unable to update address information";
-                        }
-                    }
-                    else
-                    {
-                        address = new AddressEntity
-                        {
-                            UserId = user.Id,
-                            AddressLine_1 = viewModel.AddressInfo!.AddressLine_1,
-                            AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
-                            PostalCode = viewModel.AddressInfo.PostalCode,
-                            City = viewModel.AddressInfo.City
-                        };
-                        var result = await _addressService.CreateAddressAsync(address);
-                        if (!result)
-                        {
-                            ModelState.AddModelError("IncorrectValues", "Something went wrong! Unable to save data.");
-                            ViewData["ErrorMessage"] = "Something went wrong! Unable to update address information";
-                        }
-                    }
-                }
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email!,
+                    Phone = user.PhoneNumber,
+                    Biography = user.Bio
+                };
             }
-        }
 
-        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
-        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
-        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+            if (viewModel.AddressInfo != null)
+            {
+                await UpdateAddressInfo(viewModel.AddressInfo);
+            }
+            else if (address != null)
+            {
+                viewModel.AddressInfo = new AccountDetailsAddressInfoViewModel
+                {
+                    AddressLine_1 = address.AddressLine_1,
+                    AddressLine_2 = address.AddressLine_2,
+                    PostalCode = address.PostalCode,
+                    City = address.City,
+                };
+            }
+
+            return RedirectToAction("Details");
+        }
 
         return View(viewModel);
     }
+
     #endregion
+
+    public async Task UpdateBasicInfo(AccountDetailsBasicInfoViewModel viewModel)
+    {
+        var user = await _userManager.GetUserAsync(User);
+        user!.FirstName = viewModel.FirstName;
+        user.LastName = viewModel.LastName;
+        user.Email = viewModel.Email;
+        user.PhoneNumber = viewModel.Phone;
+        user.Bio = viewModel.Biography;
+
+        await _userManager.UpdateAsync(user);
+    }
+
+    public async Task UpdateAddressInfo(AccountDetailsAddressInfoViewModel viewModel)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var address = await _addressService.GetAddressAsync(userId!);
+        if (address != null)
+        {
+            address.AddressLine_1 = viewModel.AddressLine_1;
+            address.AddressLine_2 = viewModel.AddressLine_2;
+            address.PostalCode = viewModel.PostalCode;
+            address.City = viewModel.City;
+
+            await _addressService.UpdateAddressAsync(address);
+        }
+        else
+        {
+            // Handle the case when address is null
+        }
+    }
 
 
     private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
@@ -179,42 +193,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     }
     #endregion
 
-    private async Task<AccountDetailsBasicInfoViewModel> PopulateBasicInfoAsync()
-    {
-        var user = await _userManager.GetUserAsync(User);
-
-        return new AccountDetailsBasicInfoViewModel
-        {
-            UserId = user!.Id,
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email!,
-            Phone = user.PhoneNumber,
-            Biography = user.Bio
-        };
-    }
-
-    private async Task<AccountDetailsAddressInfoViewModel> PopulateAddressInfoAsync()
-    {
-        var user = await _userManager.GetUserAsync(User);
-        if (user != null)
-        {
-            var address = await _addressService.GetAddressAsync(user.Id);
-            if (address != null)
-            {
-                return new AccountDetailsAddressInfoViewModel
-                {
-                    AddressLine_1 = address.AddressLine_1,
-                    AddressLine_2 = address.AddressLine_2,
-                    PostalCode = address.PostalCode,
-                    City = address.City,
-                };
-            }
-          
-        }
-
-        return new AccountDetailsAddressInfoViewModel();
-    }
 
     #region [HttpGet] Security
     [Route("/account/security")]
