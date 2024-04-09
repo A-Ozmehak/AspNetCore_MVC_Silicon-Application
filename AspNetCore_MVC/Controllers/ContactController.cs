@@ -1,11 +1,17 @@
 ﻿using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using static System.Net.WebRequestMethods;
+using System.Text;
 
 namespace AspNetCore_MVC.Controllers;
 
-public class ContactController : Controller
+public class ContactController(HttpClient http) : Controller
 {
+    private readonly HttpClient _http = http;
+
     #region [HttpGet] Index
+
     [Route("/contact")]
     [HttpGet]
     public IActionResult Index()
@@ -16,13 +22,35 @@ public class ContactController : Controller
     #endregion
 
     #region [HttpPost] Index
-    public IActionResult Index(ContactViewModel viewModel)
+    [HttpPost]
+    public async Task<IActionResult> Index(ContactViewModel viewModel)
     {
         if (ModelState.IsValid)
-            return View(viewModel);
+        {
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await http.PostAsync("https://localhost:7106/api/contact?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
 
-        ModelState.AddModelError("IncorrectValues", "You must provide a name, a valid email and a message");
-        ViewData["ErrorMessage"] = "You must provide a name, a valid email and a message";
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewData["Status"] = "Success";
+                    return View(new ContactViewModel());
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ViewData["Status"] = "Unauthorized";
+                }
+            }
+            catch
+            {
+                ViewData["Status"] = "ConnectionFailed";
+            }
+        }
+        else
+        {
+            ViewData["Status"] = "Invalid";
+        }
         return View(viewModel);
     }
 
