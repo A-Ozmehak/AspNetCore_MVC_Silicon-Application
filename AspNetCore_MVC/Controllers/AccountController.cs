@@ -33,6 +33,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email!,
+                Phone = user.PhoneNumber,
+                Biography = user.Bio
             } : null,
             AddressInfo = address != null ? new AccountDetailsAddressInfoViewModel
             {
@@ -73,6 +75,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     Email = user.Email!,
+                    Phone = user.PhoneNumber,
+                    Biography = user.Bio
                 };
             }
 
