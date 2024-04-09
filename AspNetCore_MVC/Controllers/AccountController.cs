@@ -193,42 +193,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     }
     #endregion
 
-    private async Task<AccountDetailsBasicInfoViewModel> PopulateBasicInfoAsync()
-    {
-        var user = await _userManager.GetUserAsync(User);
-
-        return new AccountDetailsBasicInfoViewModel
-        {
-            //UserId = user!.Id,
-            FirstName = user.FirstName,
-            LastName = user.LastName,
-            Email = user.Email!,
-            Phone = user.PhoneNumber,
-            Biography = user.Bio
-        };
-    }
-
-    private async Task<AccountDetailsAddressInfoViewModel> PopulateAddressInfoAsync()
-    {
-        var user = await _userManager.GetUserAsync(User);
-        if (user != null)
-        {
-            var address = await _addressService.GetAddressAsync(user.Id);
-            if (address != null)
-            {
-                return new AccountDetailsAddressInfoViewModel
-                {
-                    AddressLine_1 = address.AddressLine_1,
-                    AddressLine_2 = address.AddressLine_2,
-                    PostalCode = address.PostalCode,
-                    City = address.City,
-                };
-            }
-          
-        }
-
-        return new AccountDetailsAddressInfoViewModel();
-    }
 
     #region [HttpGet] Security
     [Route("/account/security")]
