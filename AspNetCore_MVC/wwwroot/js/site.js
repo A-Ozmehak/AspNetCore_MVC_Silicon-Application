@@ -71,43 +71,6 @@ document.querySelector('#fileInput').addEventListener('change', function () {
 });
 
 
-
-
-//document.getElementById('basicInfoForm').addEventListener('submit', function (event) {
-//    event.preventDefault(); // Prevent the form from submitting via the browser
-
-//    var form = this;
-//    var xhr = new XMLHttpRequest();
-//    xhr.open(form.method, form.action);
-//    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//    xhr.onload = function () {
-//        if (xhr.status === 200) {
-//            var data = JSON.parse(xhr.responseText);
-//            // If the server returns a success message, display it
-//            if (data.successMessage) {
-//                document.getElementById('successMessage').textContent = data.successMessage;
-//            }
-
-//            // If the server returns updated basic info, update the form fields
-//            if (data.basicInfo) {
-//                document.getElementById('form-firstname').value = data.basicInfo.FirstName;
-//                document.getElementById('form-lastname').value = data.basicInfo.LastName;
-//                document.getElementById('form-email').value = data.basicInfo.Email;
-//                document.getElementById('form-phone').value = data.basicInfo.Phone;
-//                document.getElementById('form-bio').value = data.basicInfo.Biography;
-//                // Update the rest of the form fields in the same way
-//            }
-//        } else if (xhr.status !== 200) {
-//            var data = JSON.parse(xhr.responseText);
-//            // If the server returns an error message, display it
-//            if (data.errorMessage) {
-//                document.getElementById('errorMessage').textContent = data.errorMessage;
-//            }
-//        }
-//    };
-//    xhr.send(new URLSearchParams(new FormData(form)).toString());
-//});
-
 document.getElementById('basicInfoForm').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from submitting via the browser
 

@@ -45,9 +45,6 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             } : null
         };
 
-        //TempData["BasicInfo"] = viewModel.BasicInfo;
-        //TempData["AddressInfo"] = viewModel.AddressInfo;
-
         return View(viewModel);
     }
     #endregion
