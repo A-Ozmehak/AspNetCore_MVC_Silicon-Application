@@ -3,14 +3,14 @@
          <div class="image-container">
             <img id="profileImage"
                  src="@(Model.ProfileInfo != null ? Model.ProfileInfo.ProfileImage : "~/images/default-avatar.png")"
-                 alt="@(Model.ProfileInfo != null && !string.IsNullOrEmpty(Model.ProfileInfo.FirstName) && !string.IsNullOrEmpty(Model.ProfileInfo.LastName) ? $"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}" : "User")"
+                 alt="@(Model.BasicInfo != null && !string.IsNullOrEmpty(Model.BasicInfo.FirstName) && !string.IsNullOrEmpty(Model.BasicInfo.LastName) ? $"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}" : "User")"
                  class="rounded-image" />
         </div>
         @await Html.PartialAsync("~/Views/Sections/_UploadProfileImagePartial.cshtml", new UploadProfileImageViewModel())
 
 
-        <h5>@(Model.ProfileInfo != null && !string.IsNullOrEmpty(Model.ProfileInfo.FirstName) && !string.IsNullOrEmpty(Model.ProfileInfo.LastName) ? $"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}" : "User")</h5>
-        <p>@(Model.ProfileInfo != null ? Model.ProfileInfo.Email : "")</p>
+        <h5>@(Model.BasicInfo != null && !string.IsNullOrEmpty(Model.BasicInfo.FirstName) && !string.IsNullOrEmpty(Model.BasicInfo.LastName) ? $"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}" : "User")</h5>
+        <p>@(Model.BasicInfo != null ? Model.BasicInfo.Email : "")</p>
     </div>
     <nav>
         <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>

@@ -4,7 +4,7 @@ namespace AspNetCore_MVC.ViewModels.Views;
 
 public class AccountDetailsBasicInfoViewModel
 {
-    public string UserId { get; set; } = null!;
+    //public string UserId { get; set; } = null!;
 
     [Required(ErrorMessage = "A first name is required")]
     [DataType(DataType.Text)]
