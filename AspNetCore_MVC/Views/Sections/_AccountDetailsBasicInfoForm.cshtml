@@ -1,10 +1,10 @@
 ﻿@model AccountDetailsViewModel
 
 <section class="basic-info">
+  
     <form id="basicInfoForm" method="post" asp-controller="Account" asp-action="Details" novalidate>
         <h2>Account Details</h2>
         <h5>Basic Info</h5>
-
         <div class="content">
             <div id="form-firstname" class="input-group">
                 <label asp-for="BasicInfo!.FirstName"></label>

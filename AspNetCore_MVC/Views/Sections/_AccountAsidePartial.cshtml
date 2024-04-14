@@ -2,7 +2,7 @@
     <div class="profile-info">
          <div class="image-container">
             <img id="profileImage"
-                 src="@(Model.ProfileInfo != null ? Model.ProfileInfo.ProfileImage : "~/images/default-avatar.png")"
+                 src="@(Model.ProfileInfo != null ? Model.ProfileInfo.ProfileImage : "/images/default-avatar.png")"
                  alt="@(Model.BasicInfo != null && !string.IsNullOrEmpty(Model.BasicInfo.FirstName) && !string.IsNullOrEmpty(Model.BasicInfo.LastName) ? $"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}" : "User")"
                  class="rounded-image" />
         </div>

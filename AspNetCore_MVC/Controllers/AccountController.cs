@@ -42,7 +42,14 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 AddressLine_2 = address.AddressLine_2,
                 PostalCode = address.PostalCode,
                 City = address.City,
-            } : null
+            } : null, 
+            //ProfileInfo = new ProfileInfoViewModel
+            //{
+            //    FirstName = user!.FirstName,
+            //    LastName = user.LastName,
+            //    Email = user.Email!,
+            //    ProfileImage = user.ProfileImage!
+            //}
         };
 
         return View(viewModel);
@@ -93,6 +100,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             }
 
             return RedirectToAction("Details");
+         
         }
 
         return View(viewModel);
