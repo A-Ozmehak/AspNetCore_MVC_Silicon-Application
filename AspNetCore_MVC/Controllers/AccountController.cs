@@ -42,7 +42,11 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 AddressLine_2 = address.AddressLine_2,
                 PostalCode = address.PostalCode,
                 City = address.City,
-            } : null
+            } : null,
+            ProfileInfo = new ProfileInfoViewModel
+            {
+                ProfileImage = user!.ProfileImage!
+            }
         };
 
         return View(viewModel);
@@ -127,7 +131,16 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         }
         else
         {
-            // Handle the case when address is null
+            var newAddress = new AddressEntity
+            {
+                UserId = userId!,
+                AddressLine_1 = viewModel.AddressLine_1,
+                AddressLine_2 = viewModel.AddressLine_2,
+                PostalCode = viewModel.PostalCode,
+                City = viewModel.City,
+            };
+
+            await _addressService.CreateAddressAsync(newAddress);
         }
     }
 
