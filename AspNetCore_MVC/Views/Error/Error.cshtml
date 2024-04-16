@@ -1,6 +1,6 @@
 ﻿@{
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
-    var isDark = (themeMode == "dark") ? true : false;
+    var isDark = themeMode == "dark";
 }
 
 <section id="error">

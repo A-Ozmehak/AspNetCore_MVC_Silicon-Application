@@ -5,7 +5,7 @@
     var downloadApp = content.First();
 
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
-    var isDark = (themeMode == "dark") ? true : false;
+    var isDark = themeMode == "dark";
 }
 
 @if (content != null)

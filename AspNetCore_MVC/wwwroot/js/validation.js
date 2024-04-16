@@ -52,10 +52,8 @@ const passwordValidator = (element) => {
 }
 
 const checkboxValidator = (element) => {
-    if (element.checked)
-        formErrorHandler(element, true)
-    else
-        formErrorHandler(element, false)
+    const isValid = element.checked;
+    formErrorHandler(element, isValid);
 }
 
 const textareaValidator = (element, minLength = 5) => {
@@ -66,39 +64,42 @@ const textareaValidator = (element, minLength = 5) => {
 }
 
 let forms = document.querySelectorAll('form')
-let inputs = forms[0].querySelectorAll('input')
-let textareas = forms[0].querySelectorAll('textarea')
 
-textareas.forEach(textarea => {
-    if (textarea.dataset.val === 'true') {
-        textarea.addEventListener('keyup', (e) => {
-            textareaValidator(e.target)
-        })
-    }
-})
+forms.forEach(form => {
+    let inputs = form.querySelectorAll('input')
+    let textareas = form.querySelectorAll('textarea')
 
-inputs.forEach(input => {
-    if (input.dataset.val === 'true') {
-
-        if (input.type === 'checkbox') {
-            input.addEventListener('change', (e) => {
-                checkboxValidator(e.target)
+    textareas.forEach(textarea => {
+        if (textarea.dataset.val === 'true') {
+            textarea.addEventListener('keyup', (e) => {
+                textareaValidator(e.target)
             })
         }
-        else {
-            input.addEventListener('keyup', (e) => {
-                switch (e.target.type) {
-                    case 'text':
-                        textValidator(e.target)
-                        break;
-                    case 'email':
-                        emailValidator(e.target)
-                        break;
-                    case 'password':
-                        passwordValidator(e.target)
-                        break;
-                }
-            })
+    })
+
+    inputs.forEach(input => {
+        if (input.dataset.val === 'true') {
+
+            if (input.type === 'checkbox') {
+                input.addEventListener('change', (e) => {
+                    checkboxValidator(e.target)
+                })
+            }
+            else {
+                input.addEventListener('keyup', (e) => {
+                    switch (e.target.type) {
+                        case 'text':
+                            textValidator(e.target)
+                            break;
+                        case 'email':
+                            emailValidator(e.target)
+                            break;
+                        case 'password':
+                            passwordValidator(e.target)
+                            break;
+                    }
+                })
+            }
         }
-    }
+    })
 })
