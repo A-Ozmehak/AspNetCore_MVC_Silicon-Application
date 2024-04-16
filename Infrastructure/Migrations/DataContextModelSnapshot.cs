@@ -53,7 +53,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.AppEntity", b =>
@@ -94,7 +94,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("DownloadAppId");
 
-                    b.ToTable("App");
+                    b.ToTable("App", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.BrandEntity", b =>
@@ -120,7 +120,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ShowcaseId");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.DownloadAppEntity", b =>
@@ -145,7 +145,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DownloadApp");
+                    b.ToTable("DownloadApp", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.FeatureEntity", b =>
@@ -166,7 +166,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Features");
+                    b.ToTable("Features", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.FeatureItemEntity", b =>
@@ -200,7 +200,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("FeatureId");
 
-                    b.ToTable("FeatureItems");
+                    b.ToTable("FeatureItems", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ManageWorkEntity", b =>
@@ -225,7 +225,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manage");
+                    b.ToTable("Manage", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ShowcaseEntity", b =>
@@ -258,7 +258,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Showcase");
+                    b.ToTable("Showcase", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.SliderEntity", b =>
@@ -287,7 +287,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slider");
+                    b.ToTable("Slider", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.TextIconEntity", b =>
@@ -313,7 +313,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ManageWorkId");
 
-                    b.ToTable("TextAndIcon");
+                    b.ToTable("TextAndIcon", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ToolEntity", b =>
@@ -343,7 +343,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("TopToolId");
 
-                    b.ToTable("Tool");
+                    b.ToTable("Tool", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.TopToolEntity", b =>
@@ -364,7 +364,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TopTool");
+                    b.ToTable("TopTool", (string)null);
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
