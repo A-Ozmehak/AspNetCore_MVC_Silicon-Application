@@ -37,16 +37,21 @@ aside {
         margin-top: 50px;
         text-align: left;
 
-        .btn-theme-s {
+        .btn-theme {
             margin: 10px 0;
             text-align: left;
             justify-content: flex-start;
-            background: $white;
-            color: $black;
+            background: var(--color-gray-000);
+            color: var(--color-gray-900);
 
-            &.active,
+            &.active {
+                background: $theme;
+                color: var(--color-gray-000);
+            }
+
             &:hover {
                 background: $theme;
+                color: var(--color-gray-000);
             }
         }
     }

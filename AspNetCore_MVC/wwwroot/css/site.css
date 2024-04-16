@@ -768,15 +768,20 @@ aside nav {
   margin-top: 50px;
   text-align: left;
 }
-aside nav .btn-theme-s {
+aside nav .btn-theme {
   margin: 10px 0;
   text-align: left;
   justify-content: flex-start;
-  background: #FFFFFF;
-  color: #000000;
+  background: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
-aside nav .btn-theme-s.active, aside nav .btn-theme-s:hover {
+aside nav .btn-theme.active {
   background: #6366F1;
+  color: var(--color-gray-000);
+}
+aside nav .btn-theme:hover {
+  background: #6366F1;
+  color: var(--color-gray-000);
 }
 
 .alert {

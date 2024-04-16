@@ -1,4 +1,9 @@
-﻿<aside>
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = themeMode == "dark";
+}
+
+<aside>
     <div class="profile-info">
          <div class="image-container">
             <img id="profileImage"
@@ -13,9 +18,9 @@
         <p>@(Model.BasicInfo != null ? Model.BasicInfo.Email : "")</p>
     </div>
     <nav>
-        <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
-        <a class="btn-theme-s" asp-controller="Account" asp-action="Security">Security</a>
-        <a class="btn-theme-s" asp-controller="Account" asp-action="SavedCourses">Saved Courses</a>
-        <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">Sign out</a>
+        <a class="btn-theme @(ViewContext.RouteData.Values["action"]!.ToString() == "Details" ? "active" : "")" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i> Account Details</a>
+        <a class="btn-theme @(ViewContext.RouteData.Values["action"]!.ToString() == "Security" ? "active" : "")" asp-controller="Account" asp-action="Security"><i class="fa-solid fa-lock"></i> Security</a>
+        <a class="btn-theme @(ViewContext.RouteData.Values["action"]!.ToString() == "SavedCourses" ? "active" : "")" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-bookmark"></i> Saved Courses</a>
+        <a class="btn-theme" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a>
     </nav>
 </aside>
