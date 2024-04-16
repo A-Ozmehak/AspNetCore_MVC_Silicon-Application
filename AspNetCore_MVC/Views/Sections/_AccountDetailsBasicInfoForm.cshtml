@@ -8,18 +8,39 @@
         <div class="content">
             <div id="form-firstname" class="input-group">
                 <label asp-for="BasicInfo!.FirstName"></label>
-                <span asp-validation-for="BasicInfo!.FirstName"></span>
-                <input asp-for="BasicInfo!.FirstName" />
+                @if (!Model.IsExternalAccount)
+                {
+                    <span asp-validation-for="BasicInfo!.FirstName"></span>
+                    <input asp-for="BasicInfo!.FirstName" />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.FirstName" readonly />
+                }
             </div>
             <div id="form-lastname" class="input-group">
                 <label asp-for="BasicInfo!.LastName"></label>
-                <span asp-validation-for="BasicInfo!.LastName"></span>
-                <input asp-for="BasicInfo!.LastName" />
+                @if (!Model.IsExternalAccount)
+                {
+                    <span asp-validation-for="BasicInfo!.LastName"></span>
+                    <input asp-for="BasicInfo!.LastName" />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.LastName" readonly />
+                }
             </div>
             <div id="form-email" class="input-group">
                 <label asp-for="BasicInfo!.Email"></label>
-                <span asp-validation-for="BasicInfo!.Email"></span>
-                <input asp-for="BasicInfo!.Email" />
+                @if (!Model.IsExternalAccount)
+                {
+                    <span asp-validation-for="BasicInfo!.Email"></span>
+                    <input asp-for="BasicInfo!.Email" />
+                }
+                else
+                {
+                    <input asp-for="BasicInfo!.Email" readonly />
+                }
             </div>
             <div id="form-phone" class="input-group">
                 <label asp-for="BasicInfo!.Phone"></label>

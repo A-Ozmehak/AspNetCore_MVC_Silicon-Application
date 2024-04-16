@@ -33,7 +33,7 @@
                 display: grid;
                 gap: 1rem 2rem;
                 grid-auto-columns: 1fr;
-                grid-template-areas: "email" "password" "remember" "button" "forgot";
+                grid-template-areas: "email" "password" "remember" "button" "forgot" "external";
 
                 #form-email {
                     grid-area: email;
@@ -62,18 +62,30 @@
                     grid-area: hr;
                 }
 
-                #external-signin {
+                #external-providers {
                     grid-area: external;
                     display: flex;
+                    flex-direction: column;
                     gap: 1rem;
+                    align-items: center;
+
+                    p {
+                        font-weight: 900;
+                    }
+
+                    .providers {
+                        display: flex;
+                        justify-content: space-around;
+                        gap: 15px;
+                        width: 100%;
+                    }
                 }
 
                 a {
                     flex: 1;
-                    text-decoration: underline;
 
                     &:hover {
-                        text-decoration: none;
+                        text-decoration: underline;
                     }
                 }
             }

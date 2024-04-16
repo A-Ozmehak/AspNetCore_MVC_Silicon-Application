@@ -4,6 +4,7 @@ using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -50,6 +51,21 @@ builder.Services.AddScoped<DownloadAppService>();
 builder.Services.AddScoped<TopToolService>();
 builder.Services.AddScoped<SliderService>();
 builder.Services.AddScoped<AddressService>();
+
+builder.Services.AddAuthentication().AddFacebook(x => {
+    x.AppId = builder.Configuration["Authentication:Facebook:AppId"]!;
+    x.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"]!;
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+});
+
+object value = builder.Services.AddAuthentication()
+      .AddGoogle(options =>
+      {
+          options.ClientId = builder.Configuration["Authentication:Google:ClientId"]!;
+          options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]!;
+          options.CallbackPath = "/signin-google";
+      });
 
 
 var app = builder.Build();
