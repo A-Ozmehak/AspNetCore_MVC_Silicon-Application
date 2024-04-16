@@ -1789,7 +1789,7 @@ footer .container p.dark {
   display: flex;
   align-items: center;
   gap: 5px;
-  border-bottom: 3px solid #EFF2FC;
+  border-bottom: 1px solid #F3F6FF;
   color: #4C82F7 !important;
   font-weight: 600;
   padding-bottom: 10px;
@@ -1797,6 +1797,7 @@ footer .container p.dark {
 }
 #courses .container .courses-section .courses .course .course-info .price-with-sale {
   display: flex;
+  border-bottom: 1px solid #F3F6FF;
 }
 #courses .container .courses-section .courses .course .course-info .price-with-sale .regular-price {
   color: #B4B7C9 !important;
