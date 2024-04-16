@@ -3,7 +3,8 @@
 public class CourseViewModel
 {
     public int Id { get; set; }
-    public ImageViewModel? Image { get; set; }
+    public string? CourseImage { get; set; }
+    public string? CourseBgImage { get; set; }
     public string Title { get; set; } = null!;
     public string? Price { get; set; }
     public string? DiscountPrice { get; set; }

@@ -1707,6 +1707,7 @@ footer .container p.dark {
   flex-direction: column;
   gap: 20px;
   max-width: 416px;
+  height: 473px;
 }
 @media (min-width: 992px) {
   #courses .container .courses-section .courses {
@@ -1777,6 +1778,9 @@ footer .container p.dark {
 }
 #courses .container .courses-section .courses .course .course-info h2.dark {
   color: var(--color-gray-000);
+}
+#courses .container .courses-section .courses .course .course-info .author {
+  color: var(--color-gray-400);
 }
 #courses .container .courses-section .courses .course .course-info p {
   margin-bottom: 10px;
