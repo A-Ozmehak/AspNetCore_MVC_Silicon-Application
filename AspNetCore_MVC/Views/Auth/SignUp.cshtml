@@ -39,7 +39,7 @@
                 <div id="form-confirm" class="input-group">
                     <label asp-for="ConfirmPassword"></label>
                     <span asp-validation-for="ConfirmPassword"></span>
-                    <input asp-for="ConfirmPassword" />
+                    <input asp-for="ConfirmPassword" data-val-equalto-other="Password" />
                 </div>
                 <div id="form-terms" class="checkbox">
                     <div class="checkbox-group">

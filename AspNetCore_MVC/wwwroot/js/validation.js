@@ -15,13 +15,6 @@ const formErrorHandler = (element, validationResult) => {
     }
 }
 
-const compareValidator = (element, compareValue) => {
-    if (element.value === compareValue)
-        return true;
-
-    return false;
-}
-
 const textValidator = (element, minLength = 2) => {
     if (element.value.length >= minLength) {
         formErrorHandler(element, true)
@@ -38,7 +31,7 @@ const emailValidator = (element) => {
 
 const passwordValidator = (element) => {
     if (element.dataset.valEqualtoOther !== undefined) {
-        let password = document.getElementsByName(element.dataset.valEqualtoOther.replace('*', 'Form'))[0].value
+        let password = document.getElementsByName(element.dataset.valEqualtoOther)[0].value
 
         if (element.value === password)
             formErrorHandler(element, true)

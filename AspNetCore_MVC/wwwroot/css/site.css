@@ -617,7 +617,7 @@ form .checkbox span.field-validation-error {
   position: static;
   top: 0;
   right: 0;
-  color: var(--color-danger);
+  color: var(--color-danger-dark);
 }
 form .checkbox-group {
   display: flex;
