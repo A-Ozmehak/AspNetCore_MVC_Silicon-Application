@@ -46,7 +46,8 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
             ProfileInfo = new ProfileInfoViewModel
             {
                 ProfileImage = user!.ProfileImage!
-            }
+            },
+            IsExternalAccount = user.IsExternalAccount
         };
 
         return View(viewModel);
