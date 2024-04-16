@@ -768,15 +768,20 @@ aside nav {
   margin-top: 50px;
   text-align: left;
 }
-aside nav .btn-theme-s {
+aside nav .btn-theme {
   margin: 10px 0;
   text-align: left;
   justify-content: flex-start;
-  background: #FFFFFF;
-  color: #000000;
+  background: var(--color-gray-000);
+  color: var(--color-gray-900);
 }
-aside nav .btn-theme-s.active, aside nav .btn-theme-s:hover {
+aside nav .btn-theme.active {
   background: #6366F1;
+  color: var(--color-gray-000);
+}
+aside nav .btn-theme:hover {
+  background: #6366F1;
+  color: var(--color-gray-000);
 }
 
 .alert {
@@ -1707,6 +1712,7 @@ footer .container p.dark {
   flex-direction: column;
   gap: 20px;
   max-width: 416px;
+  height: 473px;
 }
 @media (min-width: 992px) {
   #courses .container .courses-section .courses {
@@ -1778,6 +1784,9 @@ footer .container p.dark {
 #courses .container .courses-section .courses .course .course-info h2.dark {
   color: var(--color-gray-000);
 }
+#courses .container .courses-section .courses .course .course-info .author {
+  color: var(--color-gray-400);
+}
 #courses .container .courses-section .courses .course .course-info p {
   margin-bottom: 10px;
 }
@@ -1785,7 +1794,7 @@ footer .container p.dark {
   display: flex;
   align-items: center;
   gap: 5px;
-  border-bottom: 3px solid #EFF2FC;
+  border-bottom: 1px solid #F3F6FF;
   color: #4C82F7 !important;
   font-weight: 600;
   padding-bottom: 10px;
@@ -1793,6 +1802,7 @@ footer .container p.dark {
 }
 #courses .container .courses-section .courses .course .course-info .price-with-sale {
   display: flex;
+  border-bottom: 1px solid #F3F6FF;
 }
 #courses .container .courses-section .courses .course .course-info .price-with-sale .regular-price {
   color: #B4B7C9 !important;

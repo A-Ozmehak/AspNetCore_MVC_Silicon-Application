@@ -6,7 +6,7 @@
         <div class="courses">
             <div class="course">
                 <div class="course-image">
-                    <img src="/images/course1.svg" alt="course1">
+                    <img src="@course.CourseImage" alt="course1">
                 </div>
                 <div class="save-icon">
                     <i class="fa-solid fa-tag"></i>
@@ -20,16 +20,16 @@
                 <div class="course-info">
                     <h2>@course.Title</h2>
                     <p class="author">by @course.Author</p>
-                    @if (course.DiscountPrice != null)
+                    @if (course.DiscountPrice == "string")
+                    {
+                        <p class="price">$@course.Price</p>
+                    }
+                    else
                     {
                         <div class="price-with-sale">
                             <p class="sales-price">$@course.DiscountPrice</p>
                             <p class="regular-price">$@course.Price</p>
                         </div>
-                    }
-                    else
-                    {
-                        <p class="price">$@course.Price</p>
                     }
 
                     <div class="card-bottom">
