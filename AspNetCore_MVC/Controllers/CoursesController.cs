@@ -1,7 +1,5 @@
 ﻿using AspNetCore_MVC.ViewModels.Components;
 using AspNetCore_MVC.ViewModels.Sections;
-using AspNetCore_MVC.ViewModels.Views;
-using Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
