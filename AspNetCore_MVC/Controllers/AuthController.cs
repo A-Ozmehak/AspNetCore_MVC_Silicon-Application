@@ -4,14 +4,18 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
+using System.Text;
 
 namespace AspNetCore_MVC.Controllers;
 
-public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, HttpClient http, IConfiguration configuration) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
 
     #region [HttpGet] SignUp
     [HttpGet]
@@ -77,17 +81,53 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region [HttpPost] SignIn
     [HttpPost]
     [Route("/signin")]
+    //public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
+    //{
+    //    if (ModelState.IsValid)
+    //    {
+    //        var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
+    //        if (result.Succeeded)
+    //        {
+    //            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+    //                return Redirect(returnUrl);
+
+    //            return RedirectToAction("Details", "Account");
+    //        }
+    //    }
+
+    //    ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+    //    ViewData["ErrorMessage"] = "Incorrect email or password";
+    //    return View(viewModel);
+    //}
+
     public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
-            if (result.Succeeded)
+            if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.IsPersistent, false)).Succeeded)
             {
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
+                //var login = new Dictionary<string, string>()
+                //{
+                //    { "email", viewModel.Email }, { "password",  viewModel.Password }
+                //};
 
-                return RedirectToAction("Details", "Account");
+                //var content = new FormUrlEncodedContent(login);
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _http.PostAsync($"https://localhost:7106/api/Auth/token?key={_configuration["ApiKey"]}", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var token = await response.Content.ReadAsStringAsync();
+                    var cookieOptions = new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.Now.AddDays(1)
+                    };
+
+                    Response.Cookies.Append("AccessToken", token, cookieOptions);
+                }
+                return LocalRedirect(returnUrl);
             }
         }
 
@@ -232,6 +272,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [Route("/signout")]
     public new async Task<IActionResult> SignOut()
     {
+        Response.Cookies.Delete("AccessToken");
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }

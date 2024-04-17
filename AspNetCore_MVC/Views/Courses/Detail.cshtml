@@ -1,6 +1,8 @@
 ﻿@model CourseViewModel
 
 @{
+    ViewData["Title"] = Model.Title;
+
     var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
     var isDark = themeMode == "dark";
 }
