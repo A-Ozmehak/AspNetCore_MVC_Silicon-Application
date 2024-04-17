@@ -81,24 +81,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region [HttpPost] SignIn
     [HttpPost]
     [Route("/signin")]
-    //public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
-    //{
-    //    if (ModelState.IsValid)
-    //    {
-    //        var result = await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false);
-    //        if (result.Succeeded)
-    //        {
-    //            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-    //                return Redirect(returnUrl);
-
-    //            return RedirectToAction("Details", "Account");
-    //        }
-    //    }
-
-    //    ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
-    //    ViewData["ErrorMessage"] = "Incorrect email or password";
-    //    return View(viewModel);
-    //}
 
     public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
@@ -106,12 +88,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         {
             if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.IsPersistent, false)).Succeeded)
             {
-                //var login = new Dictionary<string, string>()
-                //{
-                //    { "email", viewModel.Email }, { "password",  viewModel.Password }
-                //};
-
-                //var content = new FormUrlEncodedContent(login);
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _http.PostAsync($"https://localhost:7106/api/Auth/token?key={_configuration["ApiKey"]}", content);
 
