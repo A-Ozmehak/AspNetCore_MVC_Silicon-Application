@@ -1,43 +1,51 @@
 ﻿@model CoursesViewModel
 
-@foreach(var course in Model.Courses)
+@if (Model != null)
 {
-    <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
-        <div class="courses">
-            <div class="course">
-                <div class="course-image">
-                    <img src="@course.CourseImage" alt="course1">
-                </div>
-                <div class="save-icon">
-                    <i class="fa-solid fa-tag"></i>
-                </div>
-                <div class="tag">
-                    @if (course.IsBestSeller)
-                    {
-                        <p>Best Seller</p>
-                    }
-                </div>
-                <div class="course-info">
-                    <h2>@course.Title</h2>
-                    <p class="author">by @course.Author</p>
-                    @if (course.DiscountPrice == "string")
-                    {
-                        <p class="price">$@course.Price</p>
-                    }
-                    else
-                    {
-                        <div class="price-with-sale">
-                            <p class="sales-price">$@course.DiscountPrice</p>
-                            <p class="regular-price">$@course.Price</p>
-                        </div>
-                    }
+    @foreach (var course in Model.Courses)
+    {
+        <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
+            <div class="courses">
+                <div class="course">
+                    <div class="course-image">
+                        <img src="@course.CourseImage" alt="course1">
+                    </div>
+                    <div class="save-icon">
+                        <i class="fa-solid fa-tag"></i>
+                    </div>
+                    <div class="tag">
+                        @if (course.IsBestSeller)
+                        {
+                            <p>Best Seller</p>
+                        }
+                    </div>
+                    <div class="course-info">
+                        <h2>@course.Title</h2>
+                        <p class="author">by @course.Author</p>
+                        @if (course.DiscountPrice == "string")
+                        {
+                            <p class="price">$@course.Price</p>
+                        }
+                        else
+                        {
+                            <div class="price-with-sale">
+                                <p class="sales-price">$@course.DiscountPrice</p>
+                                <p class="regular-price">$@course.Price</p>
+                            </div>
+                        }
 
-                    <div class="card-bottom">
-                        <p class="duration"><i class="fa-regular fa-clock"></i> @course.Hours hours</p>
-                        <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)</p>
+                        <div class="card-bottom">
+                            <p class="duration"><i class="fa-regular fa-clock"></i> @course.Hours hours</p>
+                            <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </a>
+        </a>
+    }
 }
+else
+{
+    <div>No courses found</div>
+}
+

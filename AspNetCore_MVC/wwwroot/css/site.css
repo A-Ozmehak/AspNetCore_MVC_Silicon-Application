@@ -1528,7 +1528,7 @@ footer .container p.dark {
   display: grid;
   gap: 1rem 2rem;
   grid-auto-columns: 1fr;
-  grid-template-areas: "email" "password" "remember" "button" "forgot";
+  grid-template-areas: "email" "password" "remember" "button" "forgot" "external";
 }
 #signin .container form .content #form-email {
   grid-area: email;
@@ -1551,17 +1551,27 @@ footer .container p.dark {
 #signin .container form .content hr {
   grid-area: hr;
 }
-#signin .container form .content #external-signin {
+#signin .container form .content #external-providers {
   grid-area: external;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: center;
+}
+#signin .container form .content #external-providers p {
+  font-weight: 900;
+}
+#signin .container form .content #external-providers .providers {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  width: 100%;
 }
 #signin .container form .content a {
   flex: 1;
-  text-decoration: underline;
 }
 #signin .container form .content a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 #signup {
