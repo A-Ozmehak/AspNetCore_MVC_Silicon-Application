@@ -1,79 +1,65 @@
 ﻿using AspNetCore_MVC.ViewModels.Components;
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
+using Infrastructure.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace AspNetCore_MVC.Controllers;
 
 [Authorize]
-public class CoursesController(HttpClient http) : Controller
+public class CoursesController(HttpClient http, IConfiguration configuration) : Controller
 {
     private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
+
+    #region Index
 
     [Route("/courses")]
     public async Task<IActionResult> Index()
     {
-            try
-            {
-                var response = await http.GetAsync("https://localhost:7106/api/courses?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    var courses = JsonConvert.DeserializeObject<List<CourseViewModel>>(content);
-                    var coursesViewModel = new CoursesViewModel { Courses = courses };
-                    return View(coursesViewModel);
-                }
-                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                {
-                    ViewData["Status"] = "Unauthorized";
-                }
-                else
-                {
-                    ViewData["Status"] = "Error";
-                }
-            }
-            catch
-            {
-                ViewData["Status"] = "ConnectionFailed";
-            }
-        return View(new CoursesViewModel { Courses = new List<CourseViewModel>() });
-    }
-
-
-    [Route("/courses/{id}")]
-    public async Task<IActionResult> Detail(int id)
-    {
-        try
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
         {
-            var response = await _http.GetAsync($"https://localhost:7106/api/courses/{id}?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl");
 
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _http.GetAsync($"https://localhost:7106/api/courses?key={_configuration["ApiKey"]}");
             if (response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                var course = JsonConvert.DeserializeObject<CourseViewModel>(content);
-                return View(course);
+                var courses = JsonConvert.DeserializeObject<List<CourseViewModel>>(content);
+                var coursesViewModel = new CoursesViewModel { Courses = courses };
+                return View(coursesViewModel);
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                ViewData["Status"] = "NotFound";
-            }
-            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-            {
-                ViewData["Status"] = "Unauthorized";
-            }
-            else
-            {
-                ViewData["Status"] = "Error";
-            }
-        }
-        catch
-        {
-            ViewData["Status"] = "ConnectionFailed";
         }
 
-        return View(new CourseViewModel());
+        return View(new CoursesViewModel { Courses = new List<CourseViewModel>() });
     }
+
+    #endregion
+
+    #region Detail
+
+    [Route("/courses/{id}")]
+    public async Task<IActionResult> Detail(string id)
+    {
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
+
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var response = await _http.GetAsync($"https://localhost:7106/api/courses/{id}?key={_configuration["ApiKey"]}");
+            if (response.IsSuccessStatusCode)
+            {
+                var course = JsonConvert.DeserializeObject<CourseViewModel>(await response.Content.ReadAsStringAsync());
+                return View(course);
+            }
+        }
+
+        return View();
+    }
+
+    #endregion
 }
