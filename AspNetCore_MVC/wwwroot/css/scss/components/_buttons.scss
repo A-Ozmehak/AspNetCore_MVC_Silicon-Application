@@ -70,6 +70,7 @@
 
     label {
         @include text-nav;
+        color: var(--color-gray-900);
     }
 
     .switch {
@@ -139,6 +140,10 @@
     background-color: $transparent;
     border: none;
     font-size: 25px;
+
+    i {
+        color: var(--color-gray-900);
+    }
 }
 
 .btn-red {
