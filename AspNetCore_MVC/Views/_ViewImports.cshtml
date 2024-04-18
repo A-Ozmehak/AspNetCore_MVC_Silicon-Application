@@ -7,3 +7,6 @@
 @using Infrastructure.Entities
 @using Microsoft.AspNetCore.Identity
 @using Infrastructure.Models
+@inject UserManager<UserEntity> UserManager
+@inject SignInManager<UserEntity> SignInManager
+@inject IConfiguration Configuration

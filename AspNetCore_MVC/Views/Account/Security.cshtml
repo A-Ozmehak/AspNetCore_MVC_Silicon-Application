@@ -1,7 +1,8 @@
-﻿<div class="container">
-    <section id="account-security">
-        @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
+﻿@{
+    Layout = "_AccountLayout";
+}
 
+    <section id="account-security">
         <div class="details">
             <section class="password-info">
                 @await Html.PartialAsync("~/Views/Sections/_AccountSecurityPasswordPartial.cshtml")
@@ -12,6 +13,5 @@
             </section>
         </div>
     </section>
-</div>
 
 @await Html.PartialAsync("_ValidationScriptPartial")

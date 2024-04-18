@@ -1,5 +1,6 @@
 ﻿@model UploadProfileImageViewModel
 
 <form id="updateProfileImage" asp-controller="Account" asp-action="UploadProfileImage" method="post" enctype="multipart/form-data">
-    <input id="fileInput" type="file" name="ProfileImage" accept="image/*" style="display: none;" />
+    <input id="fileInput" type="file" name="ProfileImage" hidden />
+    <label for="fileInput" class="btn btn-circle btn-circle-sm"><i class="fa-regular fa-refresh"></i></label>
 </form>

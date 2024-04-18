@@ -40,32 +40,22 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    handleProfileImageUpload();
+})
 
-// change avatar
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('#updateProfileImage').addEventListener('submit', event => {
-        event.preventDefault();
-        let formData = new FormData(event.target);
-        fetch(event.target.action, {
-            method: event.target.method,
-            body: formData
-        })
-            .then(response => response.json())
-            .then(data => {
-                document.querySelector('#profileImage').src = data.profileImage;
+
+function handleProfileImageUpload() {
+    try {
+        let fileUploder = document.getElementById('fileInput')
+
+        if (fileUploder != undefined) {
+            fileUploder.addEventListener('change', function () {
+                if (this.files.length > 0) {
+                    this.form.submit()
+                }
             })
-            .catch(() => {
-                alert('An error occurred while uploading the image.');
-            });
-    });
-});
-
-
-// hide file input field
-document.querySelector('#profileImage').addEventListener('click', function () {
-    document.querySelector('#fileInput').click();
-});
-
-document.querySelector('#fileInput').addEventListener('change', function () {
-    document.querySelector('#updateProfileImage').submit();
-});
+        }
+    }
+    catch { }
+}
