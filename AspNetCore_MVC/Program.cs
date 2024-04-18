@@ -43,6 +43,8 @@ builder.Services.AddScoped<TopToolRepository>();
 builder.Services.AddScoped<ToolRepository>();
 builder.Services.AddScoped<SliderRepository>();
 
+builder.Services.AddScoped<AccountManager>();
+
 
 builder.Services.AddScoped<FeatureService>();
 builder.Services.AddScoped<ShowcaseService>();

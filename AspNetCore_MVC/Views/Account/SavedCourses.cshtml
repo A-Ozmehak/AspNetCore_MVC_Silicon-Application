@@ -1,7 +1,8 @@
-﻿<div class="container">
-    <section id="account-saved-courses">
-        @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
+﻿@{
+    Layout = "_AccountLayout";
+}
 
+    <section id="account-saved-courses">
         <div class="details">
             <section class="saved-items">
                 <div class="title">
@@ -11,4 +12,3 @@
             </section>
         </div>
     </section>
-</div>
