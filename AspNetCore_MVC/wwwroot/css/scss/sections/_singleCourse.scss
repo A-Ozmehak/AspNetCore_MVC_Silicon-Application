@@ -2,14 +2,19 @@
     .course-image {
         display: flex;
         position: relative;
+        background: $gray-900;
 
         @include lg {
             justify-content: center;
             align-items: center;
+            height: 677px;
         }
 
         img {
             width: 100%;
+            height: 100%;
+            opacity: 40%;
+            object-fit: cover;
         }
     }
 
@@ -110,6 +115,7 @@
                     color: $white;
                     margin-bottom: 10px;
                     font-size: 1.5rem;
+                    font-weight: 700;
 
                     @include xl {
                         font-size: 2.125rem;
@@ -212,6 +218,14 @@
                     width: 50%;
                 }
 
+                h3 {
+                    font-weight: 800;
+                }
+
+                h5 {
+                    font-weight: 800;
+                }
+
                 ul {
                     list-style: none;
                     padding: 0;
@@ -232,11 +246,7 @@
                 margin-top: 10px;
                 display: flex;
                 flex-direction: column;
-
-                &.dark {
-                    background-color: $gray-800 !important;
-                    border: 1px solid $gray-700 !important;
-                }
+                background: var(--color-gray-100);
 
                 @include xl {
                     margin-top: 0;
@@ -283,22 +293,9 @@
                 }
 
                 .price {
-                    display: flex;
-
-                    .discount-price {
-                        font-size: 2.5rem;
-                        color: var(--color-gray-900);
-                        font-weight: 700;
-
-                        &.dark {
-                            color: var(--color-gray-000);
-                        }
-                    }
-
-                    .regular-price {
-                        text-decoration: line-through;
-                        margin-left: 10px;
-                    }
+                    font-size: 1.5rem;
+                    color: var(--color-gray-900);
+                    font-weight: 700;
                 }
 
                 button {
@@ -310,6 +307,7 @@
         .program-details {
             h3 {
                 margin: 40px 0 30px 0;
+                font-weight: 800;
 
                 @include lg {
                     margin-top: 70px;
@@ -358,16 +356,12 @@
                         width: 55px;
                         height: 55px;
                         border-radius: 50%;
-                        background: var(--color-gray-200);
+                        background: var(--color-gray-300);
                         padding: 10px;
                         display: flex;
                         align-items: center;
                         justify-content: center;
                         margin: 0 0 30px 0;
-
-                        &.dark {
-                            background: var(--color-gray-800);
-                        }
 
                         @include lg {
                             margin: 0 0 50px 0;
@@ -379,14 +373,10 @@
                             width: 35px;
                             height: 35px;
                             border-radius: 50%;
-                            background: var(--color-gray-000);
+                            background: var(--color-gray-100);
                             display: flex;
                             align-items: center;
                             justify-content: center;
-
-                            &.dark {
-                                background: var(--color-gray-500);
-                            }
 
                             @include lg {
                                 width: 60px;
@@ -408,7 +398,7 @@
                     .step-info {
                         h4 {
                             font-size: 1rem;
-                            font-weight: bold;
+                            font-weight: 800;
 
                             @include lg {
                                 font-size: 1.25rem;
@@ -429,12 +419,15 @@
 
         #author {
             margin-top: 30px;
+            border: 1px solid var(--color-gray-100);
 
             .author-container {
                 display: flex;
 
+
                 .author-image {
                     display: none;
+                    border-radius: 8px;
 
                     @include xl {
                         z-index: 1;
@@ -446,6 +439,7 @@
                     padding: 80px;
                     background: $gray-900;
                     position: relative;
+                    border-radius: 8px;
 
                     .pattern-container {
                         position: absolute;

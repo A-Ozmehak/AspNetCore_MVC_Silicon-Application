@@ -1,11 +1,7 @@
 #contact {
-    //background-color: var(--color-gray-100);
+    background-color: var(--color-gray-100);
     position: relative;
     z-index: 1;
-
-    //&.dark {
-    //    background-color: var(--color-gray-900);
-    //}
 
     .container {
         display: flex;
@@ -68,7 +64,7 @@
 
                         i {
                             border: 1px solid var(--color-gray-000);
-                            background-color: var(--color-white);
+                            background-color: var(--color-gray-000);
                             border-radius: 30px;
                             padding: 15px;
                             color: var(--color-theme);
