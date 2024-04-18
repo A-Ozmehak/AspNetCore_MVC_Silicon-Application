@@ -10,12 +10,13 @@ using System.Security.Claims;
 namespace AspNetCore_MVC.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvironment hostingEnvironment, AddressService addressService, AccountManager accountManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvironment hostingEnvironment, AddressService addressService, AccountManager accountManager, SignInManager<UserEntity> signInManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly IWebHostEnvironment _hostingEnvironment = hostingEnvironment;
     private readonly AddressService _addressService = addressService;
     private readonly AccountManager _accountManager = accountManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
 
     #region Details
     [HttpGet]
@@ -44,11 +45,7 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
                 PostalCode = address.PostalCode,
                 City = address.City,
             } : null,
-            ProfileInfo = new ProfileInfoViewModel
-            {
-                ProfileImage = user!.ProfileImage!
-            },
-            IsExternalAccount = user.IsExternalAccount
+            IsExternalAccount = user!.IsExternalAccount
         };
 
         return View(viewModel);
@@ -146,27 +143,25 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
         }
     }
 
-
-    private async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
-    {
-        var user = await _userManager.GetUserAsync(User);
-
-        return new ProfileInfoViewModel
-        {
-            FirstName = user!.FirstName,
-            LastName = user.LastName,
-            Email = user.Email!,
-            ProfileImage = user.ProfileImage!
-        };
-    }
-
     #region [HttpPost] UploadProfileImage
 
     [HttpPost]
     public async Task<IActionResult> UploadProfileImage(UploadProfileImageViewModel model)
     {
-        var result = await _accountManager.UploadUserProfileImage(User, model.ProfileImage!);
-        return RedirectToAction("Details", "Account");
+        if (ModelState.IsValid)
+        {
+            var result = await _accountManager.UploadUserProfileImage(User, model.ProfileImage!);
+            if (result)
+            {
+                return RedirectToAction("Details", "Account");
+            }
+            else
+            {
+                ModelState.AddModelError("", "There was an error uploading the image.");
+            }
+        }
+
+        return View(model);
     }
 
     #endregion
@@ -175,13 +170,9 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
     #region [HttpGet] Security
     [Route("/account/security")]
     [HttpGet]
-    public async Task<IActionResult> Security()
+    public IActionResult Security()
     {
-        var viewModel = new AccountSecurityViewModel
-        {
-            ProfileInfo = await PopulateProfileInfoAsync()
-        };
-        return View(viewModel);
+        return View();
     }
     #endregion
 
@@ -199,16 +190,50 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
     }
     #endregion
 
+    #region DeleteAccount
+
+    [HttpPost]
+    public async Task<IActionResult> DeleteAccount(AccountSecurityViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            if (model.DeleteAccount!.Delete)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
+                {
+                    var result = await _userManager.DeleteAsync(user);
+                    if (result.Succeeded)
+                    {
+                        // If the user was successfully deleted, sign them out and redirect them to the home page
+                        await _signInManager.SignOutAsync();
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        // If there was an error deleting the user, add the errors to the ModelState
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+                    }
+                }
+            }
+        }
+
+        // If we got this far, something failed. Redisplay the form.
+        return View(model);
+    }
+
+    #endregion
+
+
     #region [HttpGet] SavedCourses
     [Route("/account/savedCourses")]
     [HttpGet]
-    public async Task<IActionResult> SavedCourses()
+    public IActionResult SavedCourses()
     {
-        var viewModel = new AccountSavedCoursesViewModel
-        {
-            ProfileInfo = await PopulateProfileInfoAsync()
-        };
-        return View(viewModel);
+        return View();
     }
     #endregion
 
