@@ -13,12 +13,13 @@
                     <div class="save-icon">
                         <i class="fa-solid fa-tag"></i>
                     </div>
-                    <div class="tag">
                         @if (course.IsBestSeller)
                         {
-                            <p>Best Seller</p>
+                            <div class="tag">
+
+                                <p>Best Seller</p>
+                            </div>
                         }
-                    </div>
                     <div class="course-info">
                         <h2>@course.Title</h2>
                         <p class="author">by @course.Author</p>
