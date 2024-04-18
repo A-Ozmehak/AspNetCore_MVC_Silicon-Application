@@ -30,7 +30,7 @@
     @include button;
     @include theme-shadow;
     background: var(--color-theme);
-    color: var(--color-gray-000);
+    color: $white;
     padding-top: 10px;
     padding-bottom: 13px;
 

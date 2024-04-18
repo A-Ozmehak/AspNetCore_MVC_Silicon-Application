@@ -378,7 +378,7 @@ body.dark {
   gap: 12px;
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
   background: var(--color-theme);
-  color: var(--color-gray-000);
+  color: #FFFFFF;
   padding-top: 10px;
   padding-bottom: 13px;
 }
@@ -651,7 +651,7 @@ form input.dark {
   color: var(--color-gray-000);
 }
 form input::placeholder {
-  opacity: 0.4;
+  opacity: 1;
   color: var(--color-gray-300);
 }
 form input.input-validation-error {
@@ -718,12 +718,6 @@ form select {
 form select.dark {
   background-color: var(--color-gray-800) !important;
   border: 1px solid var(--color-gray-700) !important;
-  color: var(--color-gray-000);
-}
-
-.alert {
-  border: 1px solid var(--color-danger-dark);
-  background: #FF7F7F;
   color: var(--color-gray-000);
 }
 
@@ -1274,6 +1268,7 @@ footer .container p.dark {
   color: var(--color-gray-black);
   margin: 20px 0;
   width: 100%;
+  font-weight: 800;
 }
 @media (min-width: 992px) {
   #download-section .container .content h3 {
@@ -1295,7 +1290,7 @@ footer .container p.dark {
   display: inline-block;
   width: 12px;
   height: 12px;
-  background-color: var(--color-warning);
+  background-color: #FFBA08;
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 #download-section .container .content .download-option .text .rating {
@@ -1328,10 +1323,16 @@ footer .container p.dark {
   align-items: center;
   flex-direction: column;
 }
+#integrate-tools-section .container .content h3 {
+  font-weight: 800;
+}
 #integrate-tools-section .container .content p {
   color: var(--color-gray-600);
   max-width: 856px;
   text-align: center;
+}
+#integrate-tools-section .container .content .integrate-tools {
+  margin: 40px 0;
 }
 #integrate-tools-section .container .content .integrate-tools .tools {
   flex: 1;
@@ -1407,6 +1408,7 @@ footer .container p.dark {
 #newsletter-section .container .title h3 {
   color: var(--color-gray-900);
   margin-right: 10px;
+  font-weight: 800;
 }
 @media (min-width: 992px) {
   #newsletter-section .container .title h3 {
@@ -1531,6 +1533,9 @@ footer .container p.dark {
 #signin .container form {
   padding: 1rem;
 }
+#signin .container form h1 {
+  font-weight: 800;
+}
 #signin .container form p a {
   text-decoration: underline;
 }
@@ -1560,6 +1565,8 @@ footer .container p.dark {
   width: 100%;
   margin: 1rem 0 0 0;
   text-align: center;
+  border-bottom: 1px solid var(--color-gray-300);
+  padding-bottom: 20px;
 }
 #signin .container form .content hr {
   grid-area: hr;
@@ -1609,6 +1616,9 @@ footer .container p.dark {
 }
 #signup .container form {
   padding: 1rem;
+}
+#signup .container form h1 {
+  font-weight: 800;
 }
 #signup .container form p a {
   text-decoration: underline;
@@ -1692,6 +1702,9 @@ footer .container p.dark {
     height: 52px;
   }
 }
+#courses .container .titleAndFilter h1 {
+  font-weight: 800;
+}
 #courses .container .titleAndFilter form .filterAndSearch {
   display: flex;
   flex-direction: column;
@@ -1747,6 +1760,7 @@ footer .container p.dark {
   border: 1px solid #EFF2FC;
   border-radius: 10px;
   position: relative;
+  width: 416px;
 }
 #courses .container .courses-section .courses .course.dark {
   border: 1px solid #33354D !important;
@@ -1899,6 +1913,9 @@ footer .container p.dark {
 }
 #account-details .details .basic-info form {
   padding: 1rem;
+}
+#account-details .details .basic-info form h2 {
+  font-weight: 800;
 }
 #account-details .details .basic-info form h5 {
   color: var(--color-theme);
