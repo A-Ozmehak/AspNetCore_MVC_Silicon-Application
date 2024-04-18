@@ -72,7 +72,7 @@ object value = builder.Services.AddAuthentication()
 
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("/Error", "?statusCode={0}");
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
