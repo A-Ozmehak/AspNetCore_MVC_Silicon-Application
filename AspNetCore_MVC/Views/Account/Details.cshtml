@@ -1,28 +1,22 @@
 ﻿@model AccountDetailsViewModel
 @{
-    // ViewData["Title"] = $"{Model.BasicInfo!.FirstName} {Model.BasicInfo.LastName}'s profile";
+    Layout = "_AccountLayout";
 }
 
-<div class="container">
+<div id="account-details">
     @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
     {
         <div class="alert">
             @ViewData["ErrorMessage"]
         </div>
     }
-    <section id="account-details">
-        @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
-
         <div class="details">
-
                 @await Html.PartialAsync("~/Views/Sections/_AccountDetailsBasicInfoForm.cshtml")
 
                 <hr />
 
                 @await Html.PartialAsync("~/Views/Sections/_AccountDetailsAddressInfoForm.cshtml")
-       
         </div>
-    </section>
 </div>
 
 @await Html.PartialAsync("_ValidationScriptPartial")

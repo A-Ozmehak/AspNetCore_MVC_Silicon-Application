@@ -1,13 +1,4 @@
 #account-security {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    @include lg {
-        grid-template-columns: 2fr 5fr;
-        gap: 150px;
-        margin-bottom: 70px;
-    }
-
     .details {
         margin-top: 50px;
         width: 100%;

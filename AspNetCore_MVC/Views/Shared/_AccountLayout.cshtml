@@ -1,0 +1,55 @@
+﻿@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = themeMode == "dark";
+}
+
+<!DOCTYPE html>
+<html lang="en" class="@themeMode">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-signin-client_id" content="522627244060-h8ee7d7bdaeqtgei6si2uq51lmaapr6n.apps.googleusercontent.com">
+    @if (!string.IsNullOrWhiteSpace(ViewData["Title"]?.ToString()))
+    {
+        <title>@ViewData["Title"] - Silicon</title>
+    }
+    else
+    {
+        <title>Silicon</title>
+    }
+    <script defer src="https://kit.fontawesome.com/41c8b474e2.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</head>
+<body>
+
+    <div class="wrapper">
+        @* @await Html.PartialAsync("~/Views/Sections/_HeaderPartial.cshtml") *@
+        <partial name="~/Views/Sections/_HeaderPartial.cshtml" />
+
+        <section class="account">
+            <div class="container">
+                @await Html.PartialAsync("~/Views/Sections/_AccountAsidePartial.cshtml")
+            
+                <main>
+                    @RenderBody()
+                </main>
+            </div>
+        </section>
+
+
+      
+        <partial name="~/Views/Sections/_FooterPartial.cshtml" />
+        @* @await Html.PartialAsync("~/Views/Sections/_FooterPartial.cshtml") *@
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer src="~/js/site.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    @* <partial name="_CookieConsent" /> *@
+</body>
+</html>

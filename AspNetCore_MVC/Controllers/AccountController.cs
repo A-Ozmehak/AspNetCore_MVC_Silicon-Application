@@ -10,11 +10,12 @@ using System.Security.Claims;
 namespace AspNetCore_MVC.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, IWebHostEnvironment hostingEnvironment) : Controller
+public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvironment hostingEnvironment, AddressService addressService, AccountManager accountManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly IWebHostEnvironment _hostingEnvironment = hostingEnvironment;
     private readonly AddressService _addressService = addressService;
+    private readonly AccountManager _accountManager = accountManager;
 
     #region Details
     [HttpGet]
@@ -34,7 +35,7 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
                 LastName = user.LastName,
                 Email = user.Email!,
                 Phone = user.PhoneNumber,
-                Biography = user.Bio
+                Biography = user.Bio,
             } : null,
             AddressInfo = address != null ? new AccountDetailsAddressInfoViewModel
             {
@@ -160,51 +161,14 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
     }
 
     #region [HttpPost] UploadProfileImage
+
     [HttpPost]
-    public async Task<IActionResult> UploadProfileImage(UploadProfileImageViewModel viewModel)
+    public async Task<IActionResult> UploadProfileImage(UploadProfileImageViewModel model)
     {
-        // Check if a file has been uploaded
-        if (viewModel.ProfileImage == null || viewModel.ProfileImage.Length == 0)
-        {
-            ModelState.AddModelError("profileImage", "Please upload an image file.");
-        }
-
-        // Check the file's content type to verify it's an image
-        var allowedContentTypes = new[] { "image/jpeg", "image/png", "image/gif" };
-        if (!allowedContentTypes.Contains(viewModel.ProfileImage!.ContentType))
-        {
-            ModelState.AddModelError("profileImage", "Please upload a JPEG, PNG, or GIF image.");
-        }
-
-        // Check the file's size (optional)
-        if (viewModel.ProfileImage.Length > 2 * 1024 * 1024) // 2 MB
-        {
-            ModelState.AddModelError("profileImage", "The image file size should not exceed 2MB.");
- 
-        }
-
-        // If the file passed all checks, save it to the disk
-        var uploads = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
-        if (!Directory.Exists(uploads))
-        {
-            Directory.CreateDirectory(uploads);
-        }
-
-        var filePath = Path.Combine(uploads, viewModel.ProfileImage.FileName);
-        using (var fileStream = new FileStream(filePath, FileMode.Create))
-        {
-            await viewModel.ProfileImage.CopyToAsync(fileStream);
-        }
-
-        // Update the user's profile image URL in your database
-        var user = await _userManager.GetUserAsync(User);
-        var fileName = Path.GetFileName(viewModel.ProfileImage!.FileName);
-        user!.ProfileImage = "/uploads/" + fileName;
-        await _userManager.UpdateAsync(user);
-
-        // Return the new image URL
-        return RedirectToAction("Details");
+        var result = await _accountManager.UploadUserProfileImage(User, model.ProfileImage!);
+        return RedirectToAction("Details", "Account");
     }
+
     #endregion
 
 

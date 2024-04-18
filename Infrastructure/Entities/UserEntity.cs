@@ -14,7 +14,7 @@ public class UserEntity : IdentityUser
     public string? Bio { get; set; }
 
     [ProtectedPersonalData]
-    public string? ProfileImage { get; set; }
+    public string? ProfileImage { get; set; } = "default-avatar.png";
 
     public ICollection<AddressEntity> Addresses { get; set; } = [];
 
