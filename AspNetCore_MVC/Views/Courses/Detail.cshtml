@@ -81,10 +81,10 @@
                         <li><i class="fa-solid fa-trophy"></i> Certificate of completion</li>
                     </ul>
 
-                @if (Model.DiscountPrice != null)
+                @if (Model.DiscountPrice != "string")
                     {
                         <div class="price-with-sale">
-                        <p class="discount-price">$@Model.DiscountPrice</p>
+                            <p class="discount-price">$@Model.DiscountPrice</p>
                             <p class="regular-price">$@Model.Price</p>
                         </div>
                     }

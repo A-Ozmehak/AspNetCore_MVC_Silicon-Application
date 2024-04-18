@@ -103,11 +103,7 @@
                     border-radius: 10px;
                     position: relative;
                     width: 416px;
-
-                    &.dark {
-                        border: 1px solid $gray-800 !important;
-                        background-color: $gray-800 !important;
-                    }
+                    background: var(--color-gray-100);
 
                     img {
                         border-radius: 10px 10px 0 0;

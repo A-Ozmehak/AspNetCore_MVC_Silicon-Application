@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCore_MVC.Controllers
+namespace AspNetCore_MVC.Controllers;
+
+public class ErrorController : Controller
 {
-    public class ErrorController : Controller
+    [Route("Error/{statusCode}")]
+    public IActionResult Error(int statusCode)
     {
-        [Route("404")]
-        public IActionResult Error()
-        {
-            return View("Error");
-        }
+        return View(statusCode);
     }
 }
