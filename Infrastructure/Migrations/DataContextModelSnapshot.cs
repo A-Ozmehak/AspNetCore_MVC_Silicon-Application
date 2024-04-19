@@ -53,7 +53,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses", (string)null);
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.AppEntity", b =>
@@ -94,7 +94,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("DownloadAppId");
 
-                    b.ToTable("App", (string)null);
+                    b.ToTable("App");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.BrandEntity", b =>
@@ -120,7 +120,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ShowcaseId");
 
-                    b.ToTable("Brands", (string)null);
+                    b.ToTable("Brands");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.DownloadAppEntity", b =>
@@ -145,7 +145,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DownloadApp", (string)null);
+                    b.ToTable("DownloadApp");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.FeatureEntity", b =>
@@ -166,7 +166,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Features", (string)null);
+                    b.ToTable("Features");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.FeatureItemEntity", b =>
@@ -200,7 +200,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("FeatureId");
 
-                    b.ToTable("FeatureItems", (string)null);
+                    b.ToTable("FeatureItems");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ManageWorkEntity", b =>
@@ -225,7 +225,20 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Manage", (string)null);
+                    b.ToTable("Manage");
+                });
+
+            modelBuilder.Entity("Infrastructure.Entities.SavedCoursesEntity", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CourseId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("UserId", "CourseId");
+
+                    b.ToTable("SavedCourses");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ShowcaseEntity", b =>
@@ -258,7 +271,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Showcase", (string)null);
+                    b.ToTable("Showcase");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.SliderEntity", b =>
@@ -287,7 +300,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Slider", (string)null);
+                    b.ToTable("Slider");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.TextIconEntity", b =>
@@ -313,7 +326,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ManageWorkId");
 
-                    b.ToTable("TextAndIcon", (string)null);
+                    b.ToTable("TextAndIcon");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.ToolEntity", b =>
@@ -343,7 +356,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("TopToolId");
 
-                    b.ToTable("Tool", (string)null);
+                    b.ToTable("Tool");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.TopToolEntity", b =>
@@ -364,7 +377,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TopTool", (string)null);
+                    b.ToTable("TopTool");
                 });
 
             modelBuilder.Entity("Infrastructure.Entities.UserEntity", b =>
@@ -392,6 +405,9 @@ namespace Infrastructure.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAccountExternal")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()

@@ -42,6 +42,7 @@ builder.Services.AddScoped<AppRepository>();
 builder.Services.AddScoped<TopToolRepository>();
 builder.Services.AddScoped<ToolRepository>();
 builder.Services.AddScoped<SliderRepository>();
+builder.Services.AddScoped<SaveCoursesRepository>();
 
 builder.Services.AddScoped<AccountManager>();
 
