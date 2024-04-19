@@ -189,12 +189,10 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
                 var result = await _userManager.ChangePasswordAsync(user, viewModel.Password!.CurrentPassword, viewModel.Password.NewPassword);
                 if (result.Succeeded)
                 {
-                    // If the password was successfully changed, redirect the user to a confirmation page
                     return RedirectToAction("Security", "Account");
                 }
                 else
                 {
-                    // If there was an error changing the password, add the errors to the ModelState
                     foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("Invalid new password", error.Description);
