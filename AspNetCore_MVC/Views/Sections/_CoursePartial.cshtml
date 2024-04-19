@@ -1,44 +1,43 @@
-﻿@model CoursesViewModel
+﻿@* @model CoursesIndexViewModel *@
 
-@if (Model != null)
-{
-    @foreach (var course in Model.Courses)
-    {
+
             <div class="courses">
-                <div class="course">
+                <div class="course" onclick="location.href='@Url.Action("Details", "Courses", new { id = Model.Id }))'">
                     <div class="course-image">
-                        <img src="@course.CourseImage" alt="course1">
+                        <img src="@Model.CourseImage" alt="@Model.Title">
                     </div>
-                    <div class="save-icon" onclick="saveCourse('@course.Id')">
-                        <i class="fa-solid fa-tag"></i>
-                    </div>
-                        @if (course.IsBestSeller)
+                    @* <div class="save-icon" onclick="saveCourse('@course.Id')"> *@
+                            <a asp-action="Join" asp-controller="Courses" asp-route-id="@Model.Id">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </a>
+                    @* </div> *@
+                        @if (Model.IsBestSeller)
                         {
                             <div class="tag">
-
                                 <p>Best Seller</p>
                             </div>
                         }
                     <div class="course-info">
-                        <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
-                            <h2>@course.Title</h2>
-                        </a>
-                        <p class="author">by @course.Author</p>
-                        @if (course.DiscountPrice == "string")
+                        @* <a href="@Url.Action("Detail", "Courses", new { id = course.Id })"> *@
+                        @* <a asp-action="Details" asp-controller="Courses" asp-route-id=""> *@
+                        <h2>@Model.Title</h2>
+                        @* </a> *@
+                        <p class="author">by @Model.Author</p>
+                        @if (Model.DiscountPrice == "string")
                         {
-                            <p class="price">$@course.Price</p>
+                            <p class="price">$@Model.Price</p>
                         }
                         else
                         {
                             <div class="price-with-sale">
-                                <p class="sales-price">$@course.DiscountPrice</p>
-                                <p class="regular-price">$@course.Price</p>
+                                <p class="sales-price">$@Model.DiscountPrice</p>
+                                <p class="regular-price">$@Model.Price</p>
                             </div>
                         }
 
                         <div class="card-bottom">
-                            <p class="duration"><i class="fa-regular fa-clock"></i> @course.Hours hours</p>
-                            <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)</p>
+                            <p class="duration"><i class="fa-regular fa-clock"></i> @Model.Hours hours</p>
+                            <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @Model.LikesInProcent (@Model.LikesInNumbers)</p>
                         </div>
                     </div>
                 </div>

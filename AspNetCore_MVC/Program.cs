@@ -3,15 +3,15 @@ using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Google;
+using AspNetCore_MVC.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 
-builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+builder.Services.RegisterDbContexts(builder.Configuration);
+//builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
 {
     x.User.RequireUniqueEmail = true;
@@ -46,14 +46,7 @@ builder.Services.AddScoped<SaveCoursesRepository>();
 
 builder.Services.AddScoped<AccountManager>();
 
-
-builder.Services.AddScoped<FeatureService>();
-builder.Services.AddScoped<ShowcaseService>();
-builder.Services.AddScoped<ManageWorkService>();
-builder.Services.AddScoped<DownloadAppService>();
-builder.Services.AddScoped<TopToolService>();
-builder.Services.AddScoped<SliderService>();
-builder.Services.AddScoped<AddressService>();
+builder.Services.RegisterServices(builder.Configuration);
 
 builder.Services.AddAuthentication().AddFacebook(x => {
     x.AppId = builder.Configuration["Authentication:Facebook:AppId"]!;
