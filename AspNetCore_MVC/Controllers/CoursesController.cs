@@ -28,7 +28,8 @@ public class CoursesController(HttpClient http, IConfiguration configuration) : 
             {
                 var content = await response.Content.ReadAsStringAsync();
                 var courses = JsonConvert.DeserializeObject<List<CourseViewModel>>(content);
-                var coursesViewModel = new CoursesViewModel { Courses = courses };
+                var coursesViewModel = new CoursesViewModel { Courses = courses! };
+
                 return View(coursesViewModel);
             }
         }

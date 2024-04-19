@@ -1,15 +1,67 @@
-﻿
+﻿@model CoursesViewModel
 @{
     Layout = "_AccountLayout";
 }
 
     <section id="account-saved-courses">
         <div class="details">
-            <section class="saved-items">
+            <section class="title-section">
                 <div class="title">
                     <h2>Saved Items</h2>
                     <button class="btn-red-border" type="submit"><i class="fa-solid fa-trash-can"></i>Delete all</button>
                 </div>
+            </section>
+            <section class="courses-section">
+                @if (Model != null)
+                {
+                    @foreach (var course in Model.Courses)
+                    {
+                        <div class="courses">
+                            <div class="course">
+                                <div class="course-image">
+                                    <img src="@course.CourseImage" alt="course1">
+                                </div>
+                                <div class="save-icon" onclick="saveCourse('@course.Id')">
+                                    <i class="fa-solid fa-tag"></i>
+                                </div>
+                                @if (course.IsBestSeller)
+                                {
+                                    <div class="tag">
+
+                                        <p>Best Seller</p>
+                                    </div>
+                                }
+                                <div class="course-info">
+                                    <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
+                                        <h2>@course.Title</h2>
+                                    </a>
+                                    <p class="author">by @course.Author</p>
+                                    @if (course.DiscountPrice == "string")
+                                    {
+                                        <p class="price">$@course.Price</p>
+                                    }
+                                    else
+                                    {
+                                        <div class="price-with-sale">
+                                            <p class="sales-price">$@course.DiscountPrice</p>
+                                            <p class="regular-price">$@course.Price</p>
+                                        </div>
+                                    }
+
+                                    <div class="card-bottom">
+                                        <p class="duration"><i class="fa-regular fa-clock"></i> @course.Hours hours</p>
+                                        <p class="rating"><i class="fa-regular fa-thumbs-up"></i> @course.LikesInProcent (@course.LikesInNumbers)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div>You don't have any saved courses</div>
+                }
+
             </section>
         </div>
     </section>

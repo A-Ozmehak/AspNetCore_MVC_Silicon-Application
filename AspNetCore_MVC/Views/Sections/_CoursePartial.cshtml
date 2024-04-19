@@ -4,13 +4,12 @@
 {
     @foreach (var course in Model.Courses)
     {
-        <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
             <div class="courses">
                 <div class="course">
                     <div class="course-image">
                         <img src="@course.CourseImage" alt="course1">
                     </div>
-                    <div class="save-icon">
+                    <div class="save-icon" onclick="saveCourse('@course.Id')">
                         <i class="fa-solid fa-tag"></i>
                     </div>
                         @if (course.IsBestSeller)
@@ -21,7 +20,9 @@
                             </div>
                         }
                     <div class="course-info">
-                        <h2>@course.Title</h2>
+                        <a href="@Url.Action("Detail", "Courses", new { id = course.Id })">
+                            <h2>@course.Title</h2>
+                        </a>
                         <p class="author">by @course.Author</p>
                         @if (course.DiscountPrice == "string")
                         {
@@ -42,7 +43,6 @@
                     </div>
                 </div>
             </div>
-        </a>
     }
 }
 else

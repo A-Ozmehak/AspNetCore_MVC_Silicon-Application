@@ -134,7 +134,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
                 Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
                 UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-                IsExternalAccount = true
+                IsAccountExternal = true
             };
 
             var user = await _userManager.FindByEmailAsync(userEntity.Email);
@@ -206,7 +206,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
             Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
             UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
-            IsExternalAccount = true
+            IsAccountExternal = true
         };
 
         var user = await _userManager.FindByEmailAsync(userEntity.Email);

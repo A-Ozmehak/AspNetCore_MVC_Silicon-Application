@@ -39,11 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
-
 document.addEventListener('DOMContentLoaded', function () {
     handleProfileImageUpload();
 })
-
 
 function handleProfileImageUpload() {
     try {
@@ -58,4 +56,28 @@ function handleProfileImageUpload() {
         }
     }
     catch { }
+}
+
+function saveCourse(courseId) {
+    fetch('/Account/SaveCourse', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ courseId: courseId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                if (data.saved) {
+                    alert('Course saved successfully!');
+       
+                } else {
+                    alert('Course removed successfully!');
+                }
+                location.reload();
+            } else {
+                alert('Failed to save/remove course: ' + data.error);
+            }
+        });
 }

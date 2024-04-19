@@ -24,7 +24,21 @@
             </form>
         </div>
         <div class="courses-section">
-             @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml") 
+             @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml")
+            <span class="information">
+                @if (ViewData["Status"]?.ToString() == "Success")
+                {
+                    <span class="alert alert-success">
+                        You have been subscribed
+                    </span>
+                }             
+                else if (ViewData["Status"]?.ToString() == "Unauthorized")
+                {
+                    <span class="alert alert-danger">
+                        Something went wrong. Please contact web admin.
+                    </span>
+                }
+            </span>
 
         </div>
         @await Html.PartialAsync("~/Views/Sections/_PaginationPartial.cshtml")
