@@ -24,6 +24,7 @@
             </form>
         </div>
         <div class="courses-section">
+            <div id="addMessage"></div>
              @await Html.PartialAsync("~/Views/Sections/_CoursePartial.cshtml")
             <span class="information">
                 @if (ViewData["Status"]?.ToString() == "Success")

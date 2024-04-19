@@ -68,16 +68,20 @@ function saveCourse(courseId) {
     })
         .then(response => response.json())
         .then(data => {
+            var messageElement = document.getElementById('removeMessage');
+            var addMessage = document.getElementById('addMessage');
+
             if (data.success) {
                 if (data.saved) {
-                    alert('Course saved successfully!');
+                    addMessage.textContent = 'Successfully signed up!';
        
                 } else {
-                    alert('Course removed successfully!');
+                    messageElement.textContent = 'Successfully unsigned!';
                 }
                 location.reload();
             } else {
-                alert('Failed to save/remove course: ' + data.error);
+                addMessage.textContent = 'Failed to save course: ' + data.error;
+                messageElement.textContent = 'Failed to remove course: ' + data.error;
             }
         });
 }
