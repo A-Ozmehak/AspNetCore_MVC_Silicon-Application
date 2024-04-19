@@ -17,7 +17,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     private readonly HttpClient _http = http;
     private readonly IConfiguration _configuration = configuration;
 
-    #region [HttpGet] SignUp
+    #region SignUp
     [HttpGet]
     [Route("/signup")]
     public IActionResult SignUp()
@@ -27,9 +27,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         return View();
     }
-    #endregion
 
-    #region [HttpPost] SignUp
     [HttpPost]
     [Route("/signup")]
     public async Task<ActionResult> SignUp(SignUpViewModel viewModel)
@@ -64,7 +62,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
     #endregion
 
-    #region [HttpGet] SignIn
+    #region SignIn
     [HttpGet]
     [Route("/signin")]
     public IActionResult SignIn(string returnUrl)
@@ -76,9 +74,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         return View();
     }
-    #endregion
 
-    #region [HttpPost] SignIn
     [HttpPost]
     [Route("/signin")]
 

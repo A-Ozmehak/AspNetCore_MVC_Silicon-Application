@@ -2,19 +2,13 @@
 using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
 using Infrastructure.Entities;
-using Infrastructure.Factories;
-using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.Net.Http.Headers;
 using System.Security.Claims;
-using static System.Net.WebRequestMethods;
 
 namespace AspNetCore_MVC.Controllers;
 
@@ -182,16 +176,14 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
 
     #endregion
 
-    #region [HttpGet] Security
+    #region Security
     [Route("/account/security")]
     [HttpGet]
     public IActionResult Security()
     {
         return View();
     }
-    #endregion
 
-    #region [HttpPost] Security
     [Route("/account/security")]
     [HttpPost]
     public async Task<IActionResult> Security(AccountSecurityViewModel viewModel)
