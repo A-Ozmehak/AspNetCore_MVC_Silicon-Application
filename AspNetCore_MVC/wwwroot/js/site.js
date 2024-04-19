@@ -85,3 +85,22 @@ function saveCourse(courseId) {
             }
         });
 }
+
+function deleteAllSavedCourses() {
+    fetch('/Account/DeleteAllSavedCourses', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                sessionStorage.setItem('message', 'All saved courses removed successfully!');
+                location.reload();
+            } else {
+                sessionStorage.setItem('message', 'Failed to remove all saved courses: ' + data.error);
+                location.reload();
+            }
+        });
+}

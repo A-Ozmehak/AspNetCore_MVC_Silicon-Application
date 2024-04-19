@@ -86,4 +86,23 @@ public class AccountManager(UserManager<UserEntity> userManager, DataContext con
 
         return savedCourses;
     }
+
+    public async Task<ResponseResult> DeleteAllSavedCoursesAsync(string userId)
+    {
+        try
+        {
+            var savedCourses = await _context.SavedCourses
+                .Where(sc => sc.UserId == userId)
+                .ToListAsync();
+
+            _context.SavedCourses.RemoveRange(savedCourses);
+            await _context.SaveChangesAsync();
+
+            return ResponseFactory.Ok();
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
+    }
 }

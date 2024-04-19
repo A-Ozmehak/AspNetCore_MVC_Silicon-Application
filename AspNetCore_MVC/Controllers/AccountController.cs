@@ -8,6 +8,7 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System.Diagnostics;
@@ -112,6 +113,7 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
 
     #endregion
 
+    #region UpdateBasicInfo
     public async Task UpdateBasicInfo(AccountDetailsBasicInfoViewModel viewModel)
     {
         var user = await _userManager.GetUserAsync(User);
@@ -124,6 +126,9 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
         await _userManager.UpdateAsync(user);
     }
 
+    #endregion
+
+    #region UpdateAddressInfo
     public async Task UpdateAddressInfo(AccountDetailsAddressInfoViewModel viewModel)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -151,6 +156,8 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
             await _addressService.CreateAddressAsync(newAddress);
         }
     }
+
+    #endregion
 
     #region [HttpPost] UploadProfileImage
 
@@ -247,7 +254,7 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
 
     #endregion
 
-    #region [HttpGet] SavedCourses
+    #region SavedCourses
     [Route("/account/savedCourses")]
     [HttpGet]
     public async Task<IActionResult> SavedCourses()
@@ -284,6 +291,25 @@ public class AccountController(UserManager<UserEntity> userManager, HttpClient h
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var result = await _accountManager.ToggleSaveCourseAsync(userId!, model.CourseId);
+
+        if (result.Message == "Succeeded")
+        {
+            return Json(new { success = true });
+        }
+        else
+        {
+            return Json(new { success = false, error = result.Message });
+        }
+    }
+
+    #endregion
+
+    #region [HttpPost] DeleteAllSavedCourses
+    [HttpPost]
+    public async Task<IActionResult> DeleteAllSavedCourses()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var result = await _accountManager.DeleteAllSavedCoursesAsync(userId!);
 
         if (result.Message == "Succeeded")
         {
