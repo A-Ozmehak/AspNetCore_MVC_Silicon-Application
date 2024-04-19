@@ -18,5 +18,5 @@ public class UserEntity : IdentityUser
 
     public ICollection<AddressEntity> Addresses { get; set; } = [];
 
-    public bool IsExternalAccount { get; set; } = false;
+    public bool IsAccountExternal { get; set; } = false;
 }

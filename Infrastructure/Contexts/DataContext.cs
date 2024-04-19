@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Contexts;
 
@@ -18,6 +19,7 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
     public DbSet<TopToolEntity> TopTool { get; set; }
     public DbSet<ToolEntity> Tool { get; set; }
     public DbSet<SliderEntity> Slider { get; set; }
+    public DbSet<SavedCoursesEntity> SavedCourses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -28,5 +30,7 @@ public class DataContext(DbContextOptions<DataContext> options) : IdentityDbCont
             .WithOne(a => a.User)
             .HasForeignKey(a => a.UserId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder.Entity<SavedCoursesEntity>().HasKey(sc => new { sc.UserId, sc.CourseId });
     }
 }

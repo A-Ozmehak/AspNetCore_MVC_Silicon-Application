@@ -39,11 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 })
 
-
 document.addEventListener('DOMContentLoaded', function () {
     handleProfileImageUpload();
 })
-
 
 function handleProfileImageUpload() {
     try {
@@ -58,4 +56,51 @@ function handleProfileImageUpload() {
         }
     }
     catch { }
+}
+
+function saveCourse(courseId) {
+    fetch('/Account/SaveCourse', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ courseId: courseId })
+    })
+        .then(response => response.json())
+        .then(data => {
+            var messageElement = document.getElementById('removeMessage');
+            var addMessage = document.getElementById('addMessage');
+
+            if (data.success) {
+                if (data.saved) {
+                    addMessage.textContent = 'Successfully signed up!';
+       
+                } else {
+                    messageElement.textContent = 'Successfully unsigned!';
+                }
+                location.reload();
+            } else {
+                addMessage.textContent = 'Failed to save course: ' + data.error;
+                messageElement.textContent = 'Failed to remove course: ' + data.error;
+            }
+        });
+}
+
+function deleteAllSavedCourses() {
+    fetch('/Account/DeleteAllSavedCourses', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                sessionStorage.setItem('message', 'All saved courses removed successfully!');
+                location.reload();
+            } else {
+                sessionStorage.setItem('message', 'Failed to remove all saved courses: ' + data.error);
+                location.reload();
+            }
+        });
 }

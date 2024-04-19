@@ -3,7 +3,8 @@
         margin-top: 50px;
         width: 100%;
 
-        .saved-items {
+        .title-section {
+            margin-bottom: 40px;
 
             .title {
                 display: flex;
@@ -18,12 +19,6 @@
                         color: $danger;
                     }
                 }
-            }
-
-
-
-
-            .content {
             }
         }
     }

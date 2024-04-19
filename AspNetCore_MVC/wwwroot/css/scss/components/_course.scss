@@ -1,0 +1,135 @@
+.courses-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+
+    .courses {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-width: 416px;
+        height: 473px;
+
+
+        @include lg {
+            justify-content: space-between;
+            flex-direction: row;
+        }
+
+        .course {
+            border: 1px solid $gray-200;
+            border-radius: 10px;
+            position: relative;
+            width: 416px;
+            background: var(--color-gray-100);
+
+            img {
+                border-radius: 10px 10px 0 0;
+                width: 100%;
+            }
+
+            .save-icon {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: 1;
+                background: $white;
+                border: 1px solid $white;
+                border-radius: 35px;
+                padding: 2px 6px;
+
+                &:hover {
+                    background: $theme;
+                    border: 1px solid $theme;
+                    cursor: pointer;
+                }
+
+                &:hover i {
+                    color: $white;
+                }
+            }
+
+            .tag {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background: $success;
+                color: $white;
+                border: 1px solid $success;
+                border-radius: 10px;
+                padding: 2px 5px;
+
+                p {
+                    margin-bottom: 0;
+                    font-size: 0.8rem;
+                }
+            }
+
+            .course-info {
+                padding: 20px;
+
+                h2 {
+                    margin-bottom: 10px;
+                    @include text-xl;
+                    font-weight: 700;
+                    color: var(--color-gray-900);
+
+                    &.dark {
+                        color: var(--color-gray-000);
+                    }
+                }
+
+                .author {
+                    color: var(--color-gray-400);
+                }
+
+                p {
+                    margin-bottom: 10px;
+                }
+
+                .price {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    border-bottom: 1px solid $gray-100;
+                    color: $info !important;
+                    font-weight: 600;
+                    padding-bottom: 10px;
+                    font-weight: 600;
+                }
+
+                .price-with-sale {
+                    display: flex;
+                    border-bottom: 1px solid $gray-100;
+
+                    .regular-price {
+                        color: $gray-500 !important;
+                        text-decoration: line-through;
+                        font-weight: 600;
+                    }
+
+                    .sales-price {
+                        color: $danger !important;
+                        margin-right: 8px;
+                        font-weight: 600;
+                    }
+                }
+
+                .card-bottom {
+                    display: flex;
+                    padding-top: 10px;
+
+                    p {
+                        display: inline;
+                        color: $gray-600 !important;
+                    }
+
+                    .duration {
+                        margin-right: 30px;
+                    }
+                }
+            }
+        }
+    }
+}

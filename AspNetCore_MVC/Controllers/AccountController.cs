@@ -1,22 +1,32 @@
 ﻿using AspNetCore_MVC.ViewModels.Components;
+using AspNetCore_MVC.ViewModels.Sections;
 using AspNetCore_MVC.ViewModels.Views;
 using Infrastructure.Entities;
+using Infrastructure.Factories;
+using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Security.Claims;
+using static System.Net.WebRequestMethods;
 
 namespace AspNetCore_MVC.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvironment hostingEnvironment, AddressService addressService, AccountManager accountManager, SignInManager<UserEntity> signInManager) : Controller
+public class AccountController(UserManager<UserEntity> userManager, HttpClient http, IConfiguration configuration, AddressService addressService, AccountManager accountManager, SignInManager<UserEntity> signInManager) : Controller
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
-    private readonly IWebHostEnvironment _hostingEnvironment = hostingEnvironment;
     private readonly AddressService _addressService = addressService;
     private readonly AccountManager _accountManager = accountManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
 
     #region Details
     [HttpGet]
@@ -45,7 +55,7 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
                 PostalCode = address.PostalCode,
                 City = address.City,
             } : null,
-            IsExternalAccount = user!.IsExternalAccount
+            IsExternalAccount = user!.IsAccountExternal
         };
 
         return View(viewModel);
@@ -103,6 +113,7 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
 
     #endregion
 
+    #region UpdateBasicInfo
     public async Task UpdateBasicInfo(AccountDetailsBasicInfoViewModel viewModel)
     {
         var user = await _userManager.GetUserAsync(User);
@@ -115,6 +126,9 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
         await _userManager.UpdateAsync(user);
     }
 
+    #endregion
+
+    #region UpdateAddressInfo
     public async Task UpdateAddressInfo(AccountDetailsAddressInfoViewModel viewModel)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -143,6 +157,8 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
         }
     }
 
+    #endregion
+
     #region [HttpPost] UploadProfileImage
 
     [HttpPost]
@@ -165,7 +181,6 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
     }
 
     #endregion
-
 
     #region [HttpGet] Security
     [Route("/account/security")]
@@ -239,17 +254,72 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
 
     #endregion
 
-
-
-
-    #region [HttpGet] SavedCourses
+    #region SavedCourses
     [Route("/account/savedCourses")]
     [HttpGet]
-    public IActionResult SavedCourses()
+    public async Task<IActionResult> SavedCourses()
     {
-        return View();
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        {
+            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var savedCourses = await _accountManager.GetSavedCoursesAsync(userId!);
+
+            var courses = new List<CourseViewModel>();
+
+            foreach (var savedCourse in savedCourses)
+            {
+                var response = await _http.GetAsync($"https://localhost:7106/api/courses/{savedCourse.CourseId}?key={_configuration["ApiKey"]}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var course = JsonConvert.DeserializeObject<CourseViewModel>(content);
+                    courses.Add(course!);
+                }
+            }
+
+            var coursesViewModel = new CoursesViewModel { Courses = courses };
+            return View(coursesViewModel);
+        }
+
+        return View(new CoursesViewModel { Courses = new List<CourseViewModel>() });
     }
+    
+    [HttpPost]
+    public async Task<IActionResult> SaveCourse([FromBody] CourseIdViewModel model)
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var result = await _accountManager.ToggleSaveCourseAsync(userId!, model.CourseId);
+
+        if (result.Message == "Succeeded")
+        {
+            return Json(new { success = true });
+        }
+        else
+        {
+            return Json(new { success = false, error = result.Message });
+        }
+    }
+
     #endregion
 
+    #region [HttpPost] DeleteAllSavedCourses
+    [HttpPost]
+    public async Task<IActionResult> DeleteAllSavedCourses()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var result = await _accountManager.DeleteAllSavedCoursesAsync(userId!);
 
+        if (result.Message == "Succeeded")
+        {
+            return Json(new { success = true });
+        }
+        else
+        {
+            return Json(new { success = false, error = result.Message });
+        }
+    }
+
+    #endregion
 }

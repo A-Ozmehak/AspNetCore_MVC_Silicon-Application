@@ -1,18 +1,23 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Factories;
+using Infrastructure.Models;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
 using System.Security.Claims;
 
 namespace Infrastructure.Services;
 
-public class AccountManager(UserManager<UserEntity> userManager, DataContext context, IConfiguration configuration)
+public class AccountManager(UserManager<UserEntity> userManager, DataContext context, IConfiguration configuration, SaveCoursesRepository saveCoursesRepository)
 {
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly DataContext _context = context;
     private readonly IConfiguration _configuration = configuration;
+    private readonly SaveCoursesRepository _saveCoursesRepository = saveCoursesRepository;
 
     public async Task<bool> UploadUserProfileImage(ClaimsPrincipal user, IFormFile file)
     {
@@ -44,5 +49,60 @@ public class AccountManager(UserManager<UserEntity> userManager, DataContext con
             Debug.WriteLine(ex.Message);
         }
         return false;
+    }
+
+    public async Task<ResponseResult> ToggleSaveCourseAsync(string userId, string courseId)
+    {
+        try
+        {
+            var savedCourse = await _context.SavedCourses
+                .FirstOrDefaultAsync(sc => sc.UserId == userId && sc.CourseId == courseId);
+
+            if (savedCourse != null)
+            {
+                _context.SavedCourses.Remove(savedCourse);
+                await _context.SaveChangesAsync();
+                return ResponseFactory.Ok();
+            }
+            else
+            {
+                savedCourse = new SavedCoursesEntity { UserId = userId, CourseId = courseId };
+                _context.SavedCourses.Add(savedCourse);
+                await _context.SaveChangesAsync();
+                return ResponseFactory.Ok();
+            }
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
+    }
+
+    public async Task<IEnumerable<SavedCoursesEntity>> GetSavedCoursesAsync(string userId)
+    {
+        var savedCourses = await _context.SavedCourses
+            .Where(sc => sc.UserId == userId)
+            .ToListAsync();
+
+        return savedCourses;
+    }
+
+    public async Task<ResponseResult> DeleteAllSavedCoursesAsync(string userId)
+    {
+        try
+        {
+            var savedCourses = await _context.SavedCourses
+                .Where(sc => sc.UserId == userId)
+                .ToListAsync();
+
+            _context.SavedCourses.RemoveRange(savedCourses);
+            await _context.SaveChangesAsync();
+
+            return ResponseFactory.Ok();
+        }
+        catch (Exception ex)
+        {
+            return ResponseFactory.Error(ex.Message);
+        }
     }
 }
