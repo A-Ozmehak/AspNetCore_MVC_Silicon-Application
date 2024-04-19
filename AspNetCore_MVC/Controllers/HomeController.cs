@@ -25,7 +25,7 @@ public class HomeController(HttpClient http) : Controller
             try
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await http.PostAsync("https://localhost:7106/api/subscribers?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
+                var response = await _http.PostAsync("https://localhost:7106/api/subscribers?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
 
                 if (response.IsSuccessStatusCode)
                 {

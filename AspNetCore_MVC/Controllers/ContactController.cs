@@ -1,7 +1,6 @@
 ﻿using AspNetCore_MVC.ViewModels.Views;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using static System.Net.WebRequestMethods;
 using System.Text;
 
 namespace AspNetCore_MVC.Controllers;
@@ -30,7 +29,7 @@ public class ContactController(HttpClient http) : Controller
             try
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await http.PostAsync("https://localhost:7106/api/contact?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
+                var response = await _http.PostAsync("https://localhost:7106/api/contact?key=OTk3MTM3MmUtZWFlMi00ODYyLWFhZDMtNTI1OWIyZWY5NTNl", content);
 
                 if (response.IsSuccessStatusCode)
                 {
