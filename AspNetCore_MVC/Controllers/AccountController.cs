@@ -179,14 +179,29 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
     #region [HttpPost] Security
     [Route("/account/security")]
     [HttpPost]
-    public IActionResult Security(AccountSecurityViewModel viewModel)
+    public async Task<IActionResult> Security(AccountSecurityViewModel viewModel)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return View(viewModel);
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                var result = await _userManager.ChangePasswordAsync(user, viewModel.Password!.CurrentPassword, viewModel.Password.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Security", "Account");
+                }
+                else
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("Invalid new password", error.Description);
+                    }
+                }
+            }
         }
 
-        return RedirectToAction("Security", "Account");
+        return View(viewModel);
     }
     #endregion
 
@@ -205,13 +220,11 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
                     var result = await _userManager.DeleteAsync(user);
                     if (result.Succeeded)
                     {
-                        // If the user was successfully deleted, sign them out and redirect them to the home page
                         await _signInManager.SignOutAsync();
                         return RedirectToAction("Index", "Home");
                     }
                     else
                     {
-                        // If there was an error deleting the user, add the errors to the ModelState
                         foreach (var error in result.Errors)
                         {
                             ModelState.AddModelError("", error.Description);
@@ -221,11 +234,12 @@ public class AccountController(UserManager<UserEntity> userManager, IWebHostEnvi
             }
         }
 
-        // If we got this far, something failed. Redisplay the form.
         return View(model);
     }
 
     #endregion
+
+
 
 
     #region [HttpGet] SavedCourses
